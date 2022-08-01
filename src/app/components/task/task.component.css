@@ -1,0 +1,16 @@
+.task {
+    background: #2B2C37;
+    padding: 1.5em 1em;
+    border-radius: 8px;
+}
+
+.task-title {
+    font-weight: 700;
+    font-size: .9rem;
+}
+
+.subtasks-subtitle {
+    font-size: .7rem;
+    font-weight: 700;
+    color: #828FA3;
+}

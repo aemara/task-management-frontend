@@ -1,0 +1,21 @@
+
+.column {
+    width: 280px;
+}
+
+.column-header {
+    font-size: .75rem;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 1.5em;
+    letter-spacing: 2.4px;
+    color: #828FA3;
+}
+
+
+.tasks-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
