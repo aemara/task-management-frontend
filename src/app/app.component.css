@@ -1,0 +1,15 @@
+.main {
+    display: grid;
+    height: 100vh;
+    grid-template-rows: min-content 1fr;
+}
+
+app-titlebar {
+    background : #2B2C37;
+    grid-row: 1/2;
+}
+
+app-columns {
+    background: #20212C;
+    grid-row: 2/3;
+}
