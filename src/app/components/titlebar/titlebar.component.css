@@ -1,0 +1,40 @@
+.titlebar-container {
+    padding: 1.2em 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    align-self: flex-end;
+}
+
+.board-title-container {
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    margin-right: 3em;
+    min-width: 159px;
+}
+
+.board-title {
+    font-weight: 700;
+    color: white;
+    font-size: 1.125rem;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+
+.add-task-btn {
+    border: none;
+    background: #635FC7;
+    padding: .4em 1.3em;
+    border-radius: 24px;
+    margin-left: 1em;
+}
+
+.options-btn {
+    border: none;
+    background: none;
+    align-self: flex-end;
+}
