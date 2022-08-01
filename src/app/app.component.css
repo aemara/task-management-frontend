@@ -12,4 +12,5 @@ app-titlebar {
 app-columns {
     background: #20212C;
     grid-row: 2/3;
+    overflow: scroll;
 }

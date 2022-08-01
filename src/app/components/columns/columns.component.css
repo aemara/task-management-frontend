@@ -1,0 +1,8 @@
+main {
+    padding-left: 1em;
+    padding-top: 1em;
+    padding-right: 1em;
+    display: flex;
+    gap: 1.5em;
+    width: min-content;
+}
