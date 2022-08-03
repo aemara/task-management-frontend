@@ -6,19 +6,19 @@ import { TitlebarComponent } from './components/titlebar/titlebar.component';
 import { ColumnsComponent } from './components/columns/columns.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TaskComponent } from './components/task/task.component';
-
+import { AddEditTaskComponent } from './components/add-edit-task/add-edit-task.component';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
     TitlebarComponent,
     ColumnsComponent,
     ColumnComponent,
-    TaskComponent
+    TaskComponent,
+    AddEditTaskComponent,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
