@@ -1,0 +1,4 @@
+<div class="subtask" (click)="onClick()">
+  <input type="checkbox" [(ngModel)]="isDone" name="isDone"/>
+  <p class="subtask-title" [ngClass]="{'subtask-done': isDone}">{{subtask.title}}</p>
+</div>
