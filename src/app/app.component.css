@@ -14,3 +14,9 @@ app-columns {
     grid-row: 2/3;
     overflow: scroll;
 }
+
+app-view-task {
+    grid-row: 2/3;
+    background: #20212C;
+    padding: 1.5em  1em 3em 1em;
+}
