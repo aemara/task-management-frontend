@@ -3,17 +3,20 @@
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <div class="title-form-container">
       <label>Title</label>
-      <input type="text" />
+      <input type="text" formControlName="title"/>
     </div>
     <div class="description-form-container">
       <label for="task-description">Description</label>
-      <textarea id="task-description"></textarea>
+      <textarea id="task-description" formControlName="description"></textarea>
     </div>
     <div class="subtasks-form-container">
       <h3 class="subtasks-heading">Subtasks</h3>
       <div class="subtasks-list" formArrayName="subtasks">
-        <div class="subtask-input" *ngFor="let subtasks of getSubtasksControls(); let i = index">
-          <input type="text"  formControlName="i" />
+        <div
+          class="subtask-input"
+          *ngFor="let subtasks of getSubtasksControls(); let i = index"
+        >
+          <input type="text" [formControlName]="i" />
           <button class="delete-btn" (click)="onDeleteSubtask(i)">
             <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
               <g fill="#828FA3" fill-rule="evenodd">
@@ -23,15 +26,16 @@
             </svg>
           </button>
         </div>
-        
       </div>
-      <button class="add-subtask-btn" (click)="onAddSubtask()">+ Add New Subtask</button>
+      <button class="add-subtask-btn" type="button" (click)="onAddSubtask()">
+        + Add New Subtask
+      </button>
     </div>
     <div class="column-form-container">
       <h3 class="column-form-heading">Column</h3>
       <div class="column-dropdown">
-        <span class="current-column">todo</span>
-        <button class="toggle-dropdown-btn">
+        <span class="current-column">{{ selectedColumn }}</span>
+        <button class="toggle-dropdown-btn" type="button" (click)="onToggleDropdown()">
           <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
             <path
               stroke="#635FC7"
@@ -42,9 +46,15 @@
           </svg>
         </button>
       </div>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu" *ngIf="displayDropdown">
         <ul class="list-of-columns">
-           <li *ngFor="let column of listOfColumns">{{column.name}}</li>
+          
+            <li *ngFor="let column of listOfColumns">
+                <button class="column-btn" type="button" (click)="onSelectColumn(column.name)">
+                    {{column.name}}
+                </button>
+            </li>
+          
         </ul>
       </div>
     </div>

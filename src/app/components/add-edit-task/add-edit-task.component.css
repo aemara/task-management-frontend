@@ -107,6 +107,10 @@ textarea {
     background:  none;
 }
 
+.toggle-dropdown-btn:hover {
+    cursor: pointer;
+}
+
 .dropdown-menu {
     background: #20212C;
     border-radius: 8px;
@@ -122,6 +126,17 @@ textarea {
 
 .list-of-columns li {
     margin-bottom: 1em;
+}
+
+
+.column-btn {
+    background: none;
+    border: none;
+    color: white;
+}
+
+.column-btn:hover {
+    cursor: pointer;
 }
 
 .submit-btn {

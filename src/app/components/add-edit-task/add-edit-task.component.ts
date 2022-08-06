@@ -9,8 +9,15 @@ export class AddEditTaskComponent implements OnInit {
 
   taskForm!: FormGroup;
   listOfColumns!: any[];
+  selectedColumn!: string;
+  displayDropdown: boolean = false;
+
 
   constructor() { 
+    
+  }
+
+  ngOnInit(): void {
     this.listOfColumns = [
       {
         name: 'Todo'
@@ -22,9 +29,10 @@ export class AddEditTaskComponent implements OnInit {
         name: 'Hello'
       }
     ];
-  }
 
-  ngOnInit(): void {
+    this.selectedColumn = this.listOfColumns[0].name;
+
+
     this.taskForm = new FormGroup({
       'title': new FormControl(null, Validators.required),
       'description': new FormControl(null, Validators.required),
@@ -32,6 +40,7 @@ export class AddEditTaskComponent implements OnInit {
         new FormControl(null, Validators.required),
         new FormControl(null, Validators.required)
       ]),
+      'column': new FormControl(this.listOfColumns[0].name, Validators.required),
     });
 
   }
@@ -48,6 +57,20 @@ export class AddEditTaskComponent implements OnInit {
 
   onDeleteSubtask(index: number) {
     (<FormArray>this.taskForm.get('subtasks')).removeAt(index);
+  }
+
+  onSelectColumn(column: string) {
+    this.selectedColumn = column;
+    this.taskForm.get('column')?.setValue(column);
+    this.displayDropdown = false;
+  }
+
+  onToggleDropdown() {
+    if(this.displayDropdown) {
+      this.displayDropdown = false;
+    } else {
+      this.displayDropdown = true;
+    }
   }
 
   onSubmit() {
