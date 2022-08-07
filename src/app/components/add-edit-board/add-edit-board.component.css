@@ -1,0 +1,100 @@
+.add-edit-board-container {
+  color: white;
+  background: #2b2c37;
+  border-radius: 6px;
+  padding: 1em 1em 2em 1em;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.name-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+label,
+.subtasks-heading,
+.board-columns-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+input {
+  border: 1px solid rgba(130, 143, 163, 0.25);
+  background: #2b2c37;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.8em 0.8em;
+}
+
+.columns-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.board-columns-heading {
+  margin-bottom: 1em;
+}
+
+.column-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column-input input {
+  width: 85%;
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+}
+
+.delete-btn:hover {
+  cursor: pointer;
+}
+
+.submit-btn {
+  border: none;
+  border-radius: 20px;
+  background: #635fc7;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  color: white;
+  font-weight: 700;
+  padding: 1em 1.5em;
+}
+
+.submit-btn:hover {
+  cursor: pointer;
+}
+
+.add-column-btn {
+  background: white;
+  border: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #635fc7;
+  padding: 0.9em 0;
+  width: 100%;
+}
+
+.add-column-btn:hover {
+  cursor: pointer;
+}

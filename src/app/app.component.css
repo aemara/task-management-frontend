@@ -1,16 +1,22 @@
 .main {
-    display: grid;
-    height: 100vh;
-    grid-template-rows: min-content 1fr;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: min-content 1fr;
 }
 
 app-titlebar {
-    background : #2B2C37;
-    grid-row: 1/2;
+  background: #2b2c37;
+  grid-row: 1/2;
 }
 
 app-columns {
-    background: #20212C;
-    grid-row: 2/3;
-    overflow: scroll;
+  background: #20212c;
+  grid-row: 2/3;
+  overflow: scroll;
+}
+
+app-add-edit-board {
+  grid-row: 2/3;
+  background: #20212c;
+  padding: 1.5em 1em 3em 1em;
 }
