@@ -6,6 +6,7 @@ import { TitlebarComponent } from './components/titlebar/titlebar.component';
 import { ColumnsComponent } from './components/columns/columns.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TaskComponent } from './components/task/task.component';
+import { BoardsModalComponent } from './components/boards-modal/boards-modal.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { TaskComponent } from './components/task/task.component';
     TitlebarComponent,
     ColumnsComponent,
     ColumnComponent,
-    TaskComponent
+    TaskComponent,
+    BoardsModalComponent
   ],
   imports: [
     BrowserModule
