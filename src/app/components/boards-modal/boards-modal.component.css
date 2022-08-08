@@ -1,0 +1,60 @@
+.boards-modal {
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
+}
+
+.modal-content {
+  background: #2b2c37;
+  width: 285px;
+  margin: 5em auto 0 auto;
+  border-radius: 6px;
+  padding: 1em 0;
+}
+
+.modal-title {
+    font-size: .75rem;
+    font-weight: 700;
+    color: #828FA3;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+.boards-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.board-item {
+    font-size: .93rem;
+    font-weight: 700;
+    color: white;
+    padding: 1em 0 1em 1.5em;
+}
+
+.board-item:first-child {
+    background: #635FC7;
+    border-radius: 0 30px 30px 0;
+    width: 90%;
+    
+}
+
+.new-board-btn {
+    color: #635FC7;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.new-board-btn:hover {
+    cursor: pointer;
+}
