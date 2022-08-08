@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-boards-modal',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BoardsModalComponent implements OnInit {
 
+  @Output() hideModalEvent = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  hideModal() {
+    this.hideModalEvent.emit();
   }
 
 }

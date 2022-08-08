@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'task-management-frontend';
+  showBoardsModal: Boolean = false;
+
+  onToggleBoardsModal() {
+    if(this.showBoardsModal) {
+      this.showBoardsModal = false;
+    } else {
+      this.showBoardsModal = true;
+    }
+  }
 }
