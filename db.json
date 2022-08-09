@@ -70,17 +70,20 @@
     {
       "id": 2222,
       "title": "do this",
-      "taskId": 222
+      "taskId": 222,
+      "done": true
     },
     {
       "id": 3333,
       "title": "do this",
-      "taskId": 333
+      "taskId": 333,
+      "done": false
     },
     {
       "id": 4444,
       "title": "some subtask",
-      "taskId": 444
+      "taskId": 444,
+      "done": true
     }
   ]
 }
