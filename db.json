@@ -1,0 +1,86 @@
+{
+  "boards": [
+    {
+      "id": 1,
+      "title": "Web Design"
+    },
+    {
+      "id": 2,
+      "title": "Web Dev"
+    },
+
+    {
+      "id": 3,
+      "title": "Web Dev"
+    }
+  ],
+
+  "columns": [
+    {
+      "id": 22,
+      "title": "todo",
+      "boardId": 1
+    },
+    {
+      "id": 33,
+      "title": "doing",
+      "boardId": 2
+    },
+    {
+      "id": 44,
+      "title": "done",
+      "boardId": 3
+    }
+  ],
+
+  "tasks": [
+    {
+      "id": 222,
+      "title": "do this",
+      "columnId": 22
+    },
+    {
+      "id": 333,
+      "title": "do that",
+      "columnId": 22
+    },
+    {
+      "id": 444,
+      "title": "read a book",
+      "columnId": 33
+    },
+    {
+      "id": 555,
+      "title": "bake a cake",
+      "columnId": 33
+    },
+    {
+      "id": 666,
+      "title": "climb a mountain",
+      "columnId": 44
+    },
+    {
+      "id": 777,
+      "title": "eat a steak",
+      "columnId": 44
+    }
+  ],
+
+  "subtasks": [
+    {
+      "id": 2222,
+      "title": "do this",
+      "taskId": 222
+    },
+    {
+      "id": 3333,
+      "title": "do this",
+      "taskId": 333
+    },
+    {
+      "id": 4444,
+      "title": "some subtask",
+      "taskId": 444
+    }
+  ]
+}
