@@ -9,7 +9,7 @@ app-titlebar {
     grid-row: 1/2;
 }
 
-app-columns {
+app-board {
     background: #20212C;
     grid-row: 2/3;
     overflow: scroll;

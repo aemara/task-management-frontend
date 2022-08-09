@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { TitlebarComponent } from './components/titlebar/titlebar.component';
-import { ColumnsComponent } from './components/columns/columns.component';
+import { BoardComponent } from './components/board/board.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TaskComponent } from './components/task/task.component';
 
@@ -11,7 +11,7 @@ import { TaskComponent } from './components/task/task.component';
   declarations: [
     AppComponent,
     TitlebarComponent,
-    ColumnsComponent,
+    BoardComponent,
     ColumnComponent,
     TaskComponent
   ],
