@@ -6,6 +6,11 @@ import { TitlebarComponent } from './components/titlebar/titlebar.component';
 import { BoardComponent } from './components/board/board.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TaskComponent } from './components/task/task.component';
+import { Routes, RouterModule } from '@angular/router';
+
+const appRoutes: Routes = [
+  {path: '', component: BoardComponent}
+];
 
 @NgModule({
   declarations: [
@@ -16,7 +21,8 @@ import { TaskComponent } from './components/task/task.component';
     TaskComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]

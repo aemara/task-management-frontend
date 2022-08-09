@@ -1,4 +1,4 @@
-.main {
+.container {
     display: grid;
     height: 100vh;
     grid-template-rows: min-content 1fr;
@@ -9,7 +9,7 @@ app-titlebar {
     grid-row: 1/2;
 }
 
-app-board {
+.main {
     background: #20212C;
     grid-row: 2/3;
     overflow: scroll;
