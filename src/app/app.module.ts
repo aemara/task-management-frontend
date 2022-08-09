@@ -6,11 +6,17 @@ import { TitlebarComponent } from './components/titlebar/titlebar.component';
 import { BoardComponent } from './components/board/board.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TaskComponent } from './components/task/task.component';
+
 import { Routes, RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './services/http.service';
 
 const appRoutes: Routes = [
   {path: '', component: BoardComponent}
 ];
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,9 +28,10 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
