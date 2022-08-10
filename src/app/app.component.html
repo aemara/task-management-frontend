@@ -1,6 +1,8 @@
 <div class="container">
-  <app-titlebar></app-titlebar>
+  <app-titlebar (showBoardsModal)="onToggleBoardsModal()"></app-titlebar>
   <div class="main">
     <router-outlet></router-outlet>
   </div>
+  <app-boards-modal (hideModalEvent)="onToggleBoardsModal()" *ngIf="showBoardsModal"></app-boards-modal>
 </div>
+

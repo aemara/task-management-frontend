@@ -6,6 +6,7 @@ import { TitlebarComponent } from './components/titlebar/titlebar.component';
 import { BoardComponent } from './components/board/board.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TaskComponent } from './components/task/task.component';
+import { BoardsModalComponent } from './components/boards-modal/boards-modal.component';
 
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     TitlebarComponent,
     BoardComponent,
     ColumnComponent,
-    TaskComponent
+    TaskComponent,
+    BoardsModalComponent
   ],
   imports: [
     BrowserModule,

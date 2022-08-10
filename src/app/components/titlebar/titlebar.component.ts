@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-titlebar',
@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitlebarComponent implements OnInit {
 
+  @Output() showBoardsModal  = new EventEmitter<any>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onShowBoardsModal() {
+    this.showBoardsModal.emit();
   }
 
 }
