@@ -1,9 +1,15 @@
 <div class="boards-modal" (click)="hideModal()">
-    <div class="modal-content">
-        <h2 class="modal-title">All Boards <span class="num-of-boards">({{numOfBoards}})</span></h2>
-        <ul class="boards-list">
-            <li class="board-item" *ngFor="let board of boards">{{board.title}}</li>
-            <li class="board-item"><button type="button" class="new-board-btn">+ Create New Board</button></li>
-        </ul>
-    </div>
+  <div class="modal-content">
+    <h2 class="modal-title">
+      All Boards <span class="num-of-boards">({{ numOfBoards }})</span>
+    </h2>
+    <ul class="boards-list">
+      <li class="board-item" *ngFor="let board of boards">
+        <a [routerLink]="['/board', board.id]">{{ board.title }}</a>
+      </li>
+      <li class="board-item">
+        <button type="button" class="new-board-btn">+ Create New Board</button>
+      </li>
+    </ul>
+  </div>
 </div>

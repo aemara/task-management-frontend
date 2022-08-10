@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http.service';
 
 const appRoutes: Routes = [
-  {path: '', component: BoardComponent}
+  {path: '', component: BoardComponent},
+  {path: 'board/:id', component: BoardComponent}
 ];
 
 

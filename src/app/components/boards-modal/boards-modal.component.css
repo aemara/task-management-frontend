@@ -48,6 +48,13 @@
     
 }
 
+.board-item a {
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    display: block;
+}
+
 .new-board-btn {
     color: #635FC7;
     background: none;
