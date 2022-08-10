@@ -6,8 +6,10 @@ import { TitlebarComponent } from './components/titlebar/titlebar.component';
 import { BoardComponent } from './components/board/board.component';
 import { ColumnComponent } from './components/column/column.component';
 import { TaskComponent } from './components/task/task.component';
-import { BoardsModalComponent } from './components/boards-modal/boards-modal.component';
 
+import { BoardsModalComponent } from './components/boards-modal/boards-modal.component';
+import { AddEditBoardComponent } from './components/add-edit-board/add-edit-board.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http.service';
@@ -28,11 +30,13 @@ const appRoutes: Routes = [
     BoardComponent,
     ColumnComponent,
     TaskComponent,
-    BoardsModalComponent
+    BoardsModalComponent,
+    AddEditBoardComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
   ],
   providers: [HttpService, UiService],
