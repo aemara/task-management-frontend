@@ -1,5 +1,3 @@
 <main>
-    <app-column></app-column>
-    <app-column></app-column>
-    <app-column></app-column>
+    <app-column *ngFor="let column of columns" [column]="column"></app-column>
 </main>

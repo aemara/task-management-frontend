@@ -7,24 +7,15 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class BoardComponent implements OnInit {
 
+  columns!: any[];
+
   constructor(private httpService: HttpService) { }
 
   ngOnInit(): void {
-    this.httpService.getBoards().subscribe((boards) => {
-      console.log(boards);
+    this.httpService.getColumns(1).subscribe((columns) => {
+      this.columns = columns;
     });
 
-    this.httpService.getColumns(1).subscribe((columns) => {
-      console.log(columns);
-    })
-
-    this.httpService.getTasks(22).subscribe((tasks) => {
-      console.log(tasks);
-    })
-
-    this.httpService.getSubtasks(444).subscribe((subtasks) => {
-      console.log(subtasks);
-    })
   }
 
 }

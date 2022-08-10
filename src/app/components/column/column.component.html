@@ -1,12 +1,9 @@
 <div class="column">
     <header class="column-header">
-        <h3 class="column-title">todo <span class="num-of-tasks">(3)</span></h3>
+        <h3 class="column-title">{{columnName}} <span class="num-of-tasks">({{numOfTasks}})</span></h3>
     </header>
 
     <div class="tasks-list">
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
-        <app-task></app-task>
+        <app-task *ngFor="let task of tasks" [task]="task"></app-task>
     </div>
 </div>

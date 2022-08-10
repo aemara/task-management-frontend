@@ -12,14 +12,14 @@ export class HttpService {
   }
 
   getColumns(boardId: number) {
-    return this.http.get(`http://localhost:3000/columns?boardId=${boardId}`);
+    return this.http.get<any>(`http://localhost:3000/columns?boardId=${boardId}`);
   }
 
   getTasks(columnId: number) {
-    return this.http.get(`http://localhost:3000/tasks?columnId=${columnId}`);
+    return this.http.get<any>(`http://localhost:3000/tasks?columnId=${columnId}`);
   }
 
   getSubtasks(taskId: number) {
-    return this.http.get(`http://localhost:3000/subtasks?taskId=${taskId}`);
+    return this.http.get<any>(`http://localhost:3000/subtasks?taskId=${taskId}`);
   }
 }
