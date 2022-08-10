@@ -11,6 +11,10 @@ export class HttpService {
     return this.http.get<any>('http://localhost:3000/boards');
   }
 
+  getBoard(boardId: number) {
+    return this.http.get<any>(`http://localhost:3000/boards/${boardId}`);
+  }
+
   getColumns(boardId: number) {
     return this.http.get<any>(`http://localhost:3000/columns?boardId=${boardId}`);
   }

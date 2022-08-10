@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-titlebar',
@@ -8,10 +9,14 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 export class TitlebarComponent implements OnInit {
 
   @Output() showBoardsModal  = new EventEmitter<any>();
+  boardName!: string;
 
-  constructor() { }
+  constructor(private uiService: UiService) { }
 
   ngOnInit(): void {
+    this.uiService.changeEmitted$.subscribe(name => {
+      this.boardName = name;
+  });
   }
 
   onShowBoardsModal() {

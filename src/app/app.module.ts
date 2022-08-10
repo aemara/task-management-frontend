@@ -11,6 +11,7 @@ import { BoardsModalComponent } from './components/boards-modal/boards-modal.com
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http.service';
+import { UiService } from './services/ui.service';
 
 const appRoutes: Routes = [
   {path: '', component: BoardComponent},
@@ -34,7 +35,7 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [HttpService],
+  providers: [HttpService, UiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
