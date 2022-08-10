@@ -8,7 +8,7 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   getBoards() {
-    return this.http.get('http://localhost:3000/boards');
+    return this.http.get<any>('http://localhost:3000/boards');
   }
 
   getColumns(boardId: number) {

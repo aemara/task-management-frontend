@@ -1,10 +1,8 @@
 <div class="boards-modal" (click)="hideModal()">
     <div class="modal-content">
-        <h2 class="modal-title">All Boards <span class="num-of-boards">(3)</span></h2>
+        <h2 class="modal-title">All Boards <span class="num-of-boards">({{numOfBoards}})</span></h2>
         <ul class="boards-list">
-            <li class="board-item">Platform Launch</li>
-            <li class="board-item">Marketing Plan</li>
-            <li class="board-item">Roadmap</li>
+            <li class="board-item" *ngFor="let board of boards">{{board.title}}</li>
             <li class="board-item"><button type="button" class="new-board-btn">+ Create New Board</button></li>
         </ul>
     </div>
