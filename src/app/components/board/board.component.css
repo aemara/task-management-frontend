@@ -1,8 +1,37 @@
 main {
-    padding-left: 1em;
-    padding-top: 1em;
-    padding-right: 1em;
-    display: flex;
-    gap: 1.5em;
-    width: min-content;
+  padding-left: 1em;
+  padding-top: 1em;
+  padding-right: 1em;
+  display: flex;
+  gap: 1.5em;
+  width: min-content;
+}
+
+div {
+  margin: 0 auto;
+  width: 90%;
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5em;
+
+}
+
+div p {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #828fa3;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+button {
+  border: none;
+  border-radius: 20px;
+  background: #635fc7;
+  font-size: 0.8rem;
+  text-transform: capitalize;
+  color: white;
+  font-weight: 700;
+  padding: 1em 1.5em;
 }

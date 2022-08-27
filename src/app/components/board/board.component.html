@@ -1,3 +1,13 @@
-<main>
-    <app-column *ngFor="let column of columns" [column]="column"></app-column>
+<main *ngIf="columns.length > 0">
+  <app-column *ngFor="let column of columns" [column]="column"></app-column>
 </main>
+
+<div *ngIf="columns.length < 1 && !isFetching">
+  <p>This board is empty. Create a new column.</p>
+  <button>+ Add New Column</button>
+</div>
+<img
+  class="loading-indicator"
+  *ngIf="isFetching"
+  src="../../../assets/Rolling-1s-200px.svg"
+/>
