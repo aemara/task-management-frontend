@@ -19,11 +19,11 @@ export class TaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.taskName = this.task.title;
-    this.taskId = this.task.id;
-    this.http.getSubtasks(this.taskId).subscribe(subtasks => {
-      this.subtasks = subtasks;
-      this.numOfSubtasks = subtasks.length;
-      this.countSubtasksDone(subtasks);
+    this.taskId = this.task._id;
+    this.http.getSubtasks(this.taskId).subscribe(data => {
+      this.subtasks = data.subtasks;
+      this.numOfSubtasks = this.subtasks.length;
+      this.countSubtasksDone(this.subtasks);
     });
 
   }
