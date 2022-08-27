@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   {path: '', component: BoardComponent},
   {path: 'board/:id', component: BoardComponent},
   {path: 'addboard', component: AddEditBoardComponent},
-  {path: 'addcolumn/:id', component: AddColumnComponent}
+  {path: 'addcolumn', component: AddColumnComponent}
 ];
 
 
