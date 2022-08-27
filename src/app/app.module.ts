@@ -14,10 +14,13 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http.service';
 import { UiService } from './services/ui.service';
+import { AddColumnComponent } from './components/add-column/add-column.component';
 
 const appRoutes: Routes = [
   {path: '', component: BoardComponent},
-  {path: 'board/:id', component: BoardComponent}
+  {path: 'board/:id', component: BoardComponent},
+  {path: 'addboard', component: AddEditBoardComponent},
+  {path: 'addcolumn/:id', component: AddColumnComponent}
 ];
 
 
@@ -31,7 +34,8 @@ const appRoutes: Routes = [
     ColumnComponent,
     TaskComponent,
     BoardsModalComponent,
-    AddEditBoardComponent
+    AddEditBoardComponent,
+    AddColumnComponent
   ],
   imports: [
     BrowserModule,
