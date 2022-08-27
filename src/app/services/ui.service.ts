@@ -5,6 +5,8 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UiService {
+  boardName!: string;
+  boardId!: string;
 
   constructor() { }
   
@@ -12,5 +14,7 @@ export class UiService {
   changeEmitted$ = this.emitChangeSource.asObservable();
   emitChange(change: any) {
       this.emitChangeSource.next(change);
+      this.boardName = change.title;
+      this.boardId = change._id;
   }
 }
