@@ -4,7 +4,7 @@
 
 <div *ngIf="columns.length < 1 && !isFetching">
   <p>This board is empty. Create a new column.</p>
-  <button>+ Add New Column</button>
+  <a [routerLink]="['/addcolumn']"><button>+ Add New Column</button></a>
 </div>
 <img
   class="loading-indicator"
