@@ -14,8 +14,8 @@ export class TitlebarComponent implements OnInit {
   constructor(private uiService: UiService) { }
 
   ngOnInit(): void {
-    this.uiService.changeEmitted$.subscribe(name => {
-      this.boardName = name;
+    this.uiService.changeEmitted$.subscribe(board => {
+      this.boardName = board.title;
   });
   }
 
