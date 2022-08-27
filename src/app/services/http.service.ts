@@ -7,6 +7,10 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
+  addColumn(data: any, boardId: string) {
+    return this.http.post<any>(`http://localhost:3000/addcolumn/${boardId}`, data);
+  }
+
   getBoards() {
     return this.http.get<any>('http://localhost:3000/boards');
   }
