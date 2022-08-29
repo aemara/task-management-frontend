@@ -8,7 +8,7 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./board.component.css'],
 })
 export class BoardComponent implements OnInit {
-  boardId!: number;
+  boardId!: string;
   board!: any;
   columns: any[] = [];
   isFetching: boolean = false;
@@ -39,7 +39,7 @@ export class BoardComponent implements OnInit {
       } else {
         /**Else fetch the last added board on initial app load */
         this.isFetching = true;
-        this.httpService.getBoard(-1).subscribe((data) => {
+        this.httpService.getBoard("-1").subscribe((data) => {
           this.board = data.board[0];
           this.boardId = this.board._id;
           /**Change board name in the titlebar */
