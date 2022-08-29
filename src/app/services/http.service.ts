@@ -8,7 +8,10 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   addColumn(data: any, boardId: string) {
-    return this.http.post<any>(`http://localhost:3000/addcolumn/${boardId}`, data);
+    return this.http.post<any>(
+      `http://localhost:3000/addcolumn/${boardId}`,
+      data
+    );
   }
 
   getBoards() {
@@ -25,6 +28,10 @@ export class HttpService {
 
   getTasks(columnId: number) {
     return this.http.get<any>(`http://localhost:3000/tasks/${columnId}`);
+  }
+
+  getTask(taskId: number) {
+    return this.http.get<any>(`http:localhost:3000/task/${taskId}`);
   }
 
   getSubtasks(taskId: number) {
