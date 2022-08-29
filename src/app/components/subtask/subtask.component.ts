@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Form } from '@angular/forms';
+import { HttpService } from 'src/app/services/http.service';
 
 @Component({
   selector: 'app-subtask',
@@ -7,17 +8,22 @@ import { Form } from '@angular/forms';
   styleUrls: ['./subtask.component.css'],
 })
 export class SubtaskComponent implements OnInit {
-  @Input() subtask!: { title: string; isDone: boolean };
+  @Input() subtask!: any;
   @Output() toggleDone: EventEmitter<any> = new EventEmitter();
+  subtaskName!: string;
+  subtaskId!: string;
   isDone: boolean = false;
 
-  constructor() {}
+  constructor(private http: HttpService) {}
 
   ngOnInit(): void {
-    this.isDone = this.subtask.isDone;
+    this.subtaskName = this.subtask.name;
+    this.subtaskId = this.subtask._id;
+    this.isDone = this.subtask.done;
   }
 
   onClick() {
+    this.http.toggleSubtaskStatus(this.subtaskId).subscribe();
     if (this.isDone === false) {
       this.isDone = true;
       this.toggleDone.emit('true');

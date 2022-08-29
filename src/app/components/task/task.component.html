@@ -1,4 +1,9 @@
-<div class="task">
-    <p class="task-title">{{taskName}}</p>
-    <p class="subtasks-subtitle"><span class="num-subtasks-completed">{{doneSubtasks}}</span> of <span class="num-subtasks">{{numOfSubtasks}}</span> subtasks</p>
-</div>
+<a [routerLink]="['/task', taskId]">
+  <div class="task">
+    <p class="task-title">{{ taskName }}</p>
+    <p class="subtasks-subtitle">
+      <span class="num-subtasks-completed">{{ doneSubtasks }}</span> of
+      <span class="num-subtasks">{{ numOfSubtasks }}</span> subtasks
+    </p>
+  </div>
+</a>

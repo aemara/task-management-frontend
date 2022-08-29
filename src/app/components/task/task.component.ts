@@ -10,7 +10,7 @@ export class TaskComponent implements OnInit {
 
   @Input() task: any;
   taskName!: string;
-  taskId!: number;
+  taskId!: string;
   subtasks!: any[];
   numOfSubtasks!: number;
   doneSubtasks:number = 0;
