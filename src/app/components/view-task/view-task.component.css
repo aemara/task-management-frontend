@@ -51,3 +51,29 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.dropdown-menu {
+  background: #20212C;
+  border-radius: 8px;
+  margin-top: .5em;
+}
+
+.dropdown-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.8rem;
+  padding: 1em 1.5em;
+  color: #828FA3;
+  font-weight: 500;
+}
+
+.dropdown-menu ul li {
+  margin-bottom: 1em;
+}
+
+.dropdown-menu ul li:last-child {
+  margin-bottom: 0;
+}
+
+
