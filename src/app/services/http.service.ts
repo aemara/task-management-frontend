@@ -30,11 +30,15 @@ export class HttpService {
     return this.http.get<any>(`http://localhost:3000/tasks/${columnId}`);
   }
 
-  getTask(taskId: number) {
-    return this.http.get<any>(`http:localhost:3000/task/${taskId}`);
+  getTask(taskId: string) {
+    return this.http.get<any>(`http://localhost:3000/task/${taskId}`);
   }
 
-  getSubtasks(taskId: number) {
+  getSubtasks(taskId: string) {
     return this.http.get<any>(`http://localhost:3000/subtasks/${taskId}`);
+  }
+
+  toggleSubtaskStatus(subtaskId: string) {
+    return this.http.put(`http://localhost:3000/toggledone/${subtaskId}`, {});
   }
 }
