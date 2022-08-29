@@ -1,0 +1,29 @@
+<div class="view-task-container">
+  <header>
+    <h2 class="task-title">
+      Research pricing points of various competitors and trial different
+      business models
+    </h2>
+  </header>
+  <p class="task-description">
+    We know what we're planning to build for version one. Now we need to
+    finalise the first pricing model we'll use. Keep iterating the subtasks
+    until we have a coherent proposition.
+  </p>
+  <div class="subtasks-container">
+    <h3 class="subtasks-heading">Subtasks ({{numOfSubtasksDone}} of {{numOfSubtasks}})</h3>
+    <div class="subtasks-list">
+      <app-subtask *ngFor="let subtask of subtasks" [subtask]="subtask" (toggleDone)="updateDoneCount($event)"></app-subtask>
+    </div>
+  </div>
+
+  <div class="current-column-container">
+    <h3 class="current-column-heading">Current Column</h3>
+    <div class="current-column-dropdown">
+      <span class="current-column">todo</span>
+      <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+        <path stroke="#635FC7" stroke-width="2" fill="none" d="m1 1 4 4 4-4" />
+      </svg>
+    </div>
+  </div>
+</div>

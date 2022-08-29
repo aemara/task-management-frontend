@@ -1,23 +1,23 @@
 .container {
-    display: grid;
-    height: 100vh;
-    grid-template-rows: min-content 1fr;
+  display: grid;
+  height: 100vh;
+  grid-template-rows: min-content 1fr;
 }
 
 app-titlebar {
-    background : #2B2C37;
-    grid-row: 1/2;
-    grid-column: 1/-1;
+  background: #2b2c37;
+  grid-row: 1/2;
+  grid-column: 1/-1;
 }
 
 .main {
-    background: #20212C;
-    grid-row: 2/3;
-    grid-column: 1/-1;
-    overflow: scroll;
+  background: #20212c;
+  grid-row: 2/3;
+  grid-column: 1/-1;
+  overflow: scroll;
 }
 
 app-boards-modal {
-    grid-row: 1/-1;
-    grid-column: 1/-1;
+  grid-row: 1/-1;
+  grid-column: 1/-1;
 }
