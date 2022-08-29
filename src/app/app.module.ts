@@ -23,6 +23,7 @@ const appRoutes: Routes = [
   { path: 'board/:id', component: BoardComponent },
   { path: 'addboard', component: AddEditBoardComponent },
   { path: 'addcolumn', component: AddColumnComponent },
+  { path: 'task/:id', component: ViewTaskComponent },
 ];
 
 @NgModule({
