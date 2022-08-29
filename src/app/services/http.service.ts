@@ -18,12 +18,16 @@ export class HttpService {
     return this.http.get<any>('http://localhost:3000/boards');
   }
 
-  getBoard(boardId: number) {
+  getBoard(boardId: string) {
     return this.http.get<any>(`http://localhost:3000/board/${boardId}`);
   }
 
-  getColumns(boardId: number) {
+  getColumns(boardId: string) {
     return this.http.get<any>(`http://localhost:3000/columns/${boardId}`);
+  }
+
+  getColumn(columnId: string) {
+    return this.http.get<any>(`http://localhost:3000/column/${columnId}`);
   }
 
   getTasks(columnId: number) {
@@ -40,5 +44,12 @@ export class HttpService {
 
   toggleSubtaskStatus(subtaskId: string) {
     return this.http.put(`http://localhost:3000/toggledone/${subtaskId}`, {});
+  }
+
+  changeColumn(taskId: string, newColumnId: string) {
+    return this.http.put(
+      `http://localhost:3000/changecolumn/${taskId}/${newColumnId}`,
+      {}
+    );
   }
 }
