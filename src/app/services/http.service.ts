@@ -7,6 +7,10 @@ import { HttpClient } from '@angular/common/http';
 export class HttpService {
   constructor(private http: HttpClient) {}
 
+  addBoard(data: any) {
+    return this.http.post<any>(`http://localhost:3000/addboard`, data);
+  }
+
   addColumn(data: any, boardId: string) {
     return this.http.post<any>(
       `http://localhost:3000/addcolumn/${boardId}`,
