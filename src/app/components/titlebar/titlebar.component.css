@@ -50,3 +50,33 @@ header {
     background: none;
     align-self: flex-end;
 }
+
+.options-container {
+    background: #20212C;
+    display: flex;
+    gap: 1em;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 1em 5em 1em 1em;
+    position:absolute;
+    top: 4em;
+    right: 1.2em;
+}
+
+.options-container a {
+    font-size: .8125rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.options-container a:hover {
+    cursor: pointer;
+}
+
+.edit-link {
+    color: #828FA3;
+}
+
+.delete-link {
+    color: #EA5555;
+}
