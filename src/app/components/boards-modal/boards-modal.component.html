@@ -5,10 +5,10 @@
     </h2>
     <ul class="boards-list">
       <li class="board-item" *ngFor="let board of boards">
-        <a [routerLink]="['/board', board.id]" routerLinkActive="active-link">{{ board.title }}</a>
+        <a [routerLink]="['/board', board._id]" routerLinkActive="active-link">{{ board.title }}</a>
       </li>
       <li class="board-item">
-        <button type="button" class="new-board-btn">+ Create New Board</button>
+        <a [routerLink]="['/addboard']"><button type="button" class="new-board-btn">+ Create New Board</button></a>
       </li>
     </ul>
   </div>
