@@ -15,9 +15,9 @@ export class BoardsModalComponent implements OnInit {
   constructor(private http: HttpService) { }
 
   ngOnInit(): void {
-    this.http.getBoards().subscribe(boards => {
-      this.boards = boards;
-      this.numOfBoards = boards.length;
+    this.http.getBoards().subscribe(data => {
+      this.boards = data.boards;
+      this.numOfBoards = data.boards.length;
     })
   }
 
