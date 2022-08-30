@@ -25,13 +25,12 @@ export class BoardComponent implements OnInit {
       this.boardId = params['id'];
       this.isFetching = true;
       if (this.boardId) {
-        this.httpService.getBoard(this.boardId).subscribe((board) => {
-          this.board = board;
+        this.httpService.getBoard(this.boardId).subscribe((data) => {
+          this.board = data.board;
           this.boardId = this.board._id;
           this.uiService.emitChange(this.board);
         });
 
-        
         this.httpService.getColumns(this.boardId).subscribe((data) => {
           this.columns = data.columns;
         });
@@ -39,7 +38,7 @@ export class BoardComponent implements OnInit {
       } else {
         /**Else fetch the last added board on initial app load */
         this.isFetching = true;
-        this.httpService.getBoard("-1").subscribe((data) => {
+        this.httpService.getBoard('-1').subscribe((data) => {
           this.board = data.board[0];
           this.boardId = this.board._id;
           /**Change board name in the titlebar */
