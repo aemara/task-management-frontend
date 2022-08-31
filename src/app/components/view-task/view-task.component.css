@@ -2,7 +2,7 @@
   color: white;
   background: #2b2c37;
   border-radius: 6px;
-  padding: 1em 1em 2em 1em;
+  padding: .5em 1em 2em 1em;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
@@ -11,9 +11,17 @@
   margin-top: 2em;
 }
 
+.back-link {
+  font-size: .8125rem;
+  color: #635FC7;
+  font-weight: 700;
+  text-decoration: none;
+}
+
 .task-title {
   font-size: 1.125rem;
   font-weight: 700;
+  margin-top: .5em;
 }
 
 .task-description {
