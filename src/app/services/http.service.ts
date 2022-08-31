@@ -56,4 +56,8 @@ export class HttpService {
       {}
     );
   }
+
+  deleteBoard(boardId: string) {
+    return this.http.delete(`http://localhost:3000/removeboard/${boardId}`);
+  }
 }
