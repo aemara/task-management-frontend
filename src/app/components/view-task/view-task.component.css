@@ -11,6 +11,22 @@
   margin-top: 2em;
 }
 
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-delete-btns {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+.edit-delete-btns:hover {
+  cursor: pointer;
+}
+
 .back-link {
   font-size: .8125rem;
   color: #635FC7;
