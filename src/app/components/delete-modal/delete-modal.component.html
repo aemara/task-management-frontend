@@ -1,0 +1,13 @@
+<div class="modal" (click)="onHideDeleteModal($event)">
+    <div class="modal-content">
+      <h2 class="modal-title">Delete this {{deleteModalType === 'board' ? 'board' : 'task'}}?</h2>
+      <p class="modal-paragraph">
+        Are you sure you want to delete the ‘{{boardName}}’ board? This action
+        will remove all columns and tasks and cannot be reversed.
+      </p>
+      <div class="buttons-container">
+        <button type="button" class="delete-btn" (click)="onDeleteBoard()">Delete</button>
+        <button type="button" class="cancel-btn" (click)="onHideDeleteModal($event)">Cancel</button>
+      </div>
+    </div>
+  </div>

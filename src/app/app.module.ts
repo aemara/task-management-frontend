@@ -17,11 +17,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpService } from './services/http.service';
 import { UiService } from './services/ui.service';
 import { AddColumnComponent } from './components/add-column/add-column.component';
+import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
 
 const appRoutes: Routes = [
   { path: '', component: BoardComponent },
   { path: 'board/:id', component: BoardComponent },
   { path: 'addboard', component: AddEditBoardComponent },
+  { path: 'editboard/:id', component: AddEditBoardComponent },
   { path: 'addcolumn', component: AddColumnComponent },
   { path: 'task/:id', component: ViewTaskComponent },
 ];
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     AddColumnComponent,
     ViewTaskComponent,
     SubtaskComponent,
+    DeleteModalComponent,
   ],
   imports: [
     BrowserModule,

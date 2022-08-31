@@ -8,6 +8,7 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class TitlebarComponent implements OnInit {
   @Output() showBoardsModal = new EventEmitter<any>();
+  @Output() showDeleteModal = new EventEmitter<any>();
   boardName!: string;
   boardId!: string;
   showOptions: boolean = false;
@@ -23,6 +24,11 @@ export class TitlebarComponent implements OnInit {
 
   onShowBoardsModal() {
     this.showBoardsModal.emit();
+  }
+
+  onShowDeleteModal() {
+    this.showDeleteModal.emit('board');
+    this.toggleOptions();
   }
 
   toggleOptions() {

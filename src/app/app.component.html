@@ -1,9 +1,18 @@
 <div class="container">
-  <app-titlebar (showBoardsModal)="onToggleBoardsModal()"></app-titlebar>
+  <app-titlebar
+    (showBoardsModal)="onToggleBoardsModal()"
+    (showDeleteModal)="onToggleDeleteModal($event)"
+  ></app-titlebar>
   <div class="main">
     <router-outlet></router-outlet>
   </div>
-  <app-boards-modal (hideModalEvent)="onToggleBoardsModal()" *ngIf="showBoardsModal"></app-boards-modal>
+  <app-boards-modal
+    (hideModalEvent)="onToggleBoardsModal()"
+    *ngIf="showBoardsModal"
+  ></app-boards-modal>
+  <app-delete-modal
+    *ngIf="showDeleteModal"
+    (hideDeleteModal)="onToggleDeleteModal()"
+    [deleteModalType]="deleteModalType"
+  ></app-delete-modal>
 </div>
-
-
