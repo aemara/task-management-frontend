@@ -2,11 +2,42 @@ header {
   width: 100vw;
 }
 
+@media (min-width: 768px) {
+    header {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.sidebar-btn-container {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .sidebar-btn-container{
+        display: flex;
+        justify-content: center;
+        border-right: 1px solid #3E3F4E;
+        width: 10%;
+    }
+
+    .toggle-sidebar-btn {
+        border: none;
+        background: none;
+    }
+}
+
 .titlebar-container {
   padding: 1.2em 1em;
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media (min-width: 768px)  {
+    .titlebar-container {
+        width: 100%;
+    }
 }
 
 .logo-title-container {
