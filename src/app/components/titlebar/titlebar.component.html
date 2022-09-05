@@ -1,22 +1,25 @@
 <header>
   <div class="titlebar-container">
-    <div class="logo-container">
-      <svg width="24" height="25" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#635FC7" fill-rule="evenodd">
-          <rect width="6" height="25" rx="2" />
-          <rect opacity=".75" x="9" width="6" height="25" rx="2" />
-          <rect opacity=".5" x="18" width="6" height="25" rx="2" />
-        </g>
-      </svg>
-    </div>
-    <div class="board-title-container">
-      <h2 class="board-title">{{boardName}}</h2>
-      <button class="toggle-boards-btn" (click)="onShowBoardsModal()">
-        <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
-          <path stroke="#635FC7" stroke-width="2" fill="none" d="m1 1 4 4 4-4" />
+    <div class="logo-title-container">
+      <div class="logo-container">
+        <svg width="24" height="25" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#635FC7" fill-rule="evenodd">
+            <rect width="6" height="25" rx="2" />
+            <rect opacity=".75" x="9" width="6" height="25" rx="2" />
+            <rect opacity=".5" x="18" width="6" height="25" rx="2" />
+          </g>
         </svg>
-      </button>
+      </div>
+      <div class="board-title-container">
+        <h2 class="board-title">{{boardName}}</h2>
+        <button class="toggle-boards-btn" (click)="onShowBoardsModal()">
+          <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+            <path stroke="#635FC7" stroke-width="2" fill="none" d="m1 1 4 4 4-4" />
+          </svg>
+        </button>
+      </div>
     </div>
+   <div class="btn-options-container">
     <button class="add-task-btn">
       <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
         <path
@@ -28,6 +31,7 @@
     <button class="options-btn" (click)="toggleOptions()">
         <svg width="5" height="20" xmlns="http://www.w3.org/2000/svg"><g fill="#828FA3" fill-rule="evenodd"><circle cx="2.308" cy="2.308" r="2.308"/><circle cx="2.308" cy="10" r="2.308"/><circle cx="2.308" cy="17.692" r="2.308"/></g></svg>
     </button>
+   </div>
   </div>
   <div class="options-container" *ngIf="showOptions">
     <a class="edit-link" [routerLink]="['/editboard', boardId]" (click)="toggleOptions()">Edit Board</a>

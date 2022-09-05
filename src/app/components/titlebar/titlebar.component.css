@@ -1,82 +1,98 @@
 header {
-    width: 100vw;
+  width: 100vw;
 }
 
 .titlebar-container {
-    padding: 1.2em 1em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  padding: 1.2em 1em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+.logo-title-container {
+  display: flex;
+  gap: .5em;
+}
+
+
+
 .logo-container {
-    align-self: flex-end;
+  align-self: flex-end;
 }
 
 .board-title-container {
-    display: flex;
-    align-items: center;
-    gap: .5em;
-    margin-right: 3em;
-    min-width: 159px;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-right: 3em;
+  min-width: 159px;
+  align-self: baseline;
 }
 
 .board-title {
-    font-weight: 700;
-    color: white;
-    font-size: 1.125rem;
+  font-weight: 700;
+  color: white;
+  font-size: 1.125rem;
 }
 
 .toggle-boards-btn {
-    background: none;
-    border: none;
+  background: none;
+  border: none;
 }
 
 .toggle-boards-btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
-.add-task-btn {
-    border: none;
-    background: #635FC7;
-    padding: .4em 1.3em;
-    border-radius: 24px;
-    margin-left: 1em;
+.btn-options-container {
+    display: flex;
+    gap: .7em;
 }
 
 .options-btn {
-    border: none;
-    background: none;
-    align-self: flex-end;
+    align-self: end;
+}
+
+.add-task-btn {
+  border: none;
+  background: #635fc7;
+  padding: 0.4em 1.3em;
+  border-radius: 24px;
+  margin-left: 1em;
+}
+
+.options-btn {
+  border: none;
+  background: none;
+  align-self: flex-end;
 }
 
 .options-container {
-    background: #20212C;
-    display: flex;
-    gap: 1em;
-    flex-direction: column;
-    border-radius: 8px;
-    padding: 1em 5em 1em 1em;
-    position:absolute;
-    top: 4em;
-    right: 1.2em;
+  background: #20212c;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 1em 5em 1em 1em;
+  position: absolute;
+  top: 4em;
+  right: 1.2em;
 }
 
 .options-container a {
-    font-size: .8125rem;
-    font-weight: 500;
-    text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 .options-container a:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .edit-link {
-    color: #828FA3;
+  color: #828fa3;
 }
 
 .delete-link {
-    color: #EA5555;
+  color: #ea5555;
 }
