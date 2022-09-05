@@ -11,10 +11,8 @@ header {
 
 .logo-title-container {
   display: flex;
-  gap: .5em;
+  gap: 0.5em;
 }
-
-
 
 .logo-container {
   align-self: flex-end;
@@ -44,13 +42,19 @@ header {
   cursor: pointer;
 }
 
+@media (min-width: 768px) {
+  .toggle-boards-btn {
+    display: none;
+  }
+}
+
 .btn-options-container {
-    display: flex;
-    gap: .7em;
+  display: flex;
+  gap: 0.7em;
 }
 
 .options-btn {
-    align-self: end;
+  align-self: end;
 }
 
 .add-task-btn {
@@ -61,10 +65,38 @@ header {
   margin-left: 1em;
 }
 
+.add-task-btn-tablet {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .add-task-btn {
+    display: none;
+  }
+
+  .add-task-btn-tablet {
+    display: block;
+    border: none;
+    background: #635fc7;
+    padding: 0.8em 1.3em;
+    border-radius: 24px;
+    margin-left: 1em;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9375rem;
+  }
+}
+
 .options-btn {
   border: none;
   background: none;
   align-self: flex-end;
+}
+
+@media (min-width: 768px) {
+  .options-btn {
+    align-self: normal;
+  }
 }
 
 .options-container {
