@@ -18,6 +18,7 @@ import { HttpService } from './services/http.service';
 import { UiService } from './services/ui.service';
 import { AddColumnComponent } from './components/add-column/add-column.component';
 import { DeleteModalComponent } from './components/delete-modal/delete-modal.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 const appRoutes: Routes = [
   { path: '', component: BoardComponent },
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     ViewTaskComponent,
     SubtaskComponent,
     DeleteModalComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
