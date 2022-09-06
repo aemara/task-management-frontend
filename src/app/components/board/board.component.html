@@ -1,10 +1,15 @@
 <main *ngIf="columns.length > 0">
   <app-column *ngFor="let column of columns" [column]="column"></app-column>
+  <a class="new-column-link" [routerLink]="['/addcolumn', boardId]">
+    <div class="new-column-container">
+      + New Column
+    </div>
+  </a>
 </main>
 
-<div *ngIf="columns.length < 1 && !isFetching">
+<div class="empty-board-prompt" *ngIf="columns.length < 1 && !isFetching">
   <p>This board is empty. Create a new column.</p>
-  <a [routerLink]="['/addcolumn']"><button>+ Add New Column</button></a>
+  <a [routerLink]="['/addcolumn', boardId]"><button>+ Add New Column</button></a>
 </div>
 <img
   class="loading-indicator"

@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   { path: 'board/:id', component: BoardComponent },
   { path: 'addboard', component: AddEditBoardComponent },
   { path: 'editboard/:id', component: AddEditBoardComponent },
-  { path: 'addcolumn', component: AddColumnComponent },
+  { path: 'addcolumn/:id', component: AddColumnComponent },
   { path: 'task/:id', component: ViewTaskComponent },
 ];
 

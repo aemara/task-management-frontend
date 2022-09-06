@@ -7,17 +7,16 @@ main {
   width: min-content;
 }
 
-div {
+.empty-board-prompt {
   margin: 0 auto;
   width: 90%;
-  display:flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 5em;
-
 }
 
-div p {
+.empty-board-prompt p {
   font-size: 1.125rem;
   font-weight: 700;
   color: #828fa3;
@@ -34,4 +33,29 @@ button {
   color: white;
   font-weight: 700;
   padding: 1em 1.5em;
+}
+
+.new-column-link {
+  display: inherit;
+  text-decoration: none;
+}
+
+.new-column-container {
+  background: #2b2c37;
+  color: #828fa3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 280px;
+  border-radius: 6px;
+  font-weight: 700;
+}
+
+.new-column-container:hover {
+  cursor: pointer;
+  color: #635FC7;
+}
+
+.new-column-container:active {
+  color: #635FC7;
 }
