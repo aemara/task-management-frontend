@@ -9,17 +9,24 @@ import { UiService } from 'src/app/services/ui.service';
 export class TitlebarComponent implements OnInit {
   @Output() showBoardsModal = new EventEmitter<any>();
   @Output() showDeleteModal = new EventEmitter<any>();
+  @Output() showSidebar = new EventEmitter<any>();
   boardName!: string;
   boardId!: string;
   showOptions: boolean = false;
+  isSidebarShown!: boolean
 
   constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
+    this.isSidebarShown = this.uiService.isSidebarShown;
     this.uiService.changeEmitted$.subscribe((board) => {
       this.boardName = board.title;
       this.boardId = board._id;
     });
+
+    this.uiService.toggleEmitted$.subscribe(isShown => {
+      this.isSidebarShown = isShown;
+    })
   }
 
   onShowBoardsModal() {
@@ -29,6 +36,10 @@ export class TitlebarComponent implements OnInit {
   onShowDeleteModal() {
     this.showDeleteModal.emit('board');
     this.toggleOptions();
+  }
+
+  toggleSidebar(isShown: boolean) {
+    this.uiService.emitToggle(isShown);
   }
 
   toggleOptions() {

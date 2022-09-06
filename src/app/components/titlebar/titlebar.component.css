@@ -3,28 +3,33 @@ header {
 }
 
 @media (min-width: 768px) {
-    header {
-        display: flex;
-        justify-content: space-between;
-    }
+  header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 }
 
 .sidebar-btn-container {
-    display: none;
+  display: none;
 }
 
 @media (min-width: 768px) {
-    .sidebar-btn-container{
-        display: flex;
-        justify-content: center;
-        border-right: 1px solid #3E3F4E;
-        width: 10%;
-    }
+  .sidebar-btn-container {
+    display: flex;
+    justify-content: center;
+    border-right: 1px solid #3e3f4e;
+    width: 10%;
+  }
 
-    .toggle-sidebar-btn {
-        border: none;
-        background: none;
-    }
+  .toggle-sidebar-btn {
+    border: none;
+    background: none;
+  }
+
+  .toggle-sidebar-btn:hover {
+    cursor: pointer;
+  }
 }
 
 .titlebar-container {
@@ -34,10 +39,10 @@ header {
   justify-content: space-between;
 }
 
-@media (min-width: 768px)  {
-    .titlebar-container {
-        width: 100%;
-    }
+@media (min-width: 768px) {
+  .titlebar-container {
+    width: 100%;
+  }
 }
 
 .logo-title-container {
@@ -140,6 +145,12 @@ header {
   position: absolute;
   top: 4em;
   right: 1.2em;
+}
+
+@media (min-width: 768px) {
+  .options-container {
+    top: 4.8em;
+  }
 }
 
 .options-container a {

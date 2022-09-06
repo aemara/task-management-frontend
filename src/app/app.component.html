@@ -1,9 +1,13 @@
 <div class="container">
+  <aside *ngIf="showSidebar">
+    <app-sidebar></app-sidebar>
+  </aside>
   <app-titlebar
     (showBoardsModal)="onToggleBoardsModal()"
     (showDeleteModal)="onToggleDeleteModal($event)"
+    [ngClass]="{'enlarge-titlebar': !showSidebar}"
   ></app-titlebar>
-  <div class="main">
+  <div class="main" [ngClass]="{'enlarge-main': !showSidebar}">
     <router-outlet></router-outlet>
   </div>
   <app-boards-modal

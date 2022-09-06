@@ -1,4 +1,5 @@
 import { Component, Output } from '@angular/core';
+import { UiService } from './services/ui.service';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,14 @@ export class AppComponent {
   showBoardsModal: Boolean = false;
   showDeleteModal: Boolean = false;
   deleteModalType!: string;
+  showSidebar!: boolean;
+  constructor(private uiService: UiService) {}
+
+  ngOnInit(): void {
+    this.uiService.toggleEmitted$.subscribe(isShown => {
+      this.showSidebar = isShown;
+    })
+  } 
 
   onToggleBoardsModal() {
     if(this.showBoardsModal) {

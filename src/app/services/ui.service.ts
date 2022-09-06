@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
 export class UiService {
   boardName!: string;
   boardId!: string;
-
+  isSidebarShown: boolean = false;
   constructor() { }
   
   private emitChangeSource = new Subject<any>();
@@ -17,4 +17,14 @@ export class UiService {
       this.boardName = change.title;
       this.boardId = change._id;
   }
+
+
+  private sidebarDisplay = new Subject<any>();
+  toggleEmitted$ = this.sidebarDisplay.asObservable();
+  emitToggle(change: any) {
+      this.sidebarDisplay.next(change);
+      this.isSidebarShown = change;
+  }
+
+
 }

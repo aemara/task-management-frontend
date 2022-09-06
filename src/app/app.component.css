@@ -4,10 +4,35 @@
   grid-template-rows: min-content 1fr;
 }
 
+@media (min-width: 768px) {
+  .container {
+    grid-template-columns: 260px minmax(507px, 1fr);
+  }
+
+  aside {
+    display: block;
+    grid-row: 1/-1;
+    grid-column: 1/2;
+    background: #2b2c37;
+    border-right: 1px solid #3e3f4e;
+  }
+}
+
 app-titlebar {
   background: #2b2c37;
   grid-row: 1/2;
   grid-column: 1/-1;
+}
+
+@media (min-width: 768px) {
+  app-titlebar {
+    grid-column: 2/3;
+    grid-row: 1/2;
+  }
+
+  .enlarge-titlebar {
+    grid-column: 1/-1;
+  }
 }
 
 .main {
@@ -15,6 +40,16 @@ app-titlebar {
   grid-row: 2/3;
   grid-column: 1/-1;
   overflow: scroll;
+}
+
+@media (min-width: 768px) {
+  .main {
+    grid-column: 2/3;
+  }
+
+  .enlarge-main {
+    grid-column: 1/-1;
+  }
 }
 
 app-boards-modal {
