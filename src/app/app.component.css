@@ -4,6 +4,10 @@
   grid-template-rows: min-content 1fr;
 }
 
+aside {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .container {
     grid-template-columns: 260px minmax(507px, 1fr);
@@ -29,10 +33,10 @@ app-titlebar {
     grid-column: 2/3;
     grid-row: 1/2;
   }
+}
 
-  .enlarge-titlebar {
-    grid-column: 1/-1;
-  }
+.enlarge-titlebar {
+  grid-column: 1/-1;
 }
 
 .main {
@@ -46,10 +50,10 @@ app-titlebar {
   .main {
     grid-column: 2/3;
   }
+}
 
-  .enlarge-main {
-    grid-column: 1/-1;
-  }
+.enlarge-main {
+  grid-column: 1/-1;
 }
 
 app-boards-modal {
