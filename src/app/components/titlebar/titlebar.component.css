@@ -93,6 +93,10 @@ header {
   align-self: end;
 }
 
+.options-btn:hover {
+  cursor: pointer;
+}
+
 .add-task-btn {
   border: none;
   background: #635fc7;
