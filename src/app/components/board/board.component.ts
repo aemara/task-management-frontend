@@ -12,6 +12,7 @@ export class BoardComponent implements OnInit {
   board!: any;
   columns: any[] = [];
   isFetching: boolean = false;
+  areThereBoards!: boolean;
 
   constructor(
     private httpService: HttpService,
@@ -25,6 +26,7 @@ export class BoardComponent implements OnInit {
       this.boardId = params['id'];
       this.isFetching = true;
       if (this.boardId) {
+        this.areThereBoards = true;
         this.httpService.getBoard(this.boardId).subscribe((data) => {
           this.board = data.board;
           this.boardId = this.board._id;
@@ -39,13 +41,22 @@ export class BoardComponent implements OnInit {
         /**Else fetch the last added board on initial app load */
         this.isFetching = true;
         this.httpService.getBoard('-1').subscribe((data) => {
-          this.board = data.board[0];
-          this.boardId = this.board._id;
-          /**Change board name in the titlebar */
-          this.uiService.emitChange(this.board);
-          this.httpService.getColumns(this.boardId).subscribe((data) => {
-            this.columns = data.columns;
-          });
+          if (data) {
+            this.board = data.board[0];
+            if (this?.board) {
+              this.areThereBoards = true;
+              this.boardId = this.board._id;
+              /**Change board name in the titlebar */
+              this.uiService.emitChange(this.board);
+              this.httpService.getColumns(this.boardId).subscribe((data) => {
+                this.columns = data.columns;
+              });
+            } else {
+              /**If there are no boards */
+              this.areThereBoards = false;
+              console.log(`There are no boards.`);
+            }
+          }
         });
         this.isFetching = false;
       }
