@@ -60,3 +60,17 @@ app-boards-modal {
   grid-row: 1/-1;
   grid-column: 1/-1;
 }
+
+.show-sidebar-btn {
+  background: #635FC7;
+  width: 56px;
+  height: 48px;
+  position: fixed;
+  border: none;
+  border-radius: 0 25px 25px 0;
+  top: 50em;
+}
+
+.show-sidebar-btn:hover {
+  cursor: pointer;
+}
