@@ -11,7 +11,7 @@ export class AppComponent {
   showBoardsModal: Boolean = false;
   showDeleteModal: Boolean = false;
   deleteModalType!: string;
-  showSidebar!: boolean;
+  showSidebar = false;
   constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
@@ -35,5 +35,9 @@ export class AppComponent {
     } else {
       this.showDeleteModal = true;
     }
+  }
+
+  displaySidebar() {
+    this.uiService.emitToggle(true);
   }
 }
