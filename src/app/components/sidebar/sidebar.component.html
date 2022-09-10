@@ -12,20 +12,23 @@
   <h2 class="all-boards-title">
     All Boards <span class="num-of-boards">({{ numOfBoards }})</span>
   </h2>
-  <ul class="boards-list">
-    <li class="board-item" *ngFor="let board of boards">
-      <a [routerLink]="['/board', board._id]" routerLinkActive="active-link">{{
-        board.title
-      }}</a>
-    </li>
-    <li class="board-item">
-      <a [routerLink]="['/addboard']"
-        ><button type="button" class="new-board-btn">
-          + Create New Board
-        </button></a
-      >
-    </li>
-  </ul>
+  <div class="boards-container">
+    <ul class="boards-list">
+      <li class="board-item" *ngFor="let board of boards">
+        <a
+          [routerLink]="['/board', board._id]"
+          routerLinkActive="active-link"
+          >{{ board.title }}</a
+        >
+      </li>
+    </ul>
+    <a [routerLink]="['/addboard']"
+      ><button type="button" class="new-board-btn">
+        + Create New Board
+      </button></a
+    >
+  </div>
+
   <button class="hide-sidebar-btn">
     <svg width="18" height="16" xmlns="http://www.w3.org/2000/svg">
       <path
