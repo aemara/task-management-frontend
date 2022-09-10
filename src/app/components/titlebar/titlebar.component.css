@@ -135,6 +135,14 @@ header {
     color: white;
     font-weight: 700;
     font-size: 0.9375rem;
+    transition: 0.2s;
+  }
+  .add-task-btn-tablet:hover {
+    background: #a8a4ff;
+    cursor: pointer;
+  }
+  .add-task-btn-tablet:active {
+    background: #a8a4ff;
   }
 }
 
