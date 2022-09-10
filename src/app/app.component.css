@@ -62,15 +62,21 @@ app-boards-modal {
 }
 
 .show-sidebar-btn {
-  background: #635FC7;
+  background: #635fc7;
   width: 56px;
   height: 48px;
   position: fixed;
   border: none;
   border-radius: 0 25px 25px 0;
   top: 50em;
+  transition: .2s;
 }
 
 .show-sidebar-btn:hover {
   cursor: pointer;
+  background: #a8a4ff;
+}
+
+.show-sidebar-btn:active {
+  background: #a8a4ff;
 }
