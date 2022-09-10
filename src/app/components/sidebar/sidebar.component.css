@@ -37,13 +37,15 @@
   flex-basis: 100%;
 }
 
+
 .boards-list {
   list-style: none;
   margin: 0;
   padding: 0;
   max-height: 370px;
-  overflow: scroll;
+  overflow-y: auto;
 }
+
 
 .board-item {
   font-size: 0.93rem;
@@ -71,10 +73,16 @@
   border: none;
   padding: 1em 0 1em 1.5em;
   font-weight: 700;
+  transition: .2s;
 }
 
 .new-board-btn:hover {
   cursor: pointer;
+  color: white;
+}
+
+.new-board-btn:active {
+  color: white;
 }
 
 .hide-sidebar-btn {
