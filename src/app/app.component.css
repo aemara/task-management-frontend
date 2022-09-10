@@ -62,6 +62,7 @@ app-boards-modal {
 }
 
 .show-sidebar-btn {
+  display: none;
   background: #635fc7;
   width: 56px;
   height: 48px;
@@ -69,7 +70,13 @@ app-boards-modal {
   border: none;
   border-radius: 0 25px 25px 0;
   top: 50em;
-  transition: .2s;
+  transition: 0.2s;
+}
+
+@media (min-width: 768px) {
+  .show-sidebar-btn {
+    display: block;
+  }
 }
 
 .show-sidebar-btn:hover {
