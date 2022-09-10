@@ -10,10 +10,6 @@ header {
   }
 }
 
-.sidebar-btn-container {
-  display: none;
-}
-
 @media (min-width: 768px) {
   .sidebar-btn-container {
     display: flex;
@@ -33,10 +29,10 @@ header {
 }
 
 .titlebar-container {
-  padding: 1.2em 1em;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 2em;
 }
 
 @media (min-width: 768px) {
@@ -46,21 +42,35 @@ header {
 }
 
 .logo-title-container {
+  border-right: 1px solid #3e3f4e;
+  padding: 1em 1.5em 1em 1.5em;
+}
+
+.logo-container {
   display: flex;
   gap: 0.5em;
 }
 
-.logo-container {
-  align-self: flex-end;
+.logo-container svg {
+  align-self: center;
+}
+
+.title {
+  font-weight: 700;
+  color: #f4f7fd;
+}
+
+.board-title-btn-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .board-title-container {
   display: flex;
   align-items: center;
   gap: 0.5em;
-  margin-right: 3em;
   min-width: 159px;
-  align-self: baseline;
 }
 
 .board-title {
@@ -87,6 +97,7 @@ header {
 .btn-options-container {
   display: flex;
   gap: 0.7em;
+  margin-right: 1em;
 }
 
 .options-btn {
