@@ -66,3 +66,16 @@
 .new-board-btn:hover {
   cursor: pointer;
 }
+
+.hide-sidebar-btn {
+  background: none;
+  border: none;
+  color: #828fa3;
+  font-size: 0.93rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-left: 1.5em;
+  margin-top: 30em;
+}
