@@ -1,11 +1,26 @@
 .boards-sidebar {
   background: #2b2c37;
   border-radius: 6px;
-  padding: 2.5em 0 0 0;
+  padding: 1.5em 0 0 0;
+}
 
+.logo-container {
+  padding-left: 1.5em;
+  display: flex;
+  gap: 0.5em;
+  margin-bottom: 2.5em;
+}
+
+.logo-container svg {
+  align-self: center;
 }
 
 .title {
+  font-weight: 700;
+  color: #f4f7fd;
+}
+
+.all-boards-title {
   font-size: 0.75rem;
   font-weight: 700;
   color: #828fa3;
