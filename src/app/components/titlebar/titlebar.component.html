@@ -1,6 +1,6 @@
 <header>
-  <div class="titlebar-container">
-    <div class="logo-title-container">
+  <div class="titlebar-container" [ngClass]="{'titlebar-container-shown-sidebar': isSidebarShown}">
+    <div class="logo-title-container" *ngIf="!isSidebarShown">
       <div class="logo-container">
         <svg width="24" height="25" xmlns="http://www.w3.org/2000/svg">
           <g fill="#635FC7" fill-rule="evenodd">

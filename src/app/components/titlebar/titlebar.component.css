@@ -33,17 +33,30 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 2em;
+  padding: 1em 0 1em 1.2em;
 }
 
 @media (min-width: 768px) {
   .titlebar-container {
     width: 100%;
+    padding: 0;
   }
 }
 
+.titlebar-container-shown-sidebar {
+  padding: 1.2em;
+}
+
 .logo-title-container {
+  display: none;
   border-right: 1px solid #3e3f4e;
   padding: 1em 1.5em 1em 1.5em;
+}
+
+@media (min-width: 768px) {
+  .logo-title-container {
+    display: block;
+  }
 }
 
 .logo-container {

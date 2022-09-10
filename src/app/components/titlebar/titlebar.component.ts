@@ -38,10 +38,6 @@ export class TitlebarComponent implements OnInit {
     this.toggleOptions();
   }
 
-  toggleSidebar(isShown: boolean) {
-    this.uiService.emitToggle(isShown);
-  }
-
   toggleOptions() {
     if (this.showOptions) {
       this.showOptions = false;
