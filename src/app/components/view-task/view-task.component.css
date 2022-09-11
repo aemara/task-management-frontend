@@ -2,7 +2,7 @@
   color: white;
   background: #2b2c37;
   border-radius: 6px;
-  padding: .5em 1em 2em 1em;
+  padding: 0.5em 1em 2em 1em;
   display: flex;
   flex-direction: column;
   gap: 1.5em;
@@ -18,19 +18,48 @@ header {
   align-items: center;
 }
 
-.edit-delete-btns {
-  display: flex;
-  align-items: center;
-  gap: .5em;
+.edit-delete-btn {
+  background: none;
+  border: none;
+  align-self: flex-end;
+  position: relative;
 }
 
-.edit-delete-btns:hover {
+.edit-delete-btn:hover {
   cursor: pointer;
 }
 
+.edit-delete-menu {
+  background: #20212c;
+  display: flex;
+  gap: 1em;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 1em 5em 1em 1em;
+  position: absolute;
+  right: .4em;
+  width: max-content;
+  align-items: baseline;
+  
+}
+
+.edit-delete-menu a {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.edit-link {
+  color: #828fa3;
+}
+
+.delete-link {
+  color: #ea5555;
+}
+
 .back-link {
-  font-size: .8125rem;
-  color: #635FC7;
+  font-size: 0.8125rem;
+  color: #635fc7;
   font-weight: 700;
   text-decoration: none;
 }
@@ -38,7 +67,7 @@ header {
 .task-title {
   font-size: 1.125rem;
   font-weight: 700;
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .task-description {
@@ -78,9 +107,9 @@ header {
 }
 
 .dropdown-menu {
-  background: #20212C;
+  background: #20212c;
   border-radius: 8px;
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 .dropdown-menu ul {
@@ -89,7 +118,7 @@ header {
   padding: 0;
   font-size: 0.8rem;
   padding: 1em 1.5em;
-  color: #828FA3;
+  color: #828fa3;
   font-weight: 500;
 }
 
@@ -100,5 +129,3 @@ header {
 .dropdown-menu ul li:last-child {
   margin-bottom: 0;
 }
-
-

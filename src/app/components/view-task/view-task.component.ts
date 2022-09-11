@@ -19,7 +19,8 @@ export class ViewTaskComponent implements OnInit {
   subtasks = [];
   numOfSubtasks!: number;
   numOfSubtasksDone = 0;
-  showDropdown: boolean = false;
+  showColumnDropdown: boolean = false;
+  showEditDropdown: boolean  = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -34,8 +35,8 @@ export class ViewTaskComponent implements OnInit {
 
     this.boardId = this.ui.boardId;
 
-    this.http.getColumns(this.boardId).subscribe((data) => {
-      this.columns = data.columns;
+    this.http.getBoard(this.boardId).subscribe((data) => {
+      this.columns = data.board.columns;
     });
 
     this.http.getTask(this.taskId).subscribe((data) => {
@@ -43,17 +44,13 @@ export class ViewTaskComponent implements OnInit {
       this.taskDescription = data.task[0].description;
       this.currentColumn = data.task[0].column;
       this.columnId = data.task[0].columnId;
-      this.http.getColumn(data.task[0].columnId).subscribe((data) => {
-        this.currentColumn = data.column[0].title;
-      });
-    });
-
-    this.http.getSubtasks(this.taskId).subscribe((data) => {
-      this.subtasks = data.subtasks;
+      this.subtasks = data.task[0].subtasks;
       this.numOfSubtasks = this.subtasks.length;
       this.subtasks.forEach((subtask: any) => {
         if (subtask.done) this.numOfSubtasksDone++;
       });
+
+      /**Here you should fetch the name of its current column */
     });
   }
 
@@ -68,14 +65,22 @@ export class ViewTaskComponent implements OnInit {
   changeCurrentColumn(column: string, columnId: string) {
     this.currentColumn = column;
     this.http.changeColumn(this.taskId, columnId).subscribe();
-    this.showDropdown = false;
+    this.showColumnDropdown = false;
   }
 
-  toggleDropdown() {
-    if (this.showDropdown) {
-      this.showDropdown = false;
+  toggleColumnDropdown() {
+    if (this.showColumnDropdown) {
+      this.showColumnDropdown = false;
     } else {
-      this.showDropdown = true;
+      this.showColumnDropdown = true;
+    }
+  }
+
+  toggleEditDropdown() {
+    if (this.showEditDropdown) {
+      this.showEditDropdown = false;
+    } else {
+      this.showEditDropdown = true;
     }
   }
 }
