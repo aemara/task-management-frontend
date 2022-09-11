@@ -69,7 +69,7 @@ app-boards-modal {
   position: fixed;
   border: none;
   border-radius: 0 25px 25px 0;
-  top: 50em;
+  top: 85%;
   transition: 0.2s;
 }
 
