@@ -16,21 +16,23 @@ export class AddEditTaskComponent implements OnInit {
   constructor(private http: HttpService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.taskForm = new FormGroup({
+      title: new FormControl(null, Validators.required),
+      description: new FormControl(null, Validators.required),
+      subtasks: new FormArray([
+        new FormControl(null, Validators.required),
+        new FormControl(null, Validators.required),
+      ]),
+      column: new FormControl(null, Validators.required),
+    });
+
     this.route.params.subscribe((params: Params) => {
       this.boardId = params['id'];
 
       this.http.getColumns(this.boardId).subscribe((data) => {
         this.listOfColumns = data.columns;
         this.selectedColumn = this.listOfColumns[0].title;
-        this.taskForm = new FormGroup({
-          title: new FormControl(null, Validators.required),
-          description: new FormControl(null, Validators.required),
-          subtasks: new FormArray([
-            new FormControl(null, Validators.required),
-            new FormControl(null, Validators.required),
-          ]),
-          column: new FormControl(this.selectedColumn, Validators.required),
-        });
+        this.taskForm.get('column')?.setValue(this.selectedColumn);
       });
     });
   }
