@@ -27,6 +27,7 @@ const appRoutes: Routes = [
   { path: 'addboard', component: AddEditBoardComponent },
   { path: 'editboard/:id', component: AddEditBoardComponent },
   { path: 'addcolumn/:id', component: AddColumnComponent },
+  { path: 'addtask/:id', component: AddEditTaskComponent },
   { path: 'task/:id', component: ViewTaskComponent },
 ];
 
@@ -44,7 +45,7 @@ const appRoutes: Routes = [
     SubtaskComponent,
     DeleteModalComponent,
     SidebarComponent,
-    AddEditTaskComponent
+    AddEditTaskComponent,
   ],
   imports: [
     BrowserModule,
