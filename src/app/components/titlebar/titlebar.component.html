@@ -37,7 +37,7 @@
           </svg>
         </button>
         <button class="add-task-btn-tablet">
-          <span>+ Add New Task</span>
+          <a class="add-task-link" [routerLink]="['addtask', boardId]"><span>+ Add New Task</span></a>
         </button>
         <button class="options-btn" (click)="toggleOptions()">
           <svg width="5" height="20" xmlns="http://www.w3.org/2000/svg">

@@ -129,6 +129,11 @@ header {
   margin-left: 1em;
 }
 
+.add-task-link {
+  text-decoration: none;
+  color: white;
+}
+
 .add-task-btn-tablet {
   display: none;
 }
