@@ -3,6 +3,10 @@
   background: #2b2c37;
   border-radius: 6px;
   padding: 1em 1em 2em 1em;
+  width: 90%;
+  max-width: 480px;
+  margin: 0 auto;
+  margin-top: 2em;
 }
 
 .title {
