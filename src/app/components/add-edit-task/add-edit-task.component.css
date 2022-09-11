@@ -1,0 +1,155 @@
+.add-edit-task-container {
+  color: white;
+  background: #2b2c37;
+  border-radius: 6px;
+  padding: 1em 1em 2em 1em;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+.title-form-container,
+.description-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+label,
+.subtasks-heading,
+.column-form-heading {
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+input,
+textarea {
+  border: 1px solid rgba(130, 143, 163, 0.25);
+  background: #2b2c37;
+  border-radius: 4px;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.8em 0.8em;
+}
+
+.subtasks-heading {
+  margin-bottom: 1em;
+}
+
+.subtasks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  margin-bottom: 1em;
+}
+
+.subtask-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subtask-input input {
+  width: 85%;
+}
+
+.delete-btn {
+  border: none;
+  background: none;
+}
+
+.delete-btn:hover {
+    cursor: pointer;
+}
+
+.add-subtask-btn {
+  background: white;
+  border: none;
+  border-radius: 20px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: #635FC7;
+  padding: .9em 0;
+  width: 100%;
+}
+
+.add-subtask-btn:hover {
+    cursor: pointer;
+}
+
+.column-form-heading {
+    margin-bottom: 1em;
+}
+
+
+.column-dropdown {
+    border: 1px solid rgba(130, 143, 163, .25);
+    padding: 1em 1.5em;
+    font-size: .8rem;
+    text-transform: capitalize;
+    border-radius: 4px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.toggle-dropdown-btn {
+    border: none;
+    background:  none;
+}
+
+.toggle-dropdown-btn:hover {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    background: #20212C;
+    border-radius: 8px;
+}
+
+.list-of-columns  {
+    list-style: none;
+    padding: 1em  0 .2em 1.3em;
+    font-size: .8rem;
+    font-weight: 500;
+    color: #828FA3;
+}
+
+.list-of-columns li {
+    margin-bottom: 1em;
+}
+
+
+.column-btn {
+    background: none;
+    border: none;
+    color: white;
+}
+
+.column-btn:hover {
+    cursor: pointer;
+}
+
+.submit-btn {
+    border: none;
+    border-radius: 20px;
+    background: #635FC7;
+    font-size: .8rem;
+    text-transform: capitalize;
+    color: white;
+    font-weight: 700;
+    padding: 1em 1.5em;
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+}
