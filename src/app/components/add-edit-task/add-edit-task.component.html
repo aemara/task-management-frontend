@@ -3,7 +3,7 @@
   <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
     <div class="title-form-container">
       <label>Title</label>
-      <input type="text" formControlName="title"/>
+      <input type="text" formControlName="title" />
     </div>
     <div class="description-form-container">
       <label for="task-description">Description</label>
@@ -35,7 +35,11 @@
       <h3 class="column-form-heading">Column</h3>
       <div class="column-dropdown">
         <span class="current-column">{{ selectedColumn }}</span>
-        <button class="toggle-dropdown-btn" type="button" (click)="onToggleDropdown()">
+        <button
+          class="toggle-dropdown-btn"
+          type="button"
+          (click)="onToggleDropdown()"
+        >
           <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
             <path
               stroke="#635FC7"
@@ -48,13 +52,15 @@
       </div>
       <div class="dropdown-menu" *ngIf="displayDropdown">
         <ul class="list-of-columns">
-          
-            <li *ngFor="let column of listOfColumns">
-                <button class="column-btn" type="button" (click)="onSelectColumn(column.name)">
-                    {{column.name}}
-                </button>
-            </li>
-          
+          <li *ngFor="let column of listOfColumns">
+            <button
+              class="column-btn"
+              type="button"
+              (click)="onSelectColumn(column.title)"
+            >
+              {{ column.title }}
+            </button>
+          </li>
         </ul>
       </div>
     </div>

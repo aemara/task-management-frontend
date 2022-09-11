@@ -1,50 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
+import { ActivatedRoute, Params } from '@angular/router';
+import { HttpService } from 'src/app/services/http.service';
 @Component({
   selector: 'app-add-edit-task',
   templateUrl: './add-edit-task.component.html',
-  styleUrls: ['./add-edit-task.component.css']
+  styleUrls: ['./add-edit-task.component.css'],
 })
 export class AddEditTaskComponent implements OnInit {
-
   taskForm!: FormGroup;
   listOfColumns!: any[];
   selectedColumn!: string;
   displayDropdown: boolean = false;
-
-
-  constructor() { 
-    
-  }
+  boardId!: string;
+  constructor(private http: HttpService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.listOfColumns = [
-      {
-        name: 'Todo'
-      },
-      {
-        name: 'Doing'
-      },
-      {
-        name: 'Hello'
-      }
-    ];
+    this.route.params.subscribe((params: Params) => {
+      this.boardId = params['id'];
 
-    this.selectedColumn = this.listOfColumns[0].name;
-
-
-    this.taskForm = new FormGroup({
-      'title': new FormControl(null, Validators.required),
-      'description': new FormControl(null, Validators.required),
-      'subtasks': new FormArray([
-        new FormControl(null, Validators.required),
-        new FormControl(null, Validators.required)
-      ]),
-      'column': new FormControl(this.listOfColumns[0].name, Validators.required),
+      this.http.getColumns(this.boardId).subscribe((data) => {
+        this.listOfColumns = data.columns;
+        this.selectedColumn = this.listOfColumns[0].title;
+        this.taskForm = new FormGroup({
+          title: new FormControl(null, Validators.required),
+          description: new FormControl(null, Validators.required),
+          subtasks: new FormArray([
+            new FormControl(null, Validators.required),
+            new FormControl(null, Validators.required),
+          ]),
+          column: new FormControl(this.selectedColumn, Validators.required),
+        });
+      });
     });
-
   }
-
 
   onAddSubtask() {
     const control = new FormControl(null, Validators.required);
@@ -66,7 +55,7 @@ export class AddEditTaskComponent implements OnInit {
   }
 
   onToggleDropdown() {
-    if(this.displayDropdown) {
+    if (this.displayDropdown) {
       this.displayDropdown = false;
     } else {
       this.displayDropdown = true;
@@ -76,5 +65,4 @@ export class AddEditTaskComponent implements OnInit {
   onSubmit() {
     console.log(this.taskForm);
   }
-
 }
