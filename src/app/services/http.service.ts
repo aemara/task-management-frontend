@@ -18,6 +18,10 @@ export class HttpService {
     );
   }
 
+  addTask(data: any, columnId: string) {
+    return this.http.post<any>(`http://localhost:3000/addtask/${columnId}`, data);
+  }
+
   getBoards() {
     return this.http.get<any>('http://localhost:3000/boards');
   }
