@@ -1,21 +1,29 @@
 .task {
-    background: #2B2C37;
-    padding: 1.5em 1em;
-    border-radius: 8px;
+  background: #2b2c37;
+  padding: 1.5em 1em;
+  border-radius: 8px;
 }
 
 .task-title {
-    font-weight: 700;
-    font-size: .9rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: 0.2s;
 }
 
 .subtasks-subtitle {
-    font-size: .7rem;
-    font-weight: 700;
-    color: #828FA3;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #828fa3;
 }
 
-a, a:hover, a:focus, a:active {
-    text-decoration: none;
-    color: inherit;
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover .task-title {
+  color: #635fc7;
 }
