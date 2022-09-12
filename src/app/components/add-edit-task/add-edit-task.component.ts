@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 @Component({
   selector: 'app-add-edit-task',
@@ -13,7 +13,11 @@ export class AddEditTaskComponent implements OnInit {
   selectedColumn!: string;
   displayDropdown: boolean = false;
   boardId!: string;
-  constructor(private http: HttpService, private route: ActivatedRoute) {}
+  constructor(
+    private http: HttpService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.taskForm = new FormGroup({
@@ -65,6 +69,29 @@ export class AddEditTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.taskForm);
+    let columnId: any;
+    this.listOfColumns.forEach((column) => {
+      if (this.taskForm.value.column === column.title) {
+        columnId = column._id;
+      }
+    });
+
+    const subtasks: any[] = [];
+    if (this.taskForm.value.subtasks.length > 0) {
+      this.taskForm.value.subtasks.forEach((subtaskName: string) => {
+        const subtask = { name: subtaskName };
+        subtasks.push(subtask);
+      });
+    }
+
+    const task = {
+      title: this.taskForm.value.title,
+      description: this.taskForm.value.description,
+      subtasks: subtasks,
+    };
+
+    this.http.addTask(task, columnId).subscribe(() => {
+      this.router.navigate(['/board', this.boardId]);
+    });
   }
 }
