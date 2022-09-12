@@ -1,5 +1,8 @@
 <header>
-  <div class="titlebar-container" [ngClass]="{'titlebar-container-shown-sidebar': isSidebarShown}">
+  <div
+    class="titlebar-container"
+    [ngClass]="{ 'titlebar-container-shown-sidebar': isSidebarShown }"
+  >
     <div class="logo-title-container" *ngIf="!isSidebarShown">
       <div class="logo-container">
         <svg width="24" height="25" xmlns="http://www.w3.org/2000/svg">
@@ -11,18 +14,29 @@
         </svg>
         <h1 class="title">Frello</h1>
       </div>
-     
     </div>
     <div class="board-title-btn-container">
       <div class="board-title-container">
         <h2 class="board-title">{{ boardName }}</h2>
-        <button class="toggle-boards-btn" (click)="onShowBoardsModal()">
-          <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+        <button
+          class="toggle-boards-btn"
+          
+          (click)="onShowBoardsModal()"
+        >
+          <svg *ngIf="!displayBoardsModal" width="10" height="7" xmlns="http://www.w3.org/2000/svg">
             <path
               stroke="#635FC7"
               stroke-width="2"
               fill="none"
               d="m1 1 4 4 4-4"
+            />
+          </svg>
+          <svg *ngIf="displayBoardsModal" width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+            <path
+              stroke="#635FC7"
+              stroke-width="2"
+              fill="none"
+              d="M9 6 5 2 1 6"
             />
           </svg>
         </button>
@@ -37,7 +51,9 @@
           </svg>
         </button>
         <button class="add-task-btn-tablet">
-          <a class="add-task-link" [routerLink]="['addtask', boardId]"><span>+ Add New Task</span></a>
+          <a class="add-task-link" [routerLink]="['addtask', boardId]"
+            ><span>+ Add New Task</span></a
+          >
         </button>
         <button class="options-btn" (click)="toggleOptions()">
           <svg width="5" height="20" xmlns="http://www.w3.org/2000/svg">

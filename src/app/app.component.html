@@ -5,6 +5,7 @@
   <app-titlebar
     (showBoardsModal)="onToggleBoardsModal()"
     (showDeleteModal)="onToggleDeleteModal($event)"
+    [displayBoardsModal]="showBoardsModal"
     [ngClass]="{ 'enlarge-titlebar': !showSidebar }"
   ></app-titlebar>
   <div class="main" [ngClass]="{ 'enlarge-main': !showSidebar }">

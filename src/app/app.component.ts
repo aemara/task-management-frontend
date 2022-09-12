@@ -8,7 +8,7 @@ import { UiService } from './services/ui.service';
 })
 export class AppComponent {
   title = 'task-management-frontend';
-  showBoardsModal: Boolean = false;
+  @Output() showBoardsModal: boolean = false;
   showDeleteModal: Boolean = false;
   deleteModalType!: string;
   showSidebar = false;

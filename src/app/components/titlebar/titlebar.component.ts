@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
@@ -10,6 +10,7 @@ export class TitlebarComponent implements OnInit {
   @Output() showBoardsModal = new EventEmitter<any>();
   @Output() showDeleteModal = new EventEmitter<any>();
   @Output() showSidebar = new EventEmitter<any>();
+  @Input() displayBoardsModal!: boolean;
   boardName!: string;
   boardId!: string;
   showOptions: boolean = false;
