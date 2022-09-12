@@ -42,6 +42,7 @@
         </button>
       </div>
       <div class="btn-options-container">
+       <a class="add-task-link" [routerLink]="['addtask', boardId]">
         <button class="add-task-btn">
           <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -50,6 +51,7 @@
             />
           </svg>
         </button>
+       </a>
         <button class="add-task-btn-tablet">
           <a class="add-task-link" [routerLink]="['addtask', boardId]"
             ><span>+ Add New Task</span></a
