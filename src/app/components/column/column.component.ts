@@ -22,4 +22,12 @@ export class ColumnComponent implements OnInit {
     this.tasks = this.column.tasks;
     this.numOfTasks = this.tasks.length;
   }
+
+  onTaskClick(taskObject: any, columnName: string) {
+    const data = {
+      task: taskObject,
+      columnName: columnName
+    }
+    this.uiService.showTask(data);
+  }
 }

@@ -1,9 +1,16 @@
 <div class="column">
-    <header class="column-header">
-        <h3 class="column-title">{{columnName}} <span class="num-of-tasks">({{numOfTasks}})</span></h3>
-    </header>
+  <header class="column-header">
+    <h3 class="column-title">
+      {{ columnName }} <span class="num-of-tasks">({{ numOfTasks }})</span>
+    </h3>
+  </header>
 
-    <div class="tasks-list">
-        <app-task *ngFor="let task of tasks" [task]="task"></app-task>
-    </div>
+  <div class="tasks-list">
+    <app-task
+      *ngFor="let task of tasks"
+      [task]="task"
+      [columnOfTask]="columnName"
+      (click)="onTaskClick(task, columnName)"
+    ></app-task>
+  </div>
 </div>
