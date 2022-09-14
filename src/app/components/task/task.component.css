@@ -24,6 +24,10 @@ a:active {
   color: inherit;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
 a:hover .task-title {
   color: #635fc7;
 }
