@@ -1,30 +1,33 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { ReplaySubject, Subject } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UiService {
   boardName!: string;
   boardId!: string;
   isSidebarShown: boolean = false;
-  constructor() { }
-  
+  constructor() {}
+
   private emitChangeSource = new Subject<any>();
   changeEmitted$ = this.emitChangeSource.asObservable();
   emitChange(change: any) {
-      this.emitChangeSource.next(change);
-      this.boardName = change.title;
-      this.boardId = change._id;
+    this.emitChangeSource.next(change);
+    this.boardName = change.title;
+    this.boardId = change._id;
   }
 
-
-  private sidebarDisplay = new Subject<any>();
-  toggleEmitted$ = this.sidebarDisplay.asObservable();
+  private sidebarDisplaySubject = new Subject<any>();
+  toggleEmitted$ = this.sidebarDisplaySubject.asObservable();
   emitToggle(change: any) {
-      this.sidebarDisplay.next(change);
-      this.isSidebarShown = change;
+    this.sidebarDisplaySubject.next(change);
+    this.isSidebarShown = change;
   }
 
-
+  private taskDisplaySubject = new ReplaySubject<any>();
+  taskDisplay$ = this.taskDisplaySubject.asObservable();
+  showTask(taskData: any) {
+    this.taskDisplaySubject.next(taskData);
+  }
 }

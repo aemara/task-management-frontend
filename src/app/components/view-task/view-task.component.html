@@ -1,64 +1,69 @@
-<div class="view-task-container">
-  <header>
-    <div class="link-task-container">
-      <a class="back-link" [routerLink]="['/board', boardId]">Go Back</a>
+<div class="view-task-modal" (click)="hideTaskView($event)">
+  <div class="view-task-container">
+    <header>
       <h2 class="task-title">
         {{ taskTitle }}
       </h2>
-    </div>
-    <button class="edit-delete-btn" (click)="toggleEditDropdown()">
-      <svg width="5" height="20" xmlns="http://www.w3.org/2000/svg">
-        <g fill="#828FA3" fill-rule="evenodd">
-          <circle cx="2.308" cy="2.308" r="2.308" />
-          <circle cx="2.308" cy="10" r="2.308" />
-          <circle cx="2.308" cy="17.692" r="2.308" />
-        </g>
-      </svg>
-      <div class="edit-delete-menu" *ngIf="showEditDropdown">
-        <a class="edit-link">Edit Task</a>
-        <a class="delete-link">Delete Task</a>
+
+      <button class="edit-delete-btn" (click)="toggleEditDropdown()">
+        <svg width="5" height="20" xmlns="http://www.w3.org/2000/svg">
+          <g fill="#828FA3" fill-rule="evenodd">
+            <circle cx="2.308" cy="2.308" r="2.308" />
+            <circle cx="2.308" cy="10" r="2.308" />
+            <circle cx="2.308" cy="17.692" r="2.308" />
+          </g>
+        </svg>
+        <div class="edit-delete-menu" *ngIf="showEditDropdown">
+          <a class="edit-link">Edit Task</a>
+          <a class="delete-link">Delete Task</a>
+        </div>
+      </button>
+    </header>
+
+    <p class="task-description">
+      {{ taskDescription }}
+    </p>
+    <div class="subtasks-container">
+      <h3 class="subtasks-heading">
+        Subtasks ({{ numOfSubtasksDone }} of {{ numOfSubtasks }})
+      </h3>
+      <div class="subtasks-list">
+        <app-subtask
+          *ngFor="let subtask of subtasks"
+          [subtask]="subtask"
+          (toggleDone)="updateDoneCount($event)"
+        ></app-subtask>
       </div>
-    </button>
-  </header>
-
-  <p class="task-description">
-    {{ taskDescription }}
-  </p>
-  <div class="subtasks-container">
-    <h3 class="subtasks-heading">
-      Subtasks ({{ numOfSubtasksDone }} of {{ numOfSubtasks }})
-    </h3>
-    <div class="subtasks-list">
-      <app-subtask
-        *ngFor="let subtask of subtasks"
-        [subtask]="subtask"
-        (toggleDone)="updateDoneCount($event)"
-      ></app-subtask>
     </div>
-  </div>
 
-  <div class="current-column-container">
-    <h3 class="current-column-heading">Current Column</h3>
-    <div class="current-column-dropdown">
-      <span class="current-column">{{ currentColumn }}</span>
-      <svg
-        (click)="toggleColumnDropdown()"
-        width="10"
-        height="7"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path stroke="#635FC7" stroke-width="2" fill="none" d="m1 1 4 4 4-4" />
-      </svg>
-    </div>
-    <div class="dropdown-menu" *ngIf="showColumnDropdown">
-      <ul>
-        <li
-          *ngFor="let column of columns"
-          (click)="changeCurrentColumn(column.title, column._id)"
+    <div class="current-column-container">
+      <h3 class="current-column-heading">Current Column</h3>
+      <div class="current-column-dropdown">
+        <span class="current-column">{{ currentColumn }}</span>
+        <svg
+          (click)="toggleColumnDropdown()"
+          width="10"
+          height="7"
+          xmlns="http://www.w3.org/2000/svg"
         >
-          {{ column.title }}
-        </li>
-      </ul>
+          <path
+            stroke="#635FC7"
+            stroke-width="2"
+            fill="none"
+            d="m1 1 4 4 4-4"
+          />
+        </svg>
+      </div>
+      <div class="dropdown-menu" *ngIf="showColumnDropdown">
+        <ul>
+          <li
+            *ngFor="let column of columns"
+            (click)="changeCurrentColumn(column.title, column._id)"
+          >
+            {{ column.title }}
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>

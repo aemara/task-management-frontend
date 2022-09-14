@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { UiService } from 'src/app/services/ui.service';
@@ -9,6 +9,7 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./view-task.component.css'],
 })
 export class ViewTaskComponent implements OnInit {
+  @Output() hideTask = new EventEmitter<any>();
   taskId!: string;
   taskTitle!: string;
   taskDescription!: string;
@@ -20,7 +21,7 @@ export class ViewTaskComponent implements OnInit {
   numOfSubtasks!: number;
   numOfSubtasksDone = 0;
   showColumnDropdown: boolean = false;
-  showEditDropdown: boolean  = false;
+  showEditDropdown: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -29,28 +30,19 @@ export class ViewTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe((params: Params) => {
-      this.taskId = params['id'];
+    this.ui.taskDisplay$.subscribe((taskData) => {
+      this.currentColumn = taskData.columnName;
+      this.taskId = taskData.task._id;
+      this.taskTitle = taskData.task.title;
+      this.taskDescription = taskData.task.description;
+      this.subtasks = taskData.task.subtasks;
+      this.numOfSubtasks = this.subtasks.length;
+      this.countSubtasksDone(this.subtasks);
     });
 
     this.boardId = this.ui.boardId;
-
-    this.http.getBoard(this.boardId).subscribe((data) => {
-      this.columns = data.board.columns;
-    });
-
-    this.http.getTask(this.taskId).subscribe((data) => {
-      this.taskTitle = data.task[0].title;
-      this.taskDescription = data.task[0].description;
-      this.currentColumn = data.task[0].column;
-      this.columnId = data.task[0].columnId;
-      this.subtasks = data.task[0].subtasks;
-      this.numOfSubtasks = this.subtasks.length;
-      this.subtasks.forEach((subtask: any) => {
-        if (subtask.done) this.numOfSubtasksDone++;
-      });
-
-      /**Here you should fetch the name of its current column */
+    this.http.getColumns(this.boardId).subscribe((data) => {
+      this.columns = data.columns;
     });
   }
 
@@ -81,6 +73,18 @@ export class ViewTaskComponent implements OnInit {
       this.showEditDropdown = false;
     } else {
       this.showEditDropdown = true;
+    }
+  }
+
+  countSubtasksDone(subtasks: any[]) {
+    subtasks.forEach((subtask) => {
+      if (subtask.done) this.numOfSubtasksDone++;
+    });
+  }
+
+  hideTaskView(event: any) {
+    if (event.target.className === 'view-task-modal') {
+      this.hideTask.emit();
     }
   }
 }

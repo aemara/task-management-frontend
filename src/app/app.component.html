@@ -11,6 +11,7 @@
   <div class="main" [ngClass]="{ 'enlarge-main': !showSidebar }">
     <router-outlet></router-outlet>
   </div>
+  <app-view-task *ngIf="showTask" (hideTask)="hideTaskView()"></app-view-task>
   <app-boards-modal
     (hideModalEvent)="onToggleBoardsModal()"
     *ngIf="showBoardsModal"
