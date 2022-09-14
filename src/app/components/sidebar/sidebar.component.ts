@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import { UiService } from 'src/app/services/ui.service';
 
@@ -8,6 +8,7 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./sidebar.component.css'],
 })
 export class SidebarComponent implements OnInit {
+  @Output() showAddEditBoard = new EventEmitter<any>();
   boards!: any[];
   numOfBoards!: any[];
   constructor(private http: HttpService, private uiService: UiService) {}
@@ -21,5 +22,9 @@ export class SidebarComponent implements OnInit {
 
   hideSidebar() {
     this.uiService.emitToggle(false);
+  }
+
+  onClickAddBoard() {
+    this.showAddEditBoard.emit();
   }
 }

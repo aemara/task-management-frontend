@@ -22,11 +22,9 @@
         >
       </li>
     </ul>
-    <a [routerLink]="['/addboard']"
-      ><button type="button" class="new-board-btn">
-        + Create New Board
-      </button></a
-    >
+    <button type="button" class="new-board-btn" (click)="onClickAddBoard()">
+      + Create New Board
+    </button>
   </div>
 
   <button class="hide-sidebar-btn" (click)="hideSidebar()">

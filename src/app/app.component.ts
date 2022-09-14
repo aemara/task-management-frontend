@@ -14,6 +14,7 @@ export class AppComponent {
   showSidebar = false;
   showTask = false;
   showAddEditTask = false;
+  showAddEditBoard = false;
   constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
@@ -58,4 +59,13 @@ export class AppComponent {
   hideAddEditTask() {
     this.showAddEditTask = false;
   }
+
+  displayAddEditBoard() {
+    this.showAddEditBoard = true;
+  }
+
+  hideAddEditBoard() {
+    this.showAddEditBoard = false;
+  }
+
 }

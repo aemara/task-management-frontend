@@ -1,32 +1,40 @@
-<div class="add-edit-board-container">
-  <h2 class="title">Add/Edit Board</h2>
-  <form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
-    <div class="name-form-container">
-      <label>Board Name</label>
-      <input type="text" formControlName="boardName" />
-    </div>
-    <div class="columns-form-container">
-      <h3 class="board-columns-heading">Board Columns</h3>
-      <div class="columns-list" formArrayName="boardColumns">
-        <div
-          class="column-input"
-          *ngFor="let boardColumn of getBoardColumnsControls(); let i = index"
-        >
-          <input type="text" [formControlName]="i" />
-          <button class="delete-btn" (click)="onDeleteBoardColumn(i)">
-            <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
-              <g fill="#828FA3" fill-rule="evenodd">
-                <path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" />
-                <path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" />
-              </g>
-            </svg>
-          </button>
-        </div>
+<div class="add-edit-board-modal" (click)="onHideAddEditBoard($event)">
+  <div class="add-edit-board-container">
+    <h2 class="title">{{ isAdd ? "Add New" : "Edit" }} Board</h2>
+    <form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
+      <div class="name-form-container">
+        <label>Board Name</label>
+        <input type="text" formControlName="boardName" />
       </div>
-      <button class="add-column-btn" type="button" (click)="onAddBoardColumn()">
-        + Add New Column
+      <div class="columns-form-container">
+        <h3 class="board-columns-heading">Board Columns</h3>
+        <div class="columns-list" formArrayName="boardColumns">
+          <div
+            class="column-input"
+            *ngFor="let boardColumn of getBoardColumnsControls(); let i = index"
+          >
+            <input type="text" [formControlName]="i" />
+            <button class="delete-btn" (click)="onDeleteBoardColumn(i)">
+              <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
+                <g fill="#828FA3" fill-rule="evenodd">
+                  <path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" />
+                  <path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button
+          class="add-column-btn"
+          type="button"
+          (click)="onAddBoardColumn()"
+        >
+          + Add New Column
+        </button>
+      </div>
+      <button class="submit-btn" type="submit">
+        {{ isAdd ? "Create New" : "Update" }} Board
       </button>
-    </div>
-    <button class="submit-btn" type="submit">Create New Board</button>
-  </form>
+    </form>
+  </div>
 </div>
