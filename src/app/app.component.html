@@ -17,6 +17,7 @@
   <app-add-edit-board *ngIf="showAddEditBoard" (hideAddEditBoard)="hideAddEditBoard()"></app-add-edit-board>
   <app-boards-modal
     (hideModalEvent)="onToggleBoardsModal()"
+    (showAddEditBoard)="displayAddEditBoard()"
     *ngIf="showBoardsModal"
   ></app-boards-modal>
   <app-delete-modal
