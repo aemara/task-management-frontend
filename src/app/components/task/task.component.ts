@@ -4,37 +4,32 @@ import { HttpService } from 'src/app/services/http.service';
 @Component({
   selector: 'app-task',
   templateUrl: './task.component.html',
-  styleUrls: ['./task.component.css']
+  styleUrls: ['./task.component.css'],
 })
 export class TaskComponent implements OnInit {
-
   @Input() task: any;
+  @Input() columnOfTask: any;
   taskName!: string;
   taskId!: string;
   subtasks!: any[];
   numOfSubtasks!: number;
-  doneSubtasks:number = 0;
+  doneSubtasks: number = 0;
 
-  constructor(private http: HttpService) { }
+  constructor(private http: HttpService) {}
 
   ngOnInit(): void {
     this.taskName = this.task.title;
     this.taskId = this.task._id;
-    this.http.getSubtasks(this.taskId).subscribe(data => {
-      this.subtasks = data.subtasks;
-      this.numOfSubtasks = this.subtasks.length;
-      this.countSubtasksDone(this.subtasks);
-    });
-
+    this.subtasks = this.task.subtasks;
+    this.numOfSubtasks = this.subtasks.length;
+    this.countSubtasksDone(this.subtasks);
   }
-
 
   countSubtasksDone(listOfSubtasks: any[]) {
-    listOfSubtasks.forEach(subtask => {
-      if(subtask.done) {
+    listOfSubtasks.forEach((subtask) => {
+      if (subtask.done) {
         this.doneSubtasks++;
       }
-    })
+    });
   }
-
 }
