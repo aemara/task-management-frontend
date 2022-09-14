@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
@@ -8,6 +8,7 @@ import { HttpService } from 'src/app/services/http.service';
   styleUrls: ['./add-edit-task.component.css'],
 })
 export class AddEditTaskComponent implements OnInit {
+  @Output() hideAddEditTask = new EventEmitter<any>();
   taskForm!: FormGroup;
   listOfColumns!: any[];
   selectedColumn!: string;
@@ -65,6 +66,12 @@ export class AddEditTaskComponent implements OnInit {
       this.displayDropdown = false;
     } else {
       this.displayDropdown = true;
+    }
+  }
+
+  onHideAddEditTask(event: any) {
+    if (event.target.className === 'add-edit-task-modal') {
+      this.hideAddEditTask.emit();
     }
   }
 

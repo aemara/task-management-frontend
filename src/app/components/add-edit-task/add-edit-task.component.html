@@ -1,69 +1,74 @@
-<div class="add-edit-task-container">
-  <h2 class="title">Add/Edit Task</h2>
-  <form *ngIf="taskForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
-    <div class="title-form-container">
-      <label>Title</label>
-      <input type="text" formControlName="title" />
-    </div>
-    <div class="description-form-container">
-      <label for="task-description">Description</label>
-      <textarea id="task-description" formControlName="description"></textarea>
-    </div>
-    <div class="subtasks-form-container">
-      <h3 class="subtasks-heading">Subtasks</h3>
-      <div class="subtasks-list" formArrayName="subtasks">
-        <div
-          class="subtask-input"
-          *ngFor="let subtasks of getSubtasksControls(); let i = index"
-        >
-          <input type="text" [formControlName]="i" />
-          <button class="delete-btn" (click)="onDeleteSubtask(i)">
-            <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
-              <g fill="#828FA3" fill-rule="evenodd">
-                <path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" />
-                <path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" />
-              </g>
+<div class="add-edit-task-modal" (click)="onHideAddEditTask($event)">
+  <div class="add-edit-task-container">
+    <h2 class="title">Add/Edit Task</h2>
+    <form *ngIf="taskForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+      <div class="title-form-container">
+        <label>Title</label>
+        <input type="text" formControlName="title" />
+      </div>
+      <div class="description-form-container">
+        <label for="task-description">Description</label>
+        <textarea
+          id="task-description"
+          formControlName="description"
+        ></textarea>
+      </div>
+      <div class="subtasks-form-container">
+        <h3 class="subtasks-heading">Subtasks</h3>
+        <div class="subtasks-list" formArrayName="subtasks">
+          <div
+            class="subtask-input"
+            *ngFor="let subtasks of getSubtasksControls(); let i = index"
+          >
+            <input type="text" [formControlName]="i" />
+            <button class="delete-btn" (click)="onDeleteSubtask(i)">
+              <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
+                <g fill="#828FA3" fill-rule="evenodd">
+                  <path d="m12.728 0 2.122 2.122L2.122 14.85 0 12.728z" />
+                  <path d="M0 2.122 2.122 0 14.85 12.728l-2.122 2.122z" />
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button class="add-subtask-btn" type="button" (click)="onAddSubtask()">
+          + Add New Subtask
+        </button>
+      </div>
+      <div class="column-form-container">
+        <h3 class="column-form-heading">Column</h3>
+        <div class="column-dropdown">
+          <span class="current-column">{{ selectedColumn }}</span>
+          <button
+            class="toggle-dropdown-btn"
+            type="button"
+            (click)="onToggleDropdown()"
+          >
+            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+              <path
+                stroke="#635FC7"
+                stroke-width="2"
+                fill="none"
+                d="m1 1 4 4 4-4"
+              />
             </svg>
           </button>
         </div>
+        <div class="dropdown-menu" *ngIf="displayDropdown">
+          <ul class="list-of-columns">
+            <li *ngFor="let column of listOfColumns">
+              <button
+                class="column-btn"
+                type="button"
+                (click)="onSelectColumn(column.title)"
+              >
+                {{ column.title }}
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
-      <button class="add-subtask-btn" type="button" (click)="onAddSubtask()">
-        + Add New Subtask
-      </button>
-    </div>
-    <div class="column-form-container">
-      <h3 class="column-form-heading">Column</h3>
-      <div class="column-dropdown">
-        <span class="current-column">{{ selectedColumn }}</span>
-        <button
-          class="toggle-dropdown-btn"
-          type="button"
-          (click)="onToggleDropdown()"
-        >
-          <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
-            <path
-              stroke="#635FC7"
-              stroke-width="2"
-              fill="none"
-              d="m1 1 4 4 4-4"
-            />
-          </svg>
-        </button>
-      </div>
-      <div class="dropdown-menu" *ngIf="displayDropdown">
-        <ul class="list-of-columns">
-          <li *ngFor="let column of listOfColumns">
-            <button
-              class="column-btn"
-              type="button"
-              (click)="onSelectColumn(column.title)"
-            >
-              {{ column.title }}
-            </button>
-          </li>
-        </ul>
-      </div>
-    </div>
-    <button class="submit-btn" type="submit">Create Task</button>
-  </form>
+      <button class="submit-btn" type="submit">Create Task</button>
+    </form>
+  </div>
 </div>

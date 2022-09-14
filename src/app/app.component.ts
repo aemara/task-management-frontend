@@ -13,6 +13,7 @@ export class AppComponent {
   deleteModalType!: string;
   showSidebar = false;
   showTask = false;
+  showAddEditTask = false;
   constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
@@ -48,5 +49,13 @@ export class AppComponent {
 
   hideTaskView() {
     this.showTask = false;
+  }
+
+  displayAddEditTask() {
+    this.showAddEditTask = true;
+  }
+
+  hideAddEditTask() {
+    this.showAddEditTask = false;
   }
 }

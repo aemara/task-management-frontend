@@ -10,6 +10,7 @@ export class TitlebarComponent implements OnInit {
   @Output() showBoardsModal = new EventEmitter<any>();
   @Output() showDeleteModal = new EventEmitter<any>();
   @Output() showSidebar = new EventEmitter<any>();
+  @Output() showAddEditTask = new EventEmitter<any>();
   @Input() displayBoardsModal!: boolean;
   boardName!: string;
   boardId!: string;
@@ -45,5 +46,9 @@ export class TitlebarComponent implements OnInit {
     } else {
       this.showOptions = true;
     }
+  }
+
+  onClickAddTask() {
+    this.showAddEditTask.emit();
   }
 }

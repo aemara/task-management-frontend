@@ -5,6 +5,7 @@
   <app-titlebar
     (showBoardsModal)="onToggleBoardsModal()"
     (showDeleteModal)="onToggleDeleteModal($event)"
+    (showAddEditTask)="displayAddEditTask()"
     [displayBoardsModal]="showBoardsModal"
     [ngClass]="{ 'enlarge-titlebar': !showSidebar }"
   ></app-titlebar>
@@ -12,6 +13,7 @@
     <router-outlet></router-outlet>
   </div>
   <app-view-task *ngIf="showTask" (hideTask)="hideTaskView()"></app-view-task>
+  <app-add-edit-task *ngIf="showAddEditTask" (hideAddEditTask)="hideAddEditTask()"></app-add-edit-task>
   <app-boards-modal
     (hideModalEvent)="onToggleBoardsModal()"
     *ngIf="showBoardsModal"
