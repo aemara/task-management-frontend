@@ -56,7 +56,7 @@ export class AddEditTaskComponent implements OnInit {
   }
 
   onSelectColumn(column: string, columnId: string) {
-    this.selectedColumnId =  columnId;
+    this.selectedColumnId = columnId;
     this.selectedColumn = column;
     this.taskForm.get('column')?.setValue(column);
     this.displayDropdown = false;
@@ -77,7 +77,6 @@ export class AddEditTaskComponent implements OnInit {
   }
 
   onSubmit() {
-   
     const subtasks: any[] = [];
     if (this.taskForm.value.subtasks.length > 0) {
       this.taskForm.value.subtasks.forEach((subtaskName: string) => {
