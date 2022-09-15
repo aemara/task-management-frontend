@@ -10,6 +10,7 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class ViewTaskComponent implements OnInit {
   @Output() hideTask = new EventEmitter<any>();
+  @Output() showAddEditTask = new EventEmitter<any>();
   taskId!: string;
   taskTitle!: string;
   taskDescription!: string;
@@ -86,5 +87,10 @@ export class ViewTaskComponent implements OnInit {
     if (event.target.className === 'view-task-modal') {
       this.hideTask.emit();
     }
+  }
+
+  onClickEditTask() {
+    this.hideTask.emit();
+    this.showAddEditTask.emit("edit");
   }
 }

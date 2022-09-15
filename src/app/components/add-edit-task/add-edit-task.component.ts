@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
@@ -9,6 +9,7 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class AddEditTaskComponent implements OnInit {
   @Output() hideAddEditTask = new EventEmitter<any>();
+  @Input() addOrEditTask!: string;
   taskForm!: FormGroup;
   listOfColumns!: any[];
   selectedColumn!: string;
@@ -21,6 +22,7 @@ export class AddEditTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log(this.addOrEditTask);
     this.taskForm = new FormGroup({
       title: new FormControl(null, Validators.required),
       description: new FormControl(null, Validators.required),

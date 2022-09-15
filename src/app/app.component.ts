@@ -9,6 +9,7 @@ import { UiService } from './services/ui.service';
 export class AppComponent {
   title = 'task-management-frontend';
   @Output() showBoardsModal: boolean = false;
+  @Output() addOrEditTask!: string;
   showDeleteModal: Boolean = false;
   deleteModalType!: string;
   showSidebar = false;
@@ -61,8 +62,13 @@ export class AppComponent {
     this.showTask = false;
   }
 
-  displayAddEditTask() {
+  displayAddEditTask(eventData: any) {
     this.showAddEditTask = true;
+    if(eventData === "add") {
+      this.addOrEditTask = "add";
+    } else {
+      this.addOrEditTask = "edit";
+    }
   }
 
   hideAddEditTask() {

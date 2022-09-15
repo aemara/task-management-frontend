@@ -49,6 +49,6 @@ export class TitlebarComponent implements OnInit {
   }
 
   onClickAddTask() {
-    this.showAddEditTask.emit();
+    this.showAddEditTask.emit("add");
   }
 }

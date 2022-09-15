@@ -14,7 +14,7 @@
           </g>
         </svg>
         <div class="edit-delete-menu" *ngIf="showEditDropdown">
-          <a class="edit-link">Edit Task</a>
+          <a class="edit-link" (click)="onClickEditTask()">Edit Task</a>
           <a class="delete-link">Delete Task</a>
         </div>
       </button>

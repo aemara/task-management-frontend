@@ -5,15 +5,15 @@
   <app-titlebar
     (showBoardsModal)="onToggleBoardsModal()"
     (showDeleteModal)="onToggleDeleteModal($event)"
-    (showAddEditTask)="displayAddEditTask()"
+    (showAddEditTask)="displayAddEditTask($event)"
     [displayBoardsModal]="showBoardsModal"
     [ngClass]="{ 'enlarge-titlebar': !showSidebar }"
   ></app-titlebar>
   <div class="main" [ngClass]="{ 'enlarge-main': !showSidebar }">
     <router-outlet></router-outlet>
   </div>
-  <app-view-task *ngIf="showTask" (hideTask)="hideTaskView()"></app-view-task>
-  <app-add-edit-task *ngIf="showAddEditTask" (hideAddEditTask)="hideAddEditTask()"></app-add-edit-task>
+  <app-add-edit-task *ngIf="showAddEditTask" (hideAddEditTask)="hideAddEditTask()" [addOrEditTask]="addOrEditTask"></app-add-edit-task>
+  <app-view-task *ngIf="showTask" (hideTask)="hideTaskView()" (showAddEditTask)="displayAddEditTask($event)"></app-view-task>
   <app-add-edit-board *ngIf="showAddEditBoard" (hideAddEditBoard)="hideAddEditBoard()"></app-add-edit-board>
   <app-add-column *ngIf="showAddColumn" (hideAddColumn)="hideAddColumn()"></app-add-column>
   <app-boards-modal
