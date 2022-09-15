@@ -36,4 +36,10 @@ export class UiService {
   showAddColumn(change: any) {
     this.addColumnDisplaySubject.next(change);
   }
+
+  private showAddBoardSubject = new ReplaySubject<any>();
+  addBoardDisplay$ = this.showAddBoardSubject.asObservable();
+  showAddBoard(change: any) {
+    this.showAddBoardSubject.next(change);
+  }
 }

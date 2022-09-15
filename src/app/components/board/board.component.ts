@@ -60,4 +60,11 @@ export class BoardComponent implements OnInit {
   onClickAddColumn() {
    this.uiService.showAddColumn("");
   }
+
+
+  onClickAddBoard() {
+    this.uiService.showAddBoard("");
+  }
 }
+
+

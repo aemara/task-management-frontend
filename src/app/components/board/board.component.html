@@ -1,18 +1,21 @@
 <main *ngIf="columns.length > 0">
   <app-column *ngFor="let column of columns" [column]="column"></app-column>
-    <div class="new-column-container" (click)="onClickAddColumn()">
-      + New Column
-    </div>
+  <div class="new-column-container" (click)="onClickAddColumn()">
+    + New Column
+  </div>
 </main>
 
-<div class="empty-board-prompt" *ngIf="columns.length < 1 && !isFetching && areThereBoards">
+<div
+  class="empty-board-prompt"
+  *ngIf="columns.length < 1 && !isFetching && areThereBoards"
+>
   <p>This board is empty. Create a new column.</p>
   <button (click)="onClickAddColumn()">+ Add New Column</button>
 </div>
 
 <div class="no-boards-prompt" *ngIf="!areThereBoards">
   <p>There are no boards. Create a new board</p>
-  <a [routerLink]="['/addboard']"><button>+ Add New Board</button></a>
+  <button (click)="onClickAddBoard()">+ Add New Board</button>
 </div>
 <img
   class="loading-indicator"

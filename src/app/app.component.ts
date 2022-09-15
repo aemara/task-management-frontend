@@ -30,6 +30,10 @@ export class AppComponent {
     this.uiService.addColumnDisplay$.subscribe(() => {
       this.showAddColumn = true;
     });
+
+    this.uiService.addBoardDisplay$.subscribe(() => {
+      this.showAddEditBoard = true;
+    });
   }
 
   onToggleBoardsModal() {
