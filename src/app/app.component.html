@@ -1,11 +1,12 @@
 <div class="container">
   <aside *ngIf="showSidebar">
-    <app-sidebar (showAddEditBoard)="displayAddEditBoard()"></app-sidebar>
+    <app-sidebar (showAddEditBoard)="displayAddEditBoard($event)"></app-sidebar>
   </aside>
   <app-titlebar
     (showBoardsModal)="onToggleBoardsModal()"
     (showDeleteModal)="onToggleDeleteModal($event)"
     (showAddEditTask)="displayAddEditTask($event)"
+    (showAddEditBoard)="displayAddEditBoard($event)"
     [displayBoardsModal]="showBoardsModal"
     [ngClass]="{ 'enlarge-titlebar': !showSidebar }"
   ></app-titlebar>
@@ -14,11 +15,11 @@
   </div>
   <app-add-edit-task *ngIf="showAddEditTask" (hideAddEditTask)="hideAddEditTask()" [addOrEditTask]="addOrEditTask"></app-add-edit-task>
   <app-view-task *ngIf="showTask" (hideTask)="hideTaskView()" (showAddEditTask)="displayAddEditTask($event)"></app-view-task>
-  <app-add-edit-board *ngIf="showAddEditBoard" (hideAddEditBoard)="hideAddEditBoard()"></app-add-edit-board>
+  <app-add-edit-board *ngIf="showAddEditBoard" (hideAddEditBoard)="hideAddEditBoard()" [addOrEditBoard]="addOrEditBoard"></app-add-edit-board>
   <app-add-column *ngIf="showAddColumn" (hideAddColumn)="hideAddColumn()"></app-add-column>
   <app-boards-modal
     (hideModalEvent)="onToggleBoardsModal()"
-    (showAddEditBoard)="displayAddEditBoard()"
+    (showAddEditBoard)="displayAddEditBoard($event)"
     *ngIf="showBoardsModal"
   ></app-boards-modal>
   <app-delete-modal

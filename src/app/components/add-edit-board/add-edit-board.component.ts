@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
@@ -10,6 +10,7 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class AddEditBoardComponent implements OnInit {
   @Output() hideAddEditBoard = new EventEmitter<any>();
+  @Input() addOrEditBoard!: string;
   isAdd: boolean = true;
   path!: string;
   boardForm!: FormGroup;
@@ -25,7 +26,7 @@ export class AddEditBoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-   
+    console.log(this.addOrEditBoard);
   }
 
   onAddBoardColumn() {
@@ -47,6 +48,5 @@ export class AddEditBoardComponent implements OnInit {
     }
   }
 
-  onSubmit() {
-  }
+  onSubmit() {}
 }

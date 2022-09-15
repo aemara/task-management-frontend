@@ -11,11 +11,12 @@ export class TitlebarComponent implements OnInit {
   @Output() showDeleteModal = new EventEmitter<any>();
   @Output() showSidebar = new EventEmitter<any>();
   @Output() showAddEditTask = new EventEmitter<any>();
+  @Output() showAddEditBoard = new EventEmitter<any>();
   @Input() displayBoardsModal!: boolean;
   boardName!: string;
   boardId!: string;
   showOptions: boolean = false;
-  isSidebarShown!: boolean
+  isSidebarShown!: boolean;
 
   constructor(private uiService: UiService) {}
 
@@ -26,9 +27,9 @@ export class TitlebarComponent implements OnInit {
       this.boardId = board._id;
     });
 
-    this.uiService.toggleEmitted$.subscribe(isShown => {
+    this.uiService.toggleEmitted$.subscribe((isShown) => {
       this.isSidebarShown = isShown;
-    })
+    });
   }
 
   onShowBoardsModal() {
@@ -49,6 +50,16 @@ export class TitlebarComponent implements OnInit {
   }
 
   onClickAddTask() {
-    this.showAddEditTask.emit("add");
+    this.showAddEditTask.emit('add');
+  }
+
+  onClickEditBoard() {
+    if (this.showOptions) {
+      this.showOptions = false;
+    } else {
+      this.showOptions = true;
+    }
+
+    this.showAddEditBoard.emit('edit');
   }
 }

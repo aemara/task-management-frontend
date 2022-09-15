@@ -73,12 +73,7 @@
     </div>
   </div>
   <div class="options-container" *ngIf="showOptions">
-    <a
-      class="edit-link"
-      [routerLink]="['/editboard', boardId]"
-      (click)="toggleOptions()"
-      >Edit Board</a
-    >
+    <a class="edit-link" (click)="onClickEditBoard()">Edit Board</a>
     <a class="delete-link" (click)="onShowDeleteModal()">Delete Board</a>
   </div>
 </header>

@@ -25,6 +25,6 @@ export class SidebarComponent implements OnInit {
   }
 
   onClickAddBoard() {
-    this.showAddEditBoard.emit();
+    this.showAddEditBoard.emit("add");
   }
 }

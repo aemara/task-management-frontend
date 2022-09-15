@@ -10,6 +10,7 @@ export class AppComponent {
   title = 'task-management-frontend';
   @Output() showBoardsModal: boolean = false;
   @Output() addOrEditTask!: string;
+  @Output() addOrEditBoard!: string;
   showDeleteModal: Boolean = false;
   deleteModalType!: string;
   showSidebar = false;
@@ -17,6 +18,7 @@ export class AppComponent {
   showAddEditTask = false;
   showAddEditBoard = false;
   showAddColumn = false;
+
   constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
@@ -64,10 +66,10 @@ export class AppComponent {
 
   displayAddEditTask(eventData: any) {
     this.showAddEditTask = true;
-    if(eventData === "add") {
-      this.addOrEditTask = "add";
+    if (eventData === 'add') {
+      this.addOrEditTask = 'add';
     } else {
-      this.addOrEditTask = "edit";
+      this.addOrEditTask = 'edit';
     }
   }
 
@@ -75,8 +77,13 @@ export class AppComponent {
     this.showAddEditTask = false;
   }
 
-  displayAddEditBoard() {
+  displayAddEditBoard(eventData: any) {
     this.showAddEditBoard = true;
+    if (eventData === 'add') {
+      this.addOrEditBoard = 'add';
+    } else {
+      this.addOrEditBoard = 'edit';
+    }
   }
 
   hideAddEditBoard() {
