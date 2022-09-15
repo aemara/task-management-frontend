@@ -54,12 +54,6 @@ export class TitlebarComponent implements OnInit {
   }
 
   onClickEditBoard() {
-    if (this.showOptions) {
-      this.showOptions = false;
-    } else {
-      this.showOptions = true;
-    }
-
     this.showAddEditBoard.emit('edit');
   }
 }
