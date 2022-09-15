@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { UiService } from 'src/app/services/ui.service';
@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-column.component.css'],
 })
 export class AddColumnComponent implements OnInit {
+  @Output() hideAddColumn = new EventEmitter<any>();
   columnForm!: FormGroup;
   boardId!: string;
 
@@ -31,5 +32,11 @@ export class AddColumnComponent implements OnInit {
     };
     this.http.addColumn(dataToSend, this.boardId).subscribe();
     this.router.navigate(['']);
+  }
+
+  onHideAddColumn(event: any) {
+    if(event.target.className === "add-column-modal") {
+      this.hideAddColumn.emit();
+    }
   }
 }

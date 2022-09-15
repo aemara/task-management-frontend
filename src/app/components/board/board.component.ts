@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { HttpService } from 'src/app/services/http.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { UiService } from 'src/app/services/ui.service';
@@ -8,6 +8,7 @@ import { UiService } from 'src/app/services/ui.service';
   styleUrls: ['./board.component.css'],
 })
 export class BoardComponent implements OnInit {
+  @Output() showAddColumn = new EventEmitter<any>();
   boardId!: string;
   board!: any;
   columns: any[] = [];
@@ -29,12 +30,8 @@ export class BoardComponent implements OnInit {
         this.areThereBoards = true;
         this.httpService.getBoard(this.boardId).subscribe((data) => {
           this.board = data.board;
-          this.boardId = this.board._id;
+          this.columns = this.board.columns;
           this.uiService.emitChange(this.board);
-        });
-
-        this.httpService.getColumns(this.boardId).subscribe((data) => {
-          this.columns = data.columns;
         });
         this.isFetching = false;
       } else {
@@ -45,12 +42,8 @@ export class BoardComponent implements OnInit {
             this.board = data.board[0];
             if (this?.board) {
               this.areThereBoards = true;
-              this.boardId = this.board._id;
-              /**Change board name in the titlebar */
+              this.columns = this.board.columns;
               this.uiService.emitChange(this.board);
-              this.httpService.getColumns(this.boardId).subscribe((data) => {
-                this.columns = data.columns;
-              });
             } else {
               /**If there are no boards */
               this.areThereBoards = false;
@@ -61,5 +54,10 @@ export class BoardComponent implements OnInit {
         this.isFetching = false;
       }
     });
+  }
+
+
+  onClickAddColumn() {
+   this.uiService.showAddColumn("");
   }
 }

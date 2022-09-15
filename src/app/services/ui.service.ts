@@ -30,4 +30,10 @@ export class UiService {
   showTask(taskData: any) {
     this.taskDisplaySubject.next(taskData);
   }
+
+  private addColumnDisplaySubject = new ReplaySubject<any>();
+  addColumnDisplay$ = this.addColumnDisplaySubject.asObservable();
+  showAddColumn(change: any) {
+    this.addColumnDisplaySubject.next(change);
+  }
 }

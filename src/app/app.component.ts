@@ -15,6 +15,7 @@ export class AppComponent {
   showTask = false;
   showAddEditTask = false;
   showAddEditBoard = false;
+  showAddColumn = false;
   constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
@@ -24,6 +25,10 @@ export class AppComponent {
 
     this.uiService.taskDisplay$.subscribe(() => {
       this.showTask = true;
+    });
+
+    this.uiService.addColumnDisplay$.subscribe(() => {
+      this.showAddColumn = true;
     });
   }
 
@@ -68,4 +73,7 @@ export class AppComponent {
     this.showAddEditBoard = false;
   }
 
+  hideAddColumn() {
+    this.showAddColumn = false;
+  }
 }

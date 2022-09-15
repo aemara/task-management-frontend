@@ -1,4 +1,5 @@
-<div class="add-column-container">
+<div class="add-column-modal" (click)="onHideAddColumn($event)">
+  <div class="add-column-container">
     <h2 class="title">Add Column</h2>
     <form [formGroup]="columnForm" (ngSubmit)="onSubmit()">
       <div class="name-form-container">
@@ -8,4 +9,4 @@
       <button class="submit-btn" type="submit">Add Column</button>
     </form>
   </div>
-  
+</div>
