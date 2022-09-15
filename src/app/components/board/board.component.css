@@ -57,6 +57,7 @@ main {
   width: 280px;
   border-radius: 6px;
   font-weight: 700;
+  transition: .2s;
 }
 
 .new-column-container:hover {
