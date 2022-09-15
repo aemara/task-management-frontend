@@ -26,7 +26,15 @@ export class AddEditBoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    console.log(this.addOrEditBoard);
+    if (this.addOrEditBoard === 'add') {
+      this.boardForm = new FormGroup({
+        boardName: new FormControl(null, Validators.required),
+        boardColumns: new FormArray([
+          new FormControl(null, Validators.required),
+          new FormControl(null, Validators.required),
+        ]),
+      });
+    }
   }
 
   onAddBoardColumn() {
@@ -48,5 +56,23 @@ export class AddEditBoardComponent implements OnInit {
     }
   }
 
-  onSubmit() {}
+  onSubmit() {
+    const columns: any = [];
+    if (this.boardForm.value.boardColumns.length > 0) {
+      this.boardForm.value.boardColumns.forEach((title: any) => {
+        const column = { title: title };
+        columns.push(column);
+      });
+    }
+
+    const board = {
+      title: this.boardForm.value.boardName,
+      columns: columns,
+    };
+
+    this.httpService.addBoard(board).subscribe((response) => {
+      this.hideAddEditBoard.emit();
+      this.router.navigate(['/board', response.boardId]);
+    })
+  }
 }

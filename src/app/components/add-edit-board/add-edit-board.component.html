@@ -1,7 +1,7 @@
 <div class="add-edit-board-modal" (click)="onHideAddEditBoard($event)">
   <div class="add-edit-board-container">
     <h2 class="title">{{ isAdd ? "Add New" : "Edit" }} Board</h2>
-    <form [formGroup]="boardForm" (ngSubmit)="onSubmit()">
+    <form *ngIf="boardForm" [formGroup]="boardForm" (ngSubmit)="onSubmit()">
       <div class="name-form-container">
         <label>Board Name</label>
         <input type="text" formControlName="boardName" />
