@@ -17,7 +17,7 @@ main {
   margin-top: 5em;
 }
 
-.empty-board-prompt,
+.empty-board-prompt p,
 .no-boards-prompt p {
   font-size: 1.125rem;
   font-weight: 700;
@@ -26,7 +26,7 @@ main {
   text-align: center;
 }
 
-.empty-board-prompt,
+.empty-board-prompt button,
 .no-boards-prompt button {
   border: none;
   border-radius: 20px;
@@ -36,11 +36,13 @@ main {
   color: white;
   font-weight: 700;
   padding: 1em 1.5em;
+  transition: .2s;
 }
 
-.empty-board-prompt,
+.empty-board-prompt button:hover,
 .no-boards-prompt button:hover {
   cursor: pointer;
+  background: #A8A4FF;
 }
 
 .new-column-link {
