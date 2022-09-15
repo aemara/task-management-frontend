@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
+import { UiService } from 'src/app/services/ui.service';
 @Component({
   selector: 'app-add-edit-task',
   templateUrl: './add-edit-task.component.html',
@@ -13,35 +14,32 @@ export class AddEditTaskComponent implements OnInit {
   taskForm!: FormGroup;
   listOfColumns!: any[];
   selectedColumn!: string;
+  selectedColumnId!: string;
   displayDropdown: boolean = false;
   boardId!: string;
   constructor(
     private http: HttpService,
-    private route: ActivatedRoute,
+    private uiService: UiService,
     private router: Router
   ) {}
 
   ngOnInit(): void {
-    console.log(this.addOrEditTask);
-    this.taskForm = new FormGroup({
-      title: new FormControl(null, Validators.required),
-      description: new FormControl(null, Validators.required),
-      subtasks: new FormArray([
-        new FormControl(null, Validators.required),
-        new FormControl(null, Validators.required),
-      ]),
-      column: new FormControl(null, Validators.required),
+    this.boardId = this.uiService.boardId;
+    this.http.getColumns(this.boardId).subscribe((data) => {
+      this.listOfColumns = data.columns;
     });
 
-    this.route.params.subscribe((params: Params) => {
-      this.boardId = params['id'];
-
-      this.http.getColumns(this.boardId).subscribe((data) => {
-        this.listOfColumns = data.columns;
-        this.selectedColumn = this.listOfColumns[0].title;
-        this.taskForm.get('column')?.setValue(this.selectedColumn);
+    if (this.addOrEditTask === 'add') {
+      this.taskForm = new FormGroup({
+        title: new FormControl(null, Validators.required),
+        description: new FormControl(null, Validators.required),
+        subtasks: new FormArray([
+          new FormControl(null, Validators.required),
+          new FormControl(null, Validators.required),
+        ]),
+        column: new FormControl(null, Validators.required),
       });
-    });
+    }
   }
 
   onAddSubtask() {
@@ -57,7 +55,8 @@ export class AddEditTaskComponent implements OnInit {
     (<FormArray>this.taskForm.get('subtasks')).removeAt(index);
   }
 
-  onSelectColumn(column: string) {
+  onSelectColumn(column: string, columnId: string) {
+    this.selectedColumnId =  columnId;
     this.selectedColumn = column;
     this.taskForm.get('column')?.setValue(column);
     this.displayDropdown = false;
@@ -78,13 +77,7 @@ export class AddEditTaskComponent implements OnInit {
   }
 
   onSubmit() {
-    let columnId: any;
-    this.listOfColumns.forEach((column) => {
-      if (this.taskForm.value.column === column.title) {
-        columnId = column._id;
-      }
-    });
-
+   
     const subtasks: any[] = [];
     if (this.taskForm.value.subtasks.length > 0) {
       this.taskForm.value.subtasks.forEach((subtaskName: string) => {
@@ -99,8 +92,9 @@ export class AddEditTaskComponent implements OnInit {
       subtasks: subtasks,
     };
 
-    this.http.addTask(task, columnId).subscribe(() => {
-      this.router.navigate(['/board', this.boardId]);
+    this.http.addTask(task, this.selectedColumnId).subscribe(() => {
+      this.hideAddEditTask.emit();
+      this.uiService.fetchBoard(null);
     });
   }
 }
