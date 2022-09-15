@@ -22,6 +22,15 @@ export class BoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
+    /**If the user just added a column */
+    this.uiService.fetchBoardObs$.subscribe(() => {
+      this.httpService.getBoard(this.boardId).subscribe((data) => {
+        this.board = data.board;
+        this.columns = this.board.columns;
+      });
+    });
+
     /**If user is requesting a specifc board */
     this.route.params.subscribe((params: Params) => {
       this.boardId = params['id'];
@@ -56,15 +65,11 @@ export class BoardComponent implements OnInit {
     });
   }
 
-
   onClickAddColumn() {
-   this.uiService.showAddColumn("");
+    this.uiService.showAddColumn('');
   }
-
 
   onClickAddBoard() {
-    this.uiService.showAddBoard("");
+    this.uiService.showAddBoard('');
   }
 }
-
-

@@ -26,17 +26,19 @@ export class AddColumnComponent implements OnInit {
     });
   }
 
+  onHideAddColumn(event: any) {
+    if (event.target.className === 'add-column-modal') {
+      this.hideAddColumn.emit();
+    }
+  }
+
   onSubmit() {
     const dataToSend = {
       title: this.columnForm.value.name,
     };
-    this.http.addColumn(dataToSend, this.boardId).subscribe();
-    this.router.navigate(['']);
-  }
-
-  onHideAddColumn(event: any) {
-    if(event.target.className === "add-column-modal") {
+    this.http.addColumn(dataToSend, this.boardId).subscribe(() => {
       this.hideAddColumn.emit();
-    }
+      this.uiService.fetchBoard(null);
+    });
   }
 }
