@@ -91,6 +91,6 @@ export class ViewTaskComponent implements OnInit {
 
   onClickEditTask() {
     this.hideTask.emit();
-    this.showAddEditTask.emit("edit");
+    this.showAddEditTask.emit('edit');
   }
 }
