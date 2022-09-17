@@ -19,7 +19,10 @@ export class HttpService {
   }
 
   addTask(data: any, columnId: string) {
-    return this.http.post<any>(`http://localhost:3000/addtask/${columnId}`, data);
+    return this.http.post<any>(
+      `http://localhost:3000/addtask/${columnId}`,
+      data
+    );
   }
 
   getBoards() {
@@ -54,9 +57,9 @@ export class HttpService {
     return this.http.put(`http://localhost:3000/toggledone/${subtaskId}`, {});
   }
 
-  changeColumn(taskId: string, newColumnId: string) {
+  changeColumn(taskId: string, currentColumnId: string, newColumnId: string) {
     return this.http.put(
-      `http://localhost:3000/changecolumn/${taskId}/${newColumnId}`,
+      `http://localhost:3000/changecolumn/${taskId}/${currentColumnId}/${newColumnId}`,
       {}
     );
   }
