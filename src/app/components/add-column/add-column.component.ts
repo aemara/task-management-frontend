@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HttpService } from 'src/app/services/http.service';
 import { UiService } from 'src/app/services/ui.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-add-column',
   templateUrl: './add-column.component.html',
@@ -16,7 +16,8 @@ export class AddColumnComponent implements OnInit {
   constructor(
     private http: HttpService,
     private uiService: UiService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -38,7 +39,9 @@ export class AddColumnComponent implements OnInit {
     };
     this.http.addColumn(dataToSend, this.boardId).subscribe(() => {
       this.hideAddColumn.emit();
-      this.uiService.fetchBoard(null);
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([this.router.url]);
     });
   }
 }

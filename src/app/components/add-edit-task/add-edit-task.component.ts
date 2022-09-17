@@ -93,7 +93,9 @@ export class AddEditTaskComponent implements OnInit {
 
     this.http.addTask(task, this.selectedColumnId).subscribe(() => {
       this.hideAddEditTask.emit();
-      this.uiService.fetchBoard(null);
+      this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+      this.router.onSameUrlNavigation = 'reload';
+      this.router.navigate([this.router.url]);
     });
   }
 }

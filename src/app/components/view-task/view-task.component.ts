@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { UiService } from 'src/app/services/ui.service';
 
@@ -16,7 +16,7 @@ export class ViewTaskComponent implements OnInit {
   taskDescription!: string;
   currentColumn!: string;
   columns!: any[];
-  columnId!: string;
+  currentColumnId!: string;
   boardId!: string;
   subtasks = [];
   numOfSubtasks!: number;
@@ -27,12 +27,14 @@ export class ViewTaskComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpService,
-    private ui: UiService
+    private ui: UiService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
     this.ui.taskDisplay$.subscribe((taskData) => {
       this.currentColumn = taskData.columnName;
+      this.currentColumnId = taskData.columnId;
       this.taskId = taskData.task._id;
       this.taskTitle = taskData.task.title;
       this.taskDescription = taskData.task.description;
@@ -55,10 +57,16 @@ export class ViewTaskComponent implements OnInit {
     }
   }
 
-  changeCurrentColumn(column: string, columnId: string) {
+  changeCurrentColumn(column: string, newColumnId: string) {
     this.currentColumn = column;
-    this.http.changeColumn(this.taskId, columnId).subscribe();
-    this.showColumnDropdown = false;
+    this.http
+      .changeColumn(this.taskId, this.currentColumnId, newColumnId)
+      .subscribe(() => {
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([this.router.url]);
+        this.hideTask.emit();
+      });
   }
 
   toggleColumnDropdown() {
