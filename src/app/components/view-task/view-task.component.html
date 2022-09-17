@@ -42,6 +42,8 @@
         <span class="current-column">{{ currentColumn }}</span>
         <svg
           (click)="toggleColumnDropdown()"
+          *ngIf="!showColumnDropdown"
+          class="dropdown-chevron"
           width="10"
           height="7"
           xmlns="http://www.w3.org/2000/svg"
@@ -53,12 +55,30 @@
             d="m1 1 4 4 4-4"
           />
         </svg>
+        <svg
+          *ngIf="showColumnDropdown"
+          (click)="toggleColumnDropdown()"
+          class="dropdown-chevron"
+          width="10"
+          height="7"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            stroke="#635FC7"
+            stroke-width="2"
+            fill="none"
+            d="M9 6 5 2 1 6"
+          />
+        </svg>
       </div>
       <div class="dropdown-menu" *ngIf="showColumnDropdown">
         <ul>
           <li
             *ngFor="let column of columns"
-            (click)="changeCurrentColumn(column.title, column._id)"
+            (click)="
+              changeCurrentColumn(column.title, column._id);
+              toggleColumnDropdown()
+            "
           >
             {{ column.title }}
           </li>

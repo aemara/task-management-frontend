@@ -1,5 +1,5 @@
 .subtask {
-    background: #20212C;
+    background: #F4F7FD;
     padding: 1em 2.5em 1em 1em;
     display: flex;
     align-items: center;
@@ -9,6 +9,10 @@
     font-weight: 700;
 }
 
+.subtask-title {
+    color: rgba(0, 1, 18, 1);
+}
+
 .subtask-done {
     text-decoration: line-through;
     opacity: .5;
@@ -16,4 +20,9 @@
 
 .subtask:hover {
     cursor: pointer;
+    background: rgba(99, 95, 199, .25)
+}
+
+.subtask:active {
+    background: rgba(99, 95, 199, .25)
 }
