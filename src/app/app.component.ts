@@ -36,6 +36,7 @@ export class AppComponent {
 
     this.uiService.addBoardDisplay$.subscribe(() => {
       this.showAddEditBoard = true;
+      this.addOrEditBoard = 'add';
     });
   }
 
