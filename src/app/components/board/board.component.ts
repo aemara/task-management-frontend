@@ -22,15 +22,6 @@ export class BoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
-    /**If the user just added a column, refetch the updated board */
-    this.uiService.fetchBoardObs$.subscribe(() => {
-      this.httpService.getBoard(this.boardId).subscribe((data) => {
-        this.board = data.board;
-        this.columns = this.board.columns;
-      });
-    });
-
     /**If user is requesting a specifc board */
     this.route.params.subscribe((params: Params) => {
       this.boardId = params['id'];

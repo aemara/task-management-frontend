@@ -24,11 +24,6 @@ import { AddEditTaskComponent } from './components/add-edit-task/add-edit-task.c
 const appRoutes: Routes = [
   { path: '', component: BoardComponent },
   { path: 'board/:id', component: BoardComponent },
-  { path: 'addboard', component: AddEditBoardComponent },
-  { path: 'editboard/:id', component: AddEditBoardComponent },
-  { path: 'addcolumn/:id', component: AddColumnComponent },
-  { path: 'addtask/:id', component: AddEditTaskComponent },
-  { path: 'task/:id', component: ViewTaskComponent },
 ];
 
 @NgModule({
