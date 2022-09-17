@@ -26,8 +26,9 @@ export class ColumnComponent implements OnInit {
   onTaskClick(taskObject: any, columnName: string) {
     const data = {
       task: taskObject,
-      columnName: columnName
-    }
+      columnName: columnName,
+      columnId: this.columnId,
+    };
     this.uiService.showTask(data);
   }
 }
