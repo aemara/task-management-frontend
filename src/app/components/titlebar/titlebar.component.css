@@ -86,9 +86,14 @@ header {
   min-width: 159px;
 }
 
+@media (min-width: 768px) {
+  .mobile-logo {
+    display:  none;
+  }
+}
 .board-title {
   font-weight: 700;
-  color: white;
+  color: #000112;
   font-size: 1.125rem;
 }
 
