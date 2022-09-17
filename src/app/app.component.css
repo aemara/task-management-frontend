@@ -40,7 +40,7 @@ app-titlebar {
 }
 
 .main {
-  background: #20212c;
+  background: #F4F7FD;
   grid-row: 2/3;
   grid-column: 1/-1;
   overflow-y: auto;
