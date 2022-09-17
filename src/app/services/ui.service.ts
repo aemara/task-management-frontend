@@ -42,10 +42,4 @@ export class UiService {
   showAddBoard(change: any) {
     this.showAddBoardSubject.next(change);
   }
-
-  private fetchBoardSubject = new Subject<any>();
-  fetchBoardObs$ = this.fetchBoardSubject.asObservable();
-  fetchBoard(change: any) {
-    this.fetchBoardSubject.next(change);
-  }
 }
