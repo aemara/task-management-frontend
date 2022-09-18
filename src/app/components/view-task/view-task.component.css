@@ -1,11 +1,11 @@
 .view-task-modal {
   position: fixed;
-  z-index: 1; 
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -14,7 +14,7 @@
 
 .view-task-container {
   color: white;
-  background: #2b2c37;
+  background: white;
   border-radius: 6px;
   padding: 0.5em 1em 2em 1em;
   display: flex;
@@ -49,10 +49,9 @@ header {
   border-radius: 8px;
   padding: 1em 5em 1em 1em;
   position: absolute;
-  right: .4em;
+  right: 0.4em;
   width: max-content;
   align-items: baseline;
-  
 }
 
 .edit-delete-menu a {
@@ -69,17 +68,11 @@ header {
   color: #ea5555;
 }
 
-.back-link {
-  font-size: 0.8125rem;
-  color: #635fc7;
-  font-weight: 700;
-  text-decoration: none;
-}
-
 .task-title {
   font-size: 1.125rem;
   font-weight: 700;
   margin-top: 0.5em;
+  color: #000112;
 }
 
 .task-description {
@@ -93,6 +86,7 @@ header {
   margin-bottom: 1em;
   font-size: 0.75rem;
   font-weight: 700;
+  color: #828fa3;
 }
 
 .subtasks-list {
@@ -105,6 +99,12 @@ header {
   font-size: 0.75rem;
   font-weight: 700;
   margin-bottom: 1em;
+  color: #828fa3;
+}
+
+.current-column {
+  color: #000112;
+  font-weight: 500;
 }
 
 .current-column-dropdown {
@@ -119,9 +119,16 @@ header {
 }
 
 .dropdown-menu {
-  background: #20212c;
+  background: white;
   border-radius: 8px;
   margin-top: 0.5em;
+  box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
+  -webkit-box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
+  -moz-box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
+}
+
+.dropdown-chevron:hover {
+  cursor: pointer;
 }
 
 .dropdown-menu ul {
@@ -138,6 +145,11 @@ header {
   margin-bottom: 1em;
 }
 
+.dropdown-menu ul li:hover {
+  cursor: pointer;
+}
+
 .dropdown-menu ul li:last-child {
   margin-bottom: 0;
 }
+

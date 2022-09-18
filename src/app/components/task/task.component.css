@@ -1,13 +1,17 @@
 .task {
-  background: #2b2c37;
+  background: white;
   padding: 1.5em 1em;
   border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(54, 78, 126, 0.1)  ; 
+	-webkit-box-shadow: 0 4px 6px rgba(54, 78, 126, 0.1)  ; 
+	-moz-box-shadow: 0 4px 6px rgba(54, 78, 126, 0.1)  ; 
 }
 
 .task-title {
   font-weight: 700;
   font-size: 0.9rem;
   transition: 0.2s;
+  color: #000112;
 }
 
 .subtasks-subtitle {

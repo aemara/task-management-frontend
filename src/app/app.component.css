@@ -23,7 +23,7 @@ aside {
 }
 
 app-titlebar {
-  background: #2b2c37;
+  background: white;
   grid-row: 1/2;
   grid-column: 1/-1;
 }
@@ -40,7 +40,7 @@ app-titlebar {
 }
 
 .main {
-  background: #20212c;
+  background: #F4F7FD;
   grid-row: 2/3;
   grid-column: 1/-1;
   overflow-y: auto;

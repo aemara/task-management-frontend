@@ -49,7 +49,7 @@ header {
 
 .logo-title-container {
   display: none;
-  border-right: 1px solid #3e3f4e;
+  border-right: 1px solid #E4EBFA;
   padding: 1em 1.5em 1em 1.5em;
 }
 
@@ -70,7 +70,7 @@ header {
 
 .title {
   font-weight: 700;
-  color: #f4f7fd;
+  color: #000112;
 }
 
 .board-title-btn-container {
@@ -86,9 +86,14 @@ header {
   min-width: 159px;
 }
 
+@media (min-width: 768px) {
+  .mobile-logo {
+    display: none;
+  }
+}
 .board-title {
   font-weight: 700;
-  color: white;
+  color: #000112;
   font-size: 1.125rem;
 }
 
@@ -177,7 +182,7 @@ header {
 }
 
 .options-container {
-  background: #20212c;
+  background: white;
   display: flex;
   gap: 1em;
   flex-direction: column;
@@ -186,6 +191,9 @@ header {
   position: absolute;
   top: 4em;
   right: 1.2em;
+  box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.26);
+  -webkit-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.26);
+  -moz-box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.26);
 }
 
 @media (min-width: 768px) {
