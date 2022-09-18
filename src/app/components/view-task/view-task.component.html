@@ -38,10 +38,9 @@
 
     <div class="current-column-container">
       <h3 class="current-column-heading">Current Column</h3>
-      <div class="current-column-dropdown">
+      <div class="current-column-dropdown" (click)="toggleColumnDropdown()">
         <span class="current-column">{{ currentColumn }}</span>
         <svg
-          (click)="toggleColumnDropdown()"
           *ngIf="!showColumnDropdown"
           class="dropdown-chevron"
           width="10"
@@ -57,7 +56,6 @@
         </svg>
         <svg
           *ngIf="showColumnDropdown"
-          (click)="toggleColumnDropdown()"
           class="dropdown-chevron"
           width="10"
           height="7"
