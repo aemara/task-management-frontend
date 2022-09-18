@@ -32,8 +32,8 @@ export class BoardComponent implements OnInit {
           this.board = data.board;
           this.columns = this.board.columns;
           this.uiService.emitChange(this.board);
+          this.isFetching = false;
         });
-        this.isFetching = false;
       } else {
         /**Else fetch the last added board on initial app load */
         this.isFetching = true;
@@ -47,11 +47,10 @@ export class BoardComponent implements OnInit {
             } else {
               /**If there are no boards */
               this.areThereBoards = false;
-              console.log(`There are no boards.`);
             }
           }
+          this.isFetching = false;
         });
-        this.isFetching = false;
       }
     });
   }

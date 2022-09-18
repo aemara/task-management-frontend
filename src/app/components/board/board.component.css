@@ -17,6 +17,20 @@ main {
   margin-top: 5em;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loading-indicator {
+  width: 40px;
+  height: 40px;
+  -webkit-animation: rotate-center 0.4s ease-in-out infinite forwards;
+  animation: rotate-center 0.4s ease-in-out infinite forwards;
+}
+
 .empty-board-prompt p,
 .no-boards-prompt p {
   font-size: 1.125rem;
@@ -36,13 +50,13 @@ main {
   color: white;
   font-weight: 700;
   padding: 1em 1.5em;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .empty-board-prompt button:hover,
 .no-boards-prompt button:hover {
   cursor: pointer;
-  background: #A8A4FF;
+  background: #a8a4ff;
 }
 
 .new-column-link {
@@ -51,7 +65,7 @@ main {
 }
 
 .new-column-container {
-  background: #E9EFFA;
+  background: #e9effa;
   color: #828fa3;
   display: flex;
   justify-content: center;
@@ -59,7 +73,7 @@ main {
   width: 280px;
   border-radius: 6px;
   font-weight: 700;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .new-column-container:hover {
@@ -69,4 +83,29 @@ main {
 
 .new-column-container:active {
   color: #635fc7;
+}
+
+/**
+KEYFRAMES
+**/
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

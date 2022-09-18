@@ -17,8 +17,6 @@
   <p>There are no boards. Create a new board</p>
   <button (click)="onClickAddBoard()">+ Add New Board</button>
 </div>
-<img
-  class="loading-indicator"
-  *ngIf="isFetching"
-  src="../../../assets/Rolling-1s-200px.svg"
-/>
+<div class="loading" *ngIf="isFetching">
+  <img class="loading-indicator" src="../../../assets/logo-mobile.svg">
+</div>
