@@ -55,6 +55,9 @@ export class ViewTaskComponent implements OnInit {
     } else {
       this.numOfSubtasksDone--;
     }
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.router.onSameUrlNavigation = 'reload';
+    this.router.navigate([this.router.url]);
   }
 
   changeCurrentColumn(column: string, newColumnId: string) {
@@ -65,7 +68,7 @@ export class ViewTaskComponent implements OnInit {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate([this.router.url]);
-        this.hideTask.emit();
+        // this.hideTask.emit();
       });
   }
 
