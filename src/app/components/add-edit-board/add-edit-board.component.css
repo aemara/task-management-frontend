@@ -1,11 +1,11 @@
 .add-edit-board-modal {
   position: fixed;
-  z-index: 1; 
+  z-index: 1;
   left: 0;
   top: 0;
-  width: 100%; 
-  height: 100%; 
-  overflow: auto; 
+  width: 100%;
+  height: 100%;
+  overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -13,27 +13,28 @@
 }
 
 .add-edit-board-container {
-  color: white;
-  background: #2b2c37;
+  color: #828fa3;
+  background: white;
   border-radius: 6px;
-  padding: .5em 1.5em 2em 1.5em;
+  padding: 0.5em 1.5em 2em 1.5em;
   width: 90%;
   margin: 2em auto 0 auto;
   max-width: 480px;
 }
 
 .back-link {
-  font-size: .8125rem;
-  color: #635FC7;
+  font-size: 0.8125rem;
+  color: #635fc7;
   font-weight: 700;
   text-decoration: none;
 }
 
 .title {
+  color: #000112;
   font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: 1.5em;
-  margin-top: .5em;
+  margin-top: 0.5em;
 }
 
 form {
@@ -57,12 +58,17 @@ label,
 
 input {
   border: 1px solid rgba(130, 143, 163, 0.25);
-  background: #2b2c37;
+  background: white;
   border-radius: 4px;
-  color: white;
+  color: #000112;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 500;
   padding: 0.8em 0.8em;
+}
+
+input:focus {
+  outline: 1px solid #635fc7;
+  outline-offset: -1px;
 }
 
 .columns-list {
@@ -82,7 +88,7 @@ input {
 }
 
 .column-input input {
-  width: 85%;
+  width: 90%;
 }
 
 .delete-btn {
@@ -91,6 +97,30 @@ input {
 }
 
 .delete-btn:hover {
+  cursor: pointer;
+}
+
+.add-column-btn {
+  background: rgba(99, 95, 199, 0.1);
+  border: none;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #635fc7;
+  padding: 0.9em 0;
+  width: 100%;
+  transition: 0.2s;
+}
+
+.add-column-btn:hover {
+  background: rgba(99, 95, 199, 0.25);
+}
+
+.add-column-btn:active {
+  background: rgba(99, 95, 199, 0.25);
+}
+
+.add-column-btn:hover {
   cursor: pointer;
 }
 
@@ -103,23 +133,10 @@ input {
   color: white;
   font-weight: 700;
   padding: 1em 1.5em;
+  transition: .2s;
 }
 
 .submit-btn:hover {
   cursor: pointer;
-}
-
-.add-column-btn {
-  background: white;
-  border: none;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #635fc7;
-  padding: 0.9em 0;
-  width: 100%;
-}
-
-.add-column-btn:hover {
-  cursor: pointer;
+  background: #A8A4FF;
 }
