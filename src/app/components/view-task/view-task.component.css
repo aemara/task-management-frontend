@@ -57,19 +57,26 @@ header {
   -moz-box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
 }
 
+.edit-delete-menu:hover {
+  cursor:default;
+}
+
 .edit-delete-menu button {
   text-decoration: none;
   background: none;
   border: none;
-}
-
-.edit-link {
-  color: #828fa3;
-  font-size: 0.8125rem;
+  font-size: 0.8rem;
   font-weight: 500;
 }
+.edit-delete-menu button:hover {
+  cursor: pointer;
+}
 
-.delete-link {
+.edit-btn {
+  color: #828fa3;
+}
+
+.delete-btn {
   color: #ea5555;
 }
 
@@ -139,8 +146,6 @@ header {
   box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
   -webkit-box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
   -moz-box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
-  /* animation: slide-in-fwd-top 1s ease 0s 1 normal none; */
-
   -webkit-animation: slide-in-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
   animation: slide-in-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }

@@ -133,10 +133,14 @@ input:focus {
   color: white;
   font-weight: 700;
   padding: 1em 1.5em;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .submit-btn:hover {
   cursor: pointer;
-  background: #A8A4FF;
+  background: #a8a4ff;
+}
+
+.submit-btn:active {
+  background: #a8a4ff;
 }

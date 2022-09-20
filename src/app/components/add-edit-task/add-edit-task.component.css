@@ -13,8 +13,8 @@
 }
 
 .add-edit-task-container {
-  color: white;
-  background: #2b2c37;
+  color: #828fa3;
+  background: white;
   border-radius: 6px;
   padding: 1em 1em 2em 1em;
   width: 90%;
@@ -25,6 +25,7 @@
   font-size: 1.125rem;
   font-weight: 700;
   margin-bottom: 1.5em;
+  color: #000112;
 }
 
 form {
@@ -50,14 +51,19 @@ label,
 input,
 textarea {
   border: 1px solid rgba(130, 143, 163, 0.25);
-  background: #2b2c37;
+  background: white;
   border-radius: 4px;
-  color: white;
+  color: #000112;
   font-size: 0.8rem;
-  font-weight: 700;
+  font-weight: 500;
   padding: 0.8em 0.8em;
 }
 
+input:focus,
+textarea:focus {
+  outline: 1px solid #635fc7;
+  outline-offset: -1px;
+}
 .subtasks-heading {
   margin-bottom: 1em;
 }
@@ -75,7 +81,7 @@ textarea {
 }
 
 .subtask-input input {
-  width: 85%;
+  width: 90%;
 }
 
 .delete-btn {
@@ -88,7 +94,7 @@ textarea {
 }
 
 .add-subtask-btn {
-  background: white;
+  background: rgba(99, 95, 199, 0.1);
   border: none;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -96,6 +102,19 @@ textarea {
   color: #635fc7;
   padding: 0.9em 0;
   width: 100%;
+  transition: 0.2s;
+}
+
+.add-subtask-btn:hover {
+  cursor: pointer;
+}
+
+.add-subtask-btn:hover {
+  background: rgba(99, 95, 199, 0.25);
+}
+
+.add-subtask-btn:active {
+  background: rgba(99, 95, 199, 0.25);
 }
 
 .add-subtask-btn:hover {
@@ -117,6 +136,10 @@ textarea {
   align-items: center;
 }
 
+.column-dropdown:hover {
+  cursor: pointer;
+}
+
 .toggle-dropdown-btn {
   border: none;
   background: none;
@@ -127,8 +150,14 @@ textarea {
 }
 
 .dropdown-menu {
-  background: #20212c;
+  background: white;
   border-radius: 8px;
+  margin-top: 0.5em;
+  box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
+  -webkit-box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
+  -moz-box-shadow: 0 10px 20px rgba(54, 78, 126, 0.3);
+  -webkit-animation: slide-in-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-in-top 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
 }
 
 .list-of-columns {
@@ -146,7 +175,8 @@ textarea {
 .column-btn {
   background: none;
   border: none;
-  color: white;
+  color: #828FA3;
+  font-weight: 500;
 }
 
 .column-btn:hover {
