@@ -9,6 +9,7 @@ import { HttpService } from 'src/app/services/http.service';
 })
 export class SubtaskComponent implements OnInit {
   @Input() subtask!: any;
+  @Input() taskId!: string;
   @Output() toggleDone: EventEmitter<any> = new EventEmitter();
   subtaskName!: string;
   subtaskId!: string;
@@ -23,7 +24,7 @@ export class SubtaskComponent implements OnInit {
   }
 
   onClick() {
-    this.http.toggleSubtaskStatus(this.subtaskId).subscribe();
+    this.http.toggleSubtaskStatus(this.subtaskId, this.taskId).subscribe();
     if (this.isDone === false) {
       this.isDone = true;
       this.toggleDone.emit('true');
