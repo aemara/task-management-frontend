@@ -13,7 +13,7 @@
   <button (click)="onClickAddColumn()">+ Add New Column</button>
 </div>
 
-<div class="no-boards-prompt" *ngIf="!areThereBoards">
+<div class="no-boards-prompt" *ngIf="!areThereBoards && !isFetching">
   <p>There are no boards. Create a new board</p>
   <button (click)="onClickAddBoard()">+ Add New Board</button>
 </div>
