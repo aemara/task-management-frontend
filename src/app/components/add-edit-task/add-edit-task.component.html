@@ -1,6 +1,6 @@
 <div class="add-edit-task-modal" (click)="onHideAddEditTask($event)">
   <div class="add-edit-task-container">
-    <h2 class="title">Add/Edit Task</h2>
+    <h2 class="title">{{ addOrEditTask }} Task</h2>
     <form *ngIf="taskForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
       <div class="title-form-container">
         <label>Title</label>
@@ -19,8 +19,10 @@
           <div
             class="subtask-input"
             *ngFor="let subtasks of getSubtasksControls(); let i = index"
+            [formGroupName]="i"
           >
-            <input type="text" [formControlName]="i" />
+            <input type="text" formControlName="subtask" />
+            <input type="checkbox" formControlName="done" />
             <button class="delete-btn" (click)="onDeleteSubtask(i)">
               <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
                 <g fill="#828FA3" fill-rule="evenodd">
@@ -37,19 +39,35 @@
       </div>
       <div class="column-form-container">
         <h3 class="column-form-heading">Column</h3>
-        <div class="column-dropdown">
+        <div class="column-dropdown" (click)="onToggleDropdown()">
           <span class="current-column">{{ selectedColumn }}</span>
-          <button
-            class="toggle-dropdown-btn"
-            type="button"
-            (click)="onToggleDropdown()"
-          >
-            <svg width="10" height="7" xmlns="http://www.w3.org/2000/svg">
+          <button class="toggle-dropdown-btn" type="button">
+            <svg
+              *ngIf="!displayDropdown"
+              class="dropdown-chevron"
+              width="10"
+              height="7"
+              xmlns="http://www.w3.org/2000/svg"
+            >
               <path
                 stroke="#635FC7"
                 stroke-width="2"
                 fill="none"
                 d="m1 1 4 4 4-4"
+              />
+            </svg>
+            <svg
+              *ngIf="displayDropdown"
+              class="dropdown-chevron"
+              width="10"
+              height="7"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke="#635FC7"
+                stroke-width="2"
+                fill="none"
+                d="M9 6 5 2 1 6"
               />
             </svg>
           </button>
@@ -68,7 +86,9 @@
           </ul>
         </div>
       </div>
-      <button class="submit-btn" type="submit">Create Task</button>
+      <button class="submit-btn" type="submit">
+        {{ addOrEditTask === "edit" ? "Save Changes" : "Add Task" }}
+      </button>
     </form>
   </div>
 </div>

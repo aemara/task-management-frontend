@@ -26,6 +26,7 @@
   font-weight: 700;
   margin-bottom: 1.5em;
   color: #000112;
+  text-transform: capitalize;
 }
 
 form {
@@ -82,6 +83,10 @@ textarea:focus {
 
 .subtask-input input {
   width: 90%;
+}
+
+.subtask-input input[type=checkbox] {
+  display: none;
 }
 
 .delete-btn {
