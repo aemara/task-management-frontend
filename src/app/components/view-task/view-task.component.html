@@ -14,8 +14,8 @@
           </g>
         </svg>
         <div class="edit-delete-menu" *ngIf="showEditDropdown">
-          <a class="edit-link" (click)="onClickEditTask()">Edit Task</a>
-          <a class="delete-link">Delete Task</a>
+          <button class="edit-btn" (click)="onClickEditTask()">Edit Task</button>
+          <button class="delete-btn">Delete Task</button>
         </div>
       </button>
     </header>
@@ -31,6 +31,7 @@
         <app-subtask
           *ngFor="let subtask of subtasks"
           [subtask]="subtask"
+          [taskId]="taskId"
           (toggleDone)="updateDoneCount($event)"
         ></app-subtask>
       </div>
