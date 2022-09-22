@@ -64,6 +64,10 @@ export class HttpService {
     );
   }
 
+  editTask(taskId: string, data: any) {
+    return this.http.put(`http://localhost:3000/edittask/${taskId}`, data);
+  }
+
   deleteBoard(boardId: string) {
     return this.http.delete(`http://localhost:3000/removeboard/${boardId}`);
   }
