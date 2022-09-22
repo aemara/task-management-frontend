@@ -53,8 +53,8 @@ export class HttpService {
     return this.http.get<any>(`http://localhost:3000/subtasks/${taskId}`);
   }
 
-  toggleSubtaskStatus(subtaskId: string) {
-    return this.http.put(`http://localhost:3000/toggledone/${subtaskId}`, {});
+  toggleSubtaskStatus(subtaskId: string, taskId: string) {
+    return this.http.put(`http://localhost:3000/toggledone/${subtaskId}/${taskId}`, {});
   }
 
   changeColumn(taskId: string, currentColumnId: string, newColumnId: string) {
