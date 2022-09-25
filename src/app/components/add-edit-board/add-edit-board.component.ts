@@ -11,13 +11,13 @@ import { UiService } from 'src/app/services/ui.service';
 export class AddEditBoardComponent implements OnInit {
   @Output() hideAddEditBoard = new EventEmitter<any>();
   @Input() addOrEditBoard!: string;
-  isAdd: boolean = true;
   path!: string;
   boardForm!: FormGroup;
   boardId!: string;
-  boardName!: string;
+  currentBoardTitle!: string;
   boardColumns!: any[];
-
+  columnsToBeDeleted: string[] = [];
+  isFetching!: boolean;
   constructor(
     private route: ActivatedRoute,
     private httpService: HttpService,
@@ -26,20 +26,48 @@ export class AddEditBoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.boardId = this.uiService.boardId;
     if (this.addOrEditBoard === 'add') {
       this.boardForm = new FormGroup({
         boardName: new FormControl(null, Validators.required),
         boardColumns: new FormArray([
-          new FormControl(null, Validators.required),
-          new FormControl(null, Validators.required),
+          new FormGroup({
+            columnName: new FormControl(null, Validators.required),
+            columnId: new FormControl(null),
+          }),
+          new FormGroup({
+            columnName: new FormControl(null, Validators.required),
+            columnId: new FormControl(null),
+          }),
         ]),
+      });
+    } else {
+      this.isFetching = true;
+      this.httpService.getColumns(this.boardId).subscribe((data) => {
+        this.currentBoardTitle = data.boardTitle;
+        const columnsFormGroups: any = [];
+        data.columns.forEach((column: any) => {
+          const formControl = new FormGroup({
+            columnName: new FormControl(column.title, Validators.required),
+            columnId: new FormControl(column._id),
+          });
+          columnsFormGroups.push(formControl);
+        });
+        this.boardForm = new FormGroup({
+          boardName: new FormControl(data.boardTitle, Validators.required),
+          boardColumns: new FormArray(columnsFormGroups),
+        });
+        this.isFetching = false;
       });
     }
   }
 
   onAddBoardColumn() {
-    const control = new FormControl(null, Validators.required);
-    (<FormArray>this.boardForm.get('boardColumns')).push(control);
+    const formGroup = new FormGroup({
+      columnName: new FormControl(null, Validators.required),
+      columnId: new FormControl(null),
+    });
+    (<FormArray>this.boardForm.get('boardColumns')).push(formGroup);
   }
 
   getBoardColumnsControls() {
@@ -47,6 +75,10 @@ export class AddEditBoardComponent implements OnInit {
   }
 
   onDeleteBoardColumn(index: number) {
+    this.columnsToBeDeleted.push(
+      (<FormArray>this.boardForm.get('boardColumns')).at(index).value.columnId
+    );
+    console.log(this.columnsToBeDeleted);
     (<FormArray>this.boardForm.get('boardColumns')).removeAt(index);
   }
 
@@ -57,22 +89,42 @@ export class AddEditBoardComponent implements OnInit {
   }
 
   onSubmit() {
-    const columns: any = [];
-    if (this.boardForm.value.boardColumns.length > 0) {
-      this.boardForm.value.boardColumns.forEach((title: any) => {
-        const column = { title: title };
-        columns.push(column);
+    if (this.addOrEditBoard === 'add') {
+      const columns: any = [];
+      if (this.boardForm.value.boardColumns.length > 0) {
+        this.boardForm.value.boardColumns.forEach((title: any) => {
+          const column = { title: title };
+          columns.push(column);
+        });
+      }
+
+      const board = {
+        title: this.boardForm.value.boardName,
+        columns: columns,
+      };
+
+      this.httpService.addBoard(board).subscribe((response) => {
+        this.hideAddEditBoard.emit();
+        this.router.navigate(['/board', response.boardId]);
+      });
+    } else {
+      const data: any = {};
+
+      /**If there is a new board title */
+      if (this.boardForm.value.boardName !== this.currentBoardTitle) {
+        console.log(this.boardForm.value.boardName);
+        data['title'] = this.boardForm.value.boardName;
+      }
+
+      data['columns'] = this.boardForm.value.boardColumns;
+      data['deletedColumns'] = this.columnsToBeDeleted;
+
+      this.httpService.editBoard(this.boardId, data).subscribe(() => {
+        this.hideAddEditBoard.emit();
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([this.router.url]);
       });
     }
-
-    const board = {
-      title: this.boardForm.value.boardName,
-      columns: columns,
-    };
-
-    this.httpService.addBoard(board).subscribe((response) => {
-      this.hideAddEditBoard.emit();
-      this.router.navigate(['/board', response.boardId]);
-    })
   }
 }

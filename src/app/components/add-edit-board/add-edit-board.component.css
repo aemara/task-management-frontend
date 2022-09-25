@@ -35,6 +35,7 @@
   font-weight: 700;
   margin-bottom: 1.5em;
   margin-top: 0.5em;
+  text-transform: capitalize;
 }
 
 form {
@@ -69,6 +70,10 @@ input {
 input:focus {
   outline: 1px solid #635fc7;
   outline-offset: -1px;
+}
+
+.form-control-id {
+  display: none;
 }
 
 .columns-list {
@@ -143,4 +148,44 @@ input:focus {
 
 .submit-btn:active {
   background: #a8a4ff;
+}
+
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loading-indicator {
+  width: 30px;
+  height: 30px;
+  -webkit-animation: rotate-center 0.4s ease-in-out infinite forwards;
+  animation: rotate-center 0.4s ease-in-out infinite forwards;
+}
+
+/**
+KEYFRAMES
+**/
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
