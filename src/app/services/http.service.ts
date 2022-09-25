@@ -53,6 +53,10 @@ export class HttpService {
     return this.http.get<any>(`http://localhost:3000/subtasks/${taskId}`);
   }
 
+  editBoard(boardId: string, data: any) {
+    return this.http.put<any>(`http://localhost:3000/editboard/${boardId}`, data);
+  }
+
   toggleSubtaskStatus(subtaskId: string, taskId: string) {
     return this.http.put(`http://localhost:3000/toggledone/${subtaskId}/${taskId}`, {});
   }
