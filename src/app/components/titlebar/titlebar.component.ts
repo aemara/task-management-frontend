@@ -37,7 +37,7 @@ export class TitlebarComponent implements OnInit {
   }
 
   onShowDeleteModal() {
-    this.showDeleteModal.emit('board');
+    this.uiService.showDeleteModal('board', this.boardId);
     this.toggleOptions();
   }
 

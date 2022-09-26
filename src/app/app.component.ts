@@ -38,6 +38,10 @@ export class AppComponent {
       this.showAddEditBoard = true;
       this.addOrEditBoard = 'add';
     });
+
+    this.uiService.deleteModalDisplay$.subscribe((data: any) => {
+      this.onToggleDeleteModal(data.type);
+    });
   }
 
   onToggleBoardsModal() {

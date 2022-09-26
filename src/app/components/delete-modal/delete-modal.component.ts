@@ -10,9 +10,10 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class DeleteModalComponent implements OnInit {
   @Output() hideDeleteModal = new EventEmitter<any>();
-  @Input() deleteModalType = '';
+  deleteModalType!: string;
   boardName!: string;
   boardId!: string;
+  taskId!: string;
   constructor(
     private uiService: UiService,
     private http: HttpService,
@@ -22,6 +23,15 @@ export class DeleteModalComponent implements OnInit {
   ngOnInit(): void {
     this.boardName = this.uiService.boardName;
     this.boardId = this.uiService.boardId;
+
+    this.uiService.deleteModalDisplay$.subscribe((data) => {
+      this.deleteModalType = data.type;
+      if (data.type === 'board') {
+        this.boardId = data.id;
+      } else {
+        this.taskId = data.id;
+      }
+    });
   }
 
   onHideDeleteModal(event: any) {
@@ -33,10 +43,19 @@ export class DeleteModalComponent implements OnInit {
     }
   }
 
-  onDeleteBoard() {
-    this.http.deleteBoard(this.boardId).subscribe(() => {
-      this.hideDeleteModal.emit();
-      this.router.navigate(['']);
-    });
+  onDelete() {
+    if (this.deleteModalType === 'board') {
+      this.http.deleteBoard(this.boardId).subscribe(() => {
+        this.hideDeleteModal.emit();
+        this.router.navigate(['']);
+      });
+    } else {
+      this.http.deleteTask(this.taskId).subscribe(() => {
+        this.hideDeleteModal.emit();
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([this.router.url]);
+      });
+    }
   }
 }
