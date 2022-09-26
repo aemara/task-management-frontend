@@ -42,4 +42,11 @@ export class UiService {
   showAddBoard(change: any) {
     this.showAddBoardSubject.next(change);
   }
+
+  private showDeleteModalSubject = new ReplaySubject<any>();
+  deleteModalDisplay$ = this.showDeleteModalSubject.asObservable();
+  showDeleteModal(type: any, id: any) {
+    const data = { type: type, id: id };
+    this.showDeleteModalSubject.next(data);
+  }
 }
