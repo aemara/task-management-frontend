@@ -1,4 +1,4 @@
-<main *ngIf="columns.length > 0">
+<main *ngIf="columns.length > 0 && !isFetching">
   <app-column *ngFor="let column of columns" [column]="column"></app-column>
   <div class="new-column-container" (click)="onClickAddColumn()">
     + New Column
