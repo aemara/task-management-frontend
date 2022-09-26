@@ -73,6 +73,10 @@ export class HttpService {
   }
 
   deleteBoard(boardId: string) {
-    return this.http.delete(`http://localhost:3000/removeboard/${boardId}`);
+    return this.http.delete(`http://localhost:3000/deleteboard/${boardId}`);
+  }
+
+  deleteTask(taskId: string) {
+    return this.http.delete(`http://localhost:3000/deletetask/${taskId}`);
   }
 }
