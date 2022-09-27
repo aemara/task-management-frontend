@@ -102,8 +102,9 @@ export class AddEditBoardComponent implements OnInit {
         title: this.boardForm.value.boardName,
         columns: columns,
       };
-
+      this.isFetching = true;
       this.httpService.addBoard(board).subscribe((response) => {
+        this.isFetching = false;
         this.hideAddEditBoard.emit();
         this.router.navigate(['/board', response.boardId]);
       });
@@ -119,7 +120,9 @@ export class AddEditBoardComponent implements OnInit {
       data['columns'] = this.boardForm.value.boardColumns;
       data['deletedColumns'] = this.columnsToBeDeleted;
 
+      this.isFetching = true;
       this.httpService.editBoard(this.boardId, data).subscribe(() => {
+        this.isFetching = false;
         this.hideAddEditBoard.emit();
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';

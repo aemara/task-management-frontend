@@ -90,5 +90,8 @@
         {{ addOrEditTask === "edit" ? "Save Changes" : "Add Task" }}
       </button>
     </form>
+    <div class="loading" *ngIf="isFetching">
+      <img class="loading-indicator" src="../../../assets/logo-mobile.svg" />
+    </div>
   </div>
 </div>

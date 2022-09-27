@@ -150,17 +150,17 @@ input:focus {
   background: #a8a4ff;
 }
 
-
 .loading {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+  margin-top: 0.8em;
 }
 
 .loading-indicator {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
   -webkit-animation: rotate-center 0.4s ease-in-out infinite forwards;
   animation: rotate-center 0.4s ease-in-out infinite forwards;
 }

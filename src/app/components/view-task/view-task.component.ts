@@ -23,6 +23,7 @@ export class ViewTaskComponent implements OnInit {
   numOfSubtasksDone = 0;
   showColumnDropdown: boolean = false;
   showEditDropdown: boolean = false;
+  isFetching!: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -61,6 +62,7 @@ export class ViewTaskComponent implements OnInit {
   }
 
   changeCurrentColumn(column: string, newColumnId: string) {
+    this.isFetching = true;
     this.currentColumn = column;
     this.http
       .changeColumn(this.taskId, this.currentColumnId, newColumnId)
@@ -68,6 +70,7 @@ export class ViewTaskComponent implements OnInit {
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate([this.router.url]);
+        this.isFetching = false;
         // this.hideTask.emit();
       });
   }

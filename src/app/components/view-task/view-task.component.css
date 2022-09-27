@@ -172,6 +172,21 @@ header {
   margin-bottom: 0;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: .8em;
+}
+
+.loading-indicator {
+  width: 25px;
+  height: 25px;
+  -webkit-animation: rotate-center 0.4s ease-in-out infinite forwards;
+  animation: rotate-center 0.4s ease-in-out infinite forwards;
+}
+
 /**
 KEYFRAMES
 **/
@@ -198,5 +213,27 @@ KEYFRAMES
     -webkit-transform: translateY(0);
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+
+@-webkit-keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
 }

@@ -25,6 +25,7 @@ export class AddEditTaskComponent implements OnInit {
   currentTaskSubtasks!: any;
   currentTaskColumnId!: string;
   currentTaskColumn!: string;
+  isFetching!: boolean;
   constructor(
     private http: HttpService,
     private uiService: UiService,
@@ -139,8 +140,9 @@ export class AddEditTaskComponent implements OnInit {
         description: this.taskForm.value.description,
         subtasks: subtasks,
       };
-
+      this.isFetching = true;
       this.http.addTask(task, this.selectedColumnId).subscribe(() => {
+        this.isFetching = false;
         this.hideAddEditTask.emit();
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
@@ -163,8 +165,12 @@ export class AddEditTaskComponent implements OnInit {
         newData['newColumnId'] = this.selectedColumnId;
         newData['currentColumnId'] = this.currentTaskColumnId;
       }
+      this.isFetching = true;
       this.http.editTask(this.taskId, newData).subscribe(() => {
+        this.isFetching = false;
         this.hideAddEditTask.emit();
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
         this.router.navigate([this.router.url]);
       });
     }
