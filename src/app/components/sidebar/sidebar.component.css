@@ -5,6 +5,10 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  transform: translateX(-100%);
+  -webkit-transform: translateX(-100%);
+  -webkit-animation: slide-right 0.4s forwards;
+  animation: slide-right 0.4s forwards;
 }
 
 .logo-container {
@@ -142,4 +146,17 @@
 
 .hide-sidebar-btn:hover svg path {
   fill: white;
+}
+
+@-webkit-keyframes slide-right {
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+@keyframes slide-right {
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
 }
