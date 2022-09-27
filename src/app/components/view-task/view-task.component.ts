@@ -107,5 +107,6 @@ export class ViewTaskComponent implements OnInit {
 
   onClickDeleteTask() {
     this.ui.showDeleteModal('task', this.taskId);
+    this.hideTask.emit();
   }
 }
