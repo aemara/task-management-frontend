@@ -47,6 +47,7 @@ export class DeleteModalComponent implements OnInit {
     if (this.deleteModalType === 'board') {
       this.http.deleteBoard(this.boardId).subscribe(() => {
         this.hideDeleteModal.emit();
+        this.uiService.fetchBoards(null);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate(['']);

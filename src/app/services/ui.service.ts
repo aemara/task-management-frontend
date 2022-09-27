@@ -49,4 +49,10 @@ export class UiService {
     const data = { type: type, id: id };
     this.showDeleteModalSubject.next(data);
   }
+
+  private fetchBoardsSubject = new Subject<any>();
+  fetchBoards$ = this.fetchBoardsSubject.asObservable();
+  fetchBoards(change: any) {
+    this.fetchBoardsSubject.next(change);
+  }
 }

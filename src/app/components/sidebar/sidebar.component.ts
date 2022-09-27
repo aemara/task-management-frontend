@@ -18,6 +18,13 @@ export class SidebarComponent implements OnInit {
       this.boards = data.boards;
       this.numOfBoards = data.boards.length;
     });
+
+    this.uiService.fetchBoards$.subscribe(() => {
+      this.http.getBoards().subscribe((data) => {
+        this.boards = data.boards;
+        this.numOfBoards = data.boards.length;
+      });
+    });
   }
 
   hideSidebar() {
@@ -25,6 +32,6 @@ export class SidebarComponent implements OnInit {
   }
 
   onClickAddBoard() {
-    this.showAddEditBoard.emit("add");
+    this.showAddEditBoard.emit('add');
   }
 }
