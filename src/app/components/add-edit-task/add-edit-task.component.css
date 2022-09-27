@@ -85,7 +85,7 @@ textarea:focus {
   width: 90%;
 }
 
-.subtask-input input[type=checkbox] {
+.subtask-input input[type="checkbox"] {
   display: none;
 }
 
@@ -180,7 +180,7 @@ textarea:focus {
 .column-btn {
   background: none;
   border: none;
-  color: #828FA3;
+  color: #828fa3;
   font-weight: 500;
 }
 
@@ -197,8 +197,14 @@ textarea:focus {
   color: white;
   font-weight: 700;
   padding: 1em 1.5em;
+  transition: .2s;
 }
 
 .submit-btn:hover {
   cursor: pointer;
+  background-color: #a8a4ff;
+}
+
+.submit-btn:active {
+  background-color: #a8a4ff;
 }
