@@ -92,8 +92,8 @@ export class AddEditBoardComponent implements OnInit {
     if (this.addOrEditBoard === 'add') {
       const columns: any = [];
       if (this.boardForm.value.boardColumns.length > 0) {
-        this.boardForm.value.boardColumns.forEach((title: any) => {
-          const column = { title: title };
+        this.boardForm.value.boardColumns.forEach((formGroup: any) => {
+          const column = { title: formGroup.columnName };
           columns.push(column);
         });
       }
