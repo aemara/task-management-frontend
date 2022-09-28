@@ -1,4 +1,14 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { HttpService } from 'src/app/services/http.service';
 import { UiService } from 'src/app/services/ui.service';
 
@@ -9,9 +19,14 @@ import { UiService } from 'src/app/services/ui.service';
 })
 export class SidebarComponent implements OnInit {
   @Output() showAddEditBoard = new EventEmitter<any>();
+  @ViewChildren('boardItem') boardsList!: QueryList<'boardItem'>;
   boards!: any[];
   numOfBoards!: any[];
-  constructor(private http: HttpService, private uiService: UiService) {}
+  constructor(
+    private http: HttpService,
+    private uiService: UiService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.http.getBoards().subscribe((data) => {
@@ -24,6 +39,14 @@ export class SidebarComponent implements OnInit {
         this.boards = data.boards;
         this.numOfBoards = data.boards.length;
       });
+    });
+  }
+
+  ngAfterViewInit() {
+    this.boardsList.changes.subscribe((li) => {
+      if (this.router.url === '/') {
+        li.last.nativeElement.className = 'active-link';
+      }
     });
   }
 
