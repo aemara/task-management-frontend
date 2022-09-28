@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 import { UiService } from 'src/app/services/ui.service';
 
@@ -24,6 +25,7 @@ export class ViewTaskComponent implements OnInit {
   showColumnDropdown: boolean = false;
   showEditDropdown: boolean = false;
   isFetching!: boolean;
+  taskDisplaySub!: Subscription;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +35,7 @@ export class ViewTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.ui.taskDisplay$.subscribe((taskData) => {
+    this.taskDisplaySub = this.ui.taskDisplay$.subscribe((taskData) => {
       this.currentColumn = taskData.columnName;
       this.currentColumnId = taskData.columnId;
       this.taskId = taskData.task._id;
@@ -111,5 +113,9 @@ export class ViewTaskComponent implements OnInit {
   onClickDeleteTask() {
     this.ui.showDeleteModal('task', this.taskId);
     this.hideTask.emit();
+  }
+
+  ngOnDestroy(): void {
+    this.taskDisplaySub.unsubscribe();
   }
 }

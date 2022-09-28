@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject, Subject } from 'rxjs';
+import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,7 @@ export class UiService {
     this.isSidebarShown = change;
   }
 
-  private taskDisplaySubject = new ReplaySubject<any>();
+  private taskDisplaySubject = new ReplaySubject<any>(1);
   taskDisplay$ = this.taskDisplaySubject.asObservable();
   showTask(taskData: any) {
     this.taskDisplaySubject.next(taskData);
