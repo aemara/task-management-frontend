@@ -117,6 +117,7 @@ header {
 .current-column {
   color: #000112;
   font-weight: 500;
+  text-transform: uppercase;
 }
 
 .current-column-dropdown {
@@ -162,6 +163,7 @@ header {
 
 .dropdown-menu ul li {
   margin-bottom: 1em;
+  text-transform: uppercase;
 }
 
 .dropdown-menu ul li:hover {
