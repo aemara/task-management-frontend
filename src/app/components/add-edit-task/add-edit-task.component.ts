@@ -41,7 +41,7 @@ export class AddEditTaskComponent implements OnInit {
     if (this.addOrEditTask === 'add') {
       this.taskForm = new FormGroup({
         title: new FormControl(null, Validators.required),
-        description: new FormControl(null, Validators.required),
+        description: new FormControl(null),
         subtasks: new FormArray([
           new FormGroup({
             subtask: new FormControl(null, Validators.required),
@@ -75,10 +75,7 @@ export class AddEditTaskComponent implements OnInit {
       });
       this.taskForm = new FormGroup({
         title: new FormControl(this.currentTaskTitle, Validators.required),
-        description: new FormControl(
-          this.currentTaskDescription,
-          Validators.required
-        ),
+        description: new FormControl(this.currentTaskDescription),
         subtasks: new FormArray(currentSubtasksFormControls),
         column: new FormControl(this.currentTaskColumn, Validators.required),
       });

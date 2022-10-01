@@ -119,7 +119,7 @@
           </ul>
         </div>
       </div>
-      <button class="submit-btn" type="submit">
+      <button class="submit-btn" type="submit" [disabled]="!taskForm.valid">
         {{ addOrEditTask === "edit" ? "Save Changes" : "Add Task" }}
       </button>
     </form>
