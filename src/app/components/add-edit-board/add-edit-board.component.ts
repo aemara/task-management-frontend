@@ -74,6 +74,12 @@ export class AddEditBoardComponent implements OnInit {
     return (<FormArray>this.boardForm.get('boardColumns')).controls;
   }
 
+  getColumnFormGroup(i: number) {
+     return (<FormArray>this.boardForm.get('boardColumns')).controls[i].get(
+       'columnName'
+     );
+  }
+
   onDeleteBoardColumn(index: number) {
     this.columnsToBeDeleted.push(
       (<FormArray>this.boardForm.get('boardColumns')).at(index).value.columnId

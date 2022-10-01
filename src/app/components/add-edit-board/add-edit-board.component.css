@@ -48,6 +48,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  position: relative;
 }
 
 label,
@@ -87,9 +88,29 @@ input:focus {
   margin-bottom: 1em;
 }
 
+.validation-message {
+  color: #ea5555;
+  position: absolute;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  top: 8px;
+  right: 60px;
+}
+
+.title-validation-message {
+  top: 35px;
+  right: 15px;
+}
+
+.invalid-input {
+  outline: 1px solid #ea5555;
+  outline-offset: -1px;
+}
+
 .column-input {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .column-input input {
@@ -148,6 +169,18 @@ input:focus {
 
 .submit-btn:active {
   background: #a8a4ff;
+}
+
+.submit-btn:disabled,
+.submit-btn[disabled] {
+  background-color: #cccccc;
+  color: #666666;
+}
+
+
+.submit-btn:disabled:hover,
+.submit-btn[disabled]:hover {
+  cursor: default;
 }
 
 .loading {

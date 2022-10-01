@@ -1,20 +1,58 @@
 <div class="add-edit-board-modal" (click)="onHideAddEditBoard($event)">
   <div class="add-edit-board-container">
-    <h2 class="title">{{addOrEditBoard}} Board</h2>
+    <h2 class="title">{{ addOrEditBoard }} Board</h2>
     <form *ngIf="boardForm" [formGroup]="boardForm" (ngSubmit)="onSubmit()">
       <div class="name-form-container">
         <label>Board Name</label>
-        <input type="text" formControlName="boardName" />
+        <input
+          type="text"
+          formControlName="boardName"
+          [ngClass]="{
+            'invalid-input':
+              boardForm.controls['boardName'].status === 'INVALID' &&
+              boardForm.controls['boardName'].touched === true
+          }"
+        />
+        <span
+          class="validation-message title-validation-message"
+          *ngIf="
+            boardForm.controls['boardName'].status === 'INVALID' &&
+            boardForm.controls['boardName'].touched === true
+          "
+          >Can't be empty</span
+        >
       </div>
       <div class="columns-form-container">
         <h3 class="board-columns-heading">Board Columns</h3>
         <div class="columns-list" formArrayName="boardColumns">
           <div
             class="column-input"
-            *ngFor="let boardColumn of getBoardColumnsControls(); let i = index" [formGroupName]="i"
+            *ngFor="let boardColumn of getBoardColumnsControls(); let i = index"
+            [formGroupName]="i"
           >
-            <input type="text" formControlName="columnName" />
-            <input type="text" class="form-control-id" formControlName = "columnId">
+            <input
+              type="text"
+              formControlName="columnName"
+              [ngClass]="{
+                'invalid-input':
+                  getColumnFormGroup(i)?.status === 'INVALID' &&
+                  getColumnFormGroup(i)?.touched === true
+              }"
+            />
+            <span
+              class="validation-message"
+              *ngIf="
+                getColumnFormGroup(i)?.status === 'INVALID' &&
+                getColumnFormGroup(i)?.touched === true
+              "
+              >Can't be empty</span
+            >
+            <input
+              type="text"
+              class="form-control-id"
+              formControlName="columnId"
+            />
+
             <button class="delete-btn" (click)="onDeleteBoardColumn(i)">
               <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
                 <g fill="#828FA3" fill-rule="evenodd">
@@ -33,12 +71,12 @@
           + Add New Column
         </button>
       </div>
-      <button class="submit-btn" type="submit">
-        {{addOrEditBoard === "add" ? "Add" :  "Update"}} Board
+      <button class="submit-btn" type="submit" [disabled]="!boardForm.valid">
+        {{ addOrEditBoard === "add" ? "Add" : "Update" }} Board
       </button>
     </form>
     <div class="loading" *ngIf="isFetching">
-      <img class="loading-indicator" src="../../../assets/logo-mobile.svg">
+      <img class="loading-indicator" src="../../../assets/logo-mobile.svg" />
     </div>
   </div>
 </div>
