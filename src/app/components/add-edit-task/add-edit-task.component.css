@@ -239,6 +239,11 @@ textarea:focus {
   background-color: #cccccc;
   color: #666666;
 }
+
+.submit-btn:disabled:hover,
+.submit-btn[disabled]:hover {
+  cursor: default;
+}
 .loading {
   display: flex;
   justify-content: center;
