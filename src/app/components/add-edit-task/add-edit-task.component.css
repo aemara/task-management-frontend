@@ -40,6 +40,7 @@ form {
   display: flex;
   flex-direction: column;
   gap: 0.5em;
+  position: relative;
 }
 
 label,
@@ -58,6 +59,10 @@ textarea {
   font-size: 0.8rem;
   font-weight: 500;
   padding: 0.8em 0.8em;
+}
+
+textarea {
+  resize: none;
 }
 
 input:focus,
@@ -79,6 +84,7 @@ textarea:focus {
 .subtask-input {
   display: flex;
   justify-content: space-between;
+  position: relative;
 }
 
 .subtask-input input {
@@ -87,6 +93,25 @@ textarea:focus {
 
 .subtask-input input[type="checkbox"] {
   display: none;
+}
+
+.validation-message {
+  color: #ea5555;
+  position: absolute;
+  font-size: 0.8125rem;
+  font-weight: 300;
+  top: 8px;
+  right: 50px;
+}
+
+.title-validation-message {
+  top: 35px;
+  right: 15px;
+}
+
+.invalid-input {
+  outline: 1px solid #ea5555;
+  outline-offset: -1px;
 }
 
 .delete-btn {
@@ -209,6 +234,11 @@ textarea:focus {
   background-color: #a8a4ff;
 }
 
+.submit-btn:disabled,
+.submit-btn[disabled] {
+  background-color: #cccccc;
+  color: #666666;
+}
 .loading {
   display: flex;
   justify-content: center;

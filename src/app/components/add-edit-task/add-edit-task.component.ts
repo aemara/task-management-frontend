@@ -65,7 +65,7 @@ export class AddEditTaskComponent implements OnInit {
         this.selectedColumn = taskData.columnName;
       });
 
-      const currentSubtasksFormControls: any = [];
+      const currentSubtasksFormControls: FormGroup[] = [];
       this.currentTaskSubtasks.forEach((subtask: any) => {
         const formGroup = new FormGroup({
           subtask: new FormControl(subtask.name, Validators.required),
@@ -95,6 +95,12 @@ export class AddEditTaskComponent implements OnInit {
 
   getSubtasksControls() {
     return (<FormArray>this.taskForm.get('subtasks')).controls;
+  }
+
+  getSubtaskFormGroup(i: number) {
+    return (<FormArray>this.taskForm.get('subtasks')).controls[i].get(
+      'subtask'
+    );
   }
 
   onDeleteSubtask(index: number) {

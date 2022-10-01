@@ -4,7 +4,23 @@
     <form *ngIf="taskForm" [formGroup]="taskForm" (ngSubmit)="onSubmit()">
       <div class="title-form-container">
         <label>Title</label>
-        <input type="text" formControlName="title" />
+        <input
+          type="text"
+          formControlName="title"
+          [ngClass]="{
+            'invalid-input':
+              taskForm.controls['title'].status === 'INVALID' &&
+              taskForm.controls['title'].touched === true
+          }"
+        />
+        <span
+          class="validation-message title-validation-message"
+          *ngIf="
+            taskForm.controls['title'].status === 'INVALID' &&
+            taskForm.controls['title'].touched === true
+          "
+          >Can't be empty</span
+        >
       </div>
       <div class="description-form-container">
         <label for="task-description">Description</label>
@@ -21,8 +37,25 @@
             *ngFor="let subtasks of getSubtasksControls(); let i = index"
             [formGroupName]="i"
           >
-            <input type="text" formControlName="subtask" />
+            <input
+              type="text"
+              formControlName="subtask"
+              [ngClass]="{
+                'invalid-input':
+                  getSubtaskFormGroup(i)?.status === 'INVALID' &&
+                  getSubtaskFormGroup(i)?.touched === true
+              }"
+            />
             <input type="checkbox" formControlName="done" />
+            <span
+              class="validation-message"
+              *ngIf="
+                getSubtaskFormGroup(i)?.status === 'INVALID' &&
+                getSubtaskFormGroup(i)?.touched === true
+              "
+              >Can't be empty</span
+            >
+
             <button class="delete-btn" (click)="onDeleteSubtask(i)">
               <svg width="15" height="15" xmlns="http://www.w3.org/2000/svg">
                 <g fill="#828FA3" fill-rule="evenodd">
