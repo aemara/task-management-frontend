@@ -75,9 +75,9 @@ export class AddEditBoardComponent implements OnInit {
   }
 
   getColumnFormGroup(i: number) {
-     return (<FormArray>this.boardForm.get('boardColumns')).controls[i].get(
-       'columnName'
-     );
+    return (<FormArray>this.boardForm.get('boardColumns')).controls[i].get(
+      'columnName'
+    );
   }
 
   onDeleteBoardColumn(index: number) {
@@ -119,7 +119,6 @@ export class AddEditBoardComponent implements OnInit {
 
       /**If there is a new board title */
       if (this.boardForm.value.boardName !== this.currentBoardTitle) {
-        console.log(this.boardForm.value.boardName);
         data['title'] = this.boardForm.value.boardName;
       }
 
