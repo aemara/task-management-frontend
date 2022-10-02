@@ -8,7 +8,8 @@ main {
 }
 
 .empty-board-prompt,
-.no-boards-prompt {
+.no-boards-prompt,
+.error {
   margin: 0 auto;
   width: 90%;
   display: flex;
@@ -32,7 +33,8 @@ main {
 }
 
 .empty-board-prompt p,
-.no-boards-prompt p {
+.no-boards-prompt p,
+.error p {
   font-size: 1.125rem;
   font-weight: 700;
   color: #828fa3;
@@ -41,7 +43,8 @@ main {
 }
 
 .empty-board-prompt button,
-.no-boards-prompt button {
+.no-boards-prompt button,
+.error button {
   border: none;
   border-radius: 20px;
   background: #635fc7;
@@ -54,7 +57,8 @@ main {
 }
 
 .empty-board-prompt button:hover,
-.no-boards-prompt button:hover {
+.no-boards-prompt button:hover,
+.error button:hover {
   cursor: pointer;
   background: #a8a4ff;
 }

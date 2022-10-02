@@ -7,16 +7,21 @@
 
 <div
   class="empty-board-prompt"
-  *ngIf="columns.length < 1 && !isFetching && areThereBoards"
+  *ngIf="columns.length < 1 && !isFetching && areThereBoards && !error"
 >
   <p>This board is empty. Create a new column.</p>
   <button (click)="onClickAddColumn()">+ Add New Column</button>
 </div>
 
-<div class="no-boards-prompt" *ngIf="!areThereBoards && !isFetching">
+<div class="no-boards-prompt" *ngIf="!areThereBoards && !isFetching && !error">
   <p>There are no boards. Create a new board</p>
   <button (click)="onClickAddBoard()">+ Add New Board</button>
 </div>
 <div class="loading" *ngIf="isFetching">
   <img class="loading-indicator" src="../../../assets/logo-mobile.svg">
+</div>
+
+<div class="error" *ngIf="!isFetching && error">
+  <p>There seems to be an error. Please try again</p>
+  <button (click)="refetchBoards()">Get Boards</button>
 </div>
