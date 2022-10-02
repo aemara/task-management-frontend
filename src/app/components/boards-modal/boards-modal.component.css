@@ -41,7 +41,7 @@
 }
 
 
-.board-item a {
+.board-link {
     text-decoration: none;
     width: 90%;
     display: block;
