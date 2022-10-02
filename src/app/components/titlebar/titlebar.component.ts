@@ -27,6 +27,10 @@ export class TitlebarComponent implements OnInit {
       this.boardId = board._id;
     });
 
+    this.uiService.noBoardsCase$.subscribe(() => {
+      this.boardName = "";
+    })
+
     this.uiService.toggleEmitted$.subscribe((isShown) => {
       this.isSidebarShown = isShown;
     });

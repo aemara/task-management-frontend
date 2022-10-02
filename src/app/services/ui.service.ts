@@ -18,6 +18,13 @@ export class UiService {
     this.boardId = change._id;
   }
 
+  private noBoardsSubject = new Subject<any>();
+  noBoardsCase$ = this.noBoardsSubject.asObservable();
+  emitNoBoards(change: any) {
+    this.noBoardsSubject.next(change);
+    this.boardName = "No Boards";
+  }
+
   private sidebarDisplaySubject = new Subject<any>();
   toggleEmitted$ = this.sidebarDisplaySubject.asObservable();
   emitToggle(change: any) {

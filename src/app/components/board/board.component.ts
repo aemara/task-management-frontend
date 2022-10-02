@@ -47,6 +47,7 @@ export class BoardComponent implements OnInit {
             } else {
               /**If there are no boards */
               this.areThereBoards = false;
+              this.uiService.emitNoBoards(null);
             }
           }
           this.isFetching = false;
