@@ -5,18 +5,8 @@ import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class UiService {
-  boardName!: string;
-  boardId!: string;
   isSidebarShown: boolean = false;
   constructor() {}
-
-  private emitChangeSource = new Subject<any>();
-  changeEmitted$ = this.emitChangeSource.asObservable();
-  emitChange(change: any) {
-    this.emitChangeSource.next(change);
-    this.boardName = change.title;
-    this.boardId = change._id;
-  }
 
   private fetchingStateSubject = new ReplaySubject<any>(1);
   fetchingState$ = this.fetchingStateSubject.asObservable();
