@@ -8,94 +8,94 @@ export class HttpService {
   constructor(private http: HttpClient) {}
 
   addBoard(data: any) {
-    return this.http.post<any>(`http://localhost:3000/boards/addboard`, data);
+    return this.http.post<any>(`https://frello-server.onrender.com/boards/addboard`, data);
   }
 
   addColumn(data: any, boardId: string) {
     return this.http.post<any>(
-      `http://localhost:3000/columns/addcolumn/${boardId}`,
+      `https://frello-server.onrender.com/columns/addcolumn/${boardId}`,
       data
     );
   }
 
   addTask(data: any, columnId: string) {
     return this.http.post<any>(
-      `http://localhost:3000/tasks/addtask/${columnId}`,
+      `https://frello-server.onrender.com/tasks/addtask/${columnId}`,
       data
     );
   }
 
   getBoards() {
-    return this.http.get<any>('http://localhost:3000/boards/getboards');
+    return this.http.get<any>('https://frello-server.onrender.com/boards/getboards');
   }
 
   getBoard(boardId: string) {
     return this.http.get<any>(
-      `http://localhost:3000/boards/getboard/${boardId}`
+      `https://frello-server.onrender.com/boards/getboard/${boardId}`
     );
   }
 
   getColumns(boardId: string) {
     return this.http.get<any>(
-      `http://localhost:3000/columns/getcolumns/${boardId}`
+      `https://frello-server.onrender.com/columns/getcolumns/${boardId}`
     );
   }
 
   getColumn(columnId: string) {
     return this.http.get<any>(
-      `http://localhost:3000/columns/getcolumn/${columnId}`
+      `https://frello-server.onrender.com/columns/getcolumn/${columnId}`
     );
   }
 
   getTasks(columnId: number) {
     return this.http.get<any>(
-      `http://localhost:3000/tasks/gettasks/${columnId}`
+      `https://frello-server.onrender.com/tasks/gettasks/${columnId}`
     );
   }
 
   getTask(taskId: string) {
-    return this.http.get<any>(`http://localhost:3000/tasks/gettask/${taskId}`);
+    return this.http.get<any>(`https://frello-server.onrender.com/tasks/gettask/${taskId}`);
   }
 
   getSubtasks(taskId: string) {
-    return this.http.get<any>(`http://localhost:3000/subtasks/getsubtasks/${taskId}`);
+    return this.http.get<any>(`https://frello-server.onrender.com/subtasks/getsubtasks/${taskId}`);
   }
 
   editBoard(boardId: string, data: any) {
     return this.http.put<any>(
-      `http://localhost:3000/boards/updateboard/${boardId}`,
+      `https://frello-server.onrender.com/boards/updateboard/${boardId}`,
       data
     );
   }
 
   toggleSubtaskStatus(subtaskId: string, taskId: string) {
     return this.http.put(
-      `http://localhost:3000/subtasks/toggledone/${subtaskId}/${taskId}`,
+      `https://frello-server.onrender.com/subtasks/toggledone/${subtaskId}/${taskId}`,
       {}
     );
   }
 
   changeColumn(taskId: string, currentColumnId: string, newColumnId: string) {
     return this.http.put(
-      `http://localhost:3000/tasks/changecolumn/${taskId}/${currentColumnId}/${newColumnId}`,
+      `https://frello-server.onrender.com/tasks/changecolumn/${taskId}/${currentColumnId}/${newColumnId}`,
       {}
     );
   }
 
   editTask(taskId: string, data: any) {
     return this.http.put(
-      `http://localhost:3000/tasks/updatetask/${taskId}`,
+      `https://frello-server.onrender.com/tasks/updatetask/${taskId}`,
       data
     );
   }
 
   deleteBoard(boardId: string) {
     return this.http.delete(
-      `http://localhost:3000/boards/deleteboard/${boardId}`
+      `https://frello-server.onrender.com/boards/deleteboard/${boardId}`
     );
   }
 
   deleteTask(taskId: string) {
-    return this.http.delete(`http://localhost:3000/tasks/deletetask/${taskId}`);
+    return this.http.delete(`https://frello-server.onrender.com/tasks/deletetask/${taskId}`);
   }
 }
