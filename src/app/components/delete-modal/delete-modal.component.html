@@ -1,5 +1,5 @@
 <div class="modal" (click)="onHideDeleteModal($event)">
-  <div class="modal-content">
+  <div class="modal-content" *ngIf="!nothingToDelete">
     <h2 class="modal-title">
       Delete this {{ deleteModalType === "board" ? "board" : "task" }}?
     </h2>
@@ -23,5 +23,10 @@
         Cancel
       </button>
     </div>
+  </div>
+  <div class="modal-content" *ngIf="nothingToDelete">
+    <p class="modal-paragraph">
+      There is nothing to delete.
+    </p>
   </div>
 </div>

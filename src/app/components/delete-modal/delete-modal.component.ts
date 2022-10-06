@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { HttpService } from 'src/app/services/http.service';
 import { UiService } from 'src/app/services/ui.service';
 
@@ -14,6 +15,9 @@ export class DeleteModalComponent implements OnInit {
   boardName!: string;
   boardId!: string;
   taskId!: string;
+  nothingToDelete!: boolean;
+  modalDisplaySub!: Subscription;
+  fetchingStateSub!: Subscription;
   constructor(
     private uiService: UiService,
     private http: HttpService,
@@ -21,15 +25,22 @@ export class DeleteModalComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.boardName = this.uiService.boardName;
-    this.boardId = this.uiService.boardId;
+    this.modalDisplaySub = this.uiService.deleteModalDisplay$.subscribe(
+      (data) => {
+        this.deleteModalType = data.type;
+        if (data.type === 'board') {
+          this.boardId = data.id;
+        } else {
+          this.taskId = data.id;
+        }
+      }
+    );
 
-    this.uiService.deleteModalDisplay$.subscribe((data) => {
-      this.deleteModalType = data.type;
-      if (data.type === 'board') {
-        this.boardId = data.id;
+    this.fetchingStateSub = this.uiService.fetchingState$.subscribe((state) => {
+      if (!state) {
+        this.nothingToDelete = true;
       } else {
-        this.taskId = data.id;
+        this.nothingToDelete = false;
       }
     });
   }
@@ -60,5 +71,10 @@ export class DeleteModalComponent implements OnInit {
         this.router.navigate([this.router.url]);
       });
     }
+  }
+
+  ngOnDestroy(): void {
+    this.modalDisplaySub.unsubscribe();
+    this.fetchingStateSub.unsubscribe();
   }
 }
