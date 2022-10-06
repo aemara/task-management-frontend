@@ -18,11 +18,16 @@ export class UiService {
     this.boardId = change._id;
   }
 
-  private noBoardsSubject = new Subject<any>();
-  noBoardsCase$ = this.noBoardsSubject.asObservable();
-  emitNoBoards(change: any) {
-    this.noBoardsSubject.next(change);
-    this.boardName = "No Boards";
+  private fetchingStateSubject = new ReplaySubject<any>(1);
+  fetchingState$ = this.fetchingStateSubject.asObservable();
+  emitFetchingState(state: any) {
+    this.fetchingStateSubject.next(state);
+  }
+
+  private noColumnsSubject = new Subject<any>();
+  noColumnsState$ = this.noColumnsSubject.asObservable();
+  emitNoColumnsState(state: any) {
+    this.noColumnsSubject.next(state);
   }
 
   private sidebarDisplaySubject = new Subject<any>();
