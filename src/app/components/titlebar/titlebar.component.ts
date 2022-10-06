@@ -17,20 +17,28 @@ export class TitlebarComponent implements OnInit {
   boardId!: string;
   showOptions: boolean = false;
   isSidebarShown!: boolean;
-
+  disableAddTask: boolean = false;
   constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
     this.isSidebarShown = this.uiService.isSidebarShown;
-    this.uiService.changeEmitted$.subscribe((board) => {
-      this.boardName = board.title;
-      this.boardId = board._id;
+    this.uiService.fetchingState$.subscribe((state) => {
+      if (!state) {
+        this.boardName = '';
+        this.disableAddTask = true;
+      } else {
+        this.boardName = state.title;
+        this.boardId = state.boardId;
+      }
     });
 
-    this.uiService.noBoardsCase$.subscribe(() => {
-      this.boardName = "";
+    this.uiService.noColumnsState$.subscribe(state => {
+      if(state) {
+        this.disableAddTask = true;
+      } else {
+        this.disableAddTask = false;
+      }
     })
-
     this.uiService.toggleEmitted$.subscribe((isShown) => {
       this.isSidebarShown = isShown;
     });

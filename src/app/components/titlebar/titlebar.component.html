@@ -17,7 +17,12 @@
     </div>
     <div class="board-title-btn-container">
       <div class="board-title-container">
-        <svg class="mobile-logo" width="24" height="25" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          class="mobile-logo"
+          width="24"
+          height="25"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <g fill="#635FC7" fill-rule="evenodd">
             <rect width="6" height="25" rx="2" />
             <rect opacity=".75" x="9" width="6" height="25" rx="2" />
@@ -55,7 +60,11 @@
         </button>
       </div>
       <div class="btn-options-container">
-        <button class="add-task-btn" (click)="onClickAddTask()">
+        <button
+          class="add-task-btn"
+          (click)="onClickAddTask()"
+          [disabled]="disableAddTask"
+        >
           <svg width="12" height="12" xmlns="http://www.w3.org/2000/svg">
             <path
               fill="#FFF"
@@ -64,7 +73,11 @@
           </svg>
         </button>
 
-        <button class="add-task-btn-tablet" (click)="onClickAddTask()">
+        <button
+          class="add-task-btn-tablet"
+          (click)="onClickAddTask()"
+          [disabled]="disableAddTask"
+        >
           <a class="add-task-link"><span>+ Add New Task</span></a>
         </button>
         <button class="options-btn" (click)="toggleOptions()">
@@ -80,7 +93,9 @@
     </div>
   </div>
   <div class="options-container" *ngIf="showOptions">
-    <a class="edit-link" (click)="toggleOptions(); onClickEditBoard()">Edit Board</a>
+    <a class="edit-link" (click)="toggleOptions(); onClickEditBoard()"
+      >Edit Board</a
+    >
     <a class="delete-link" (click)="onShowDeleteModal()">Delete Board</a>
   </div>
 </header>
