@@ -46,7 +46,9 @@ export class ViewTaskComponent implements OnInit {
       this.countSubtasksDone(this.subtasks);
     });
 
-    this.boardId = this.ui.boardId;
+    this.ui.fetchingState$.subscribe((state) => {
+      if (state) this.boardId = state.boardId;
+    });
     this.http.getColumns(this.boardId).subscribe((data) => {
       this.columns = data.columns;
     });

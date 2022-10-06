@@ -33,9 +33,13 @@ export class AddEditTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.boardId = this.uiService.boardId;
-    this.http.getColumns(this.boardId).subscribe((data) => {
-      this.listOfColumns = data.columns;
+    this.uiService.fetchingState$.subscribe((state) => {
+      if (state) {
+        this.boardId = state.boardId;
+        this.http.getColumns(this.boardId).subscribe((data) => {
+          this.listOfColumns = data.columns;
+        });
+      }
     });
 
     if (this.addOrEditTask === 'add') {
