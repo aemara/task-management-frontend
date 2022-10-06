@@ -177,7 +177,6 @@ input:focus {
   color: #666666;
 }
 
-
 .submit-btn:disabled:hover,
 .submit-btn[disabled]:hover {
   cursor: default;
@@ -196,6 +195,16 @@ input:focus {
   height: 25px;
   -webkit-animation: rotate-center 0.4s ease-in-out infinite forwards;
   animation: rotate-center 0.4s ease-in-out infinite forwards;
+}
+
+.fetchingError {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fetchingError p {
+  color: #000112;
 }
 
 /**

@@ -34,12 +34,20 @@ export class BoardComponent implements OnInit {
           (data) => {
             this.board = data.board;
             this.columns = this.board.columns;
-            this.uiService.emitChange(this.board);
             this.isFetching = false;
+            if (this.columns.length < 1) {
+              this.uiService.emitNoColumnsState(true);
+            } else {
+              this.uiService.emitNoColumnsState(false);
+            }
+            this.uiService.emitFetchingState({
+              title: this.board.title,
+              boardId: this.board._id,
+            });
           },
           (error) => {
-            console.log(error);
             this.error = error;
+            this.uiService.emitFetchingState(false);
             this.isFetching = false;
           }
         );
@@ -53,18 +61,26 @@ export class BoardComponent implements OnInit {
               if (this?.board) {
                 this.areThereBoards = true;
                 this.columns = this.board.columns;
-                this.uiService.emitChange(this.board);
+                if (this.columns.length < 1) {
+                  this.uiService.emitNoColumnsState(true);
+                } else {
+                  this.uiService.emitNoColumnsState(false);
+                }
+                this.uiService.emitFetchingState({
+                  title: this.board.title,
+                  boardId: this.board._id,
+                });
               } else {
                 /**If there are no boards */
                 this.areThereBoards = false;
-                this.uiService.emitNoBoards(null);
+                this.uiService.emitFetchingState(false);
               }
             }
             this.isFetching = false;
           },
           (error) => {
-            console.log(error);
             this.error = error;
+            this.uiService.emitFetchingState(false);
             this.isFetching = false;
           }
         );

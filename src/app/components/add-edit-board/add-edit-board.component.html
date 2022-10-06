@@ -1,5 +1,5 @@
 <div class="add-edit-board-modal" (click)="onHideAddEditBoard($event)">
-  <div class="add-edit-board-container">
+  <div class="add-edit-board-container" *ngIf="!fetchingError">
     <h2 class="title">{{ addOrEditBoard }} Board</h2>
     <form *ngIf="boardForm" [formGroup]="boardForm" (ngSubmit)="onSubmit()">
       <div class="name-form-container">
@@ -78,5 +78,8 @@
     <div class="loading" *ngIf="isFetching">
       <img class="loading-indicator" src="../../../assets/logo-mobile.svg" />
     </div>
+  </div>
+  <div class="add-edit-board-container fetchingError" *ngIf="fetchingError">
+    <p>There is nothing to edit.</p>
   </div>
 </div>

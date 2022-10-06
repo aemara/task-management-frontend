@@ -18,6 +18,7 @@ export class AddEditBoardComponent implements OnInit {
   boardColumns!: any[];
   columnsToBeDeleted: string[] = [];
   isFetching!: boolean;
+  fetchingError!: boolean;
   constructor(
     private route: ActivatedRoute,
     private httpService: HttpService,
@@ -26,7 +27,9 @@ export class AddEditBoardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.boardId = this.uiService.boardId;
+    this.uiService.fetchingState$.subscribe((state) => {
+      if (state) this.boardId = state.boardId;
+    });
     if (this.addOrEditBoard === 'add') {
       this.boardForm = new FormGroup({
         boardName: new FormControl(null, Validators.required),
@@ -43,22 +46,27 @@ export class AddEditBoardComponent implements OnInit {
       });
     } else {
       this.isFetching = true;
-      this.httpService.getColumns(this.boardId).subscribe((data) => {
-        this.currentBoardTitle = data.boardTitle;
-        const columnsFormGroups: any = [];
-        data.columns.forEach((column: any) => {
-          const formControl = new FormGroup({
-            columnName: new FormControl(column.title, Validators.required),
-            columnId: new FormControl(column._id),
+      this.httpService.getColumns(this.boardId).subscribe(
+        (data) => {
+          this.currentBoardTitle = data.boardTitle;
+          const columnsFormGroups: any = [];
+          data.columns.forEach((column: any) => {
+            const formControl = new FormGroup({
+              columnName: new FormControl(column.title, Validators.required),
+              columnId: new FormControl(column._id),
+            });
+            columnsFormGroups.push(formControl);
           });
-          columnsFormGroups.push(formControl);
-        });
-        this.boardForm = new FormGroup({
-          boardName: new FormControl(data.boardTitle, Validators.required),
-          boardColumns: new FormArray(columnsFormGroups),
-        });
-        this.isFetching = false;
-      });
+          this.boardForm = new FormGroup({
+            boardName: new FormControl(data.boardTitle, Validators.required),
+            boardColumns: new FormArray(columnsFormGroups),
+          });
+          this.isFetching = false;
+        },
+        (error) => {
+          this.fetchingError = true;
+        }
+      );
     }
   }
 
