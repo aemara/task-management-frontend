@@ -21,7 +21,9 @@ export class AddColumnComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.boardId = this.uiService.boardId;
+    this.uiService.fetchingState$.subscribe((state) => {
+      if (state) this.boardId = state.boardId;
+    });
     this.columnForm = new FormGroup({
       name: new FormControl(null, Validators.required),
     });
