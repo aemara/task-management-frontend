@@ -7,7 +7,7 @@ Angular was used for the front-end of the application.
 
 ## Live Project
 
-Link to live project.
+[Live Project](https://frello-task-management.vercel.app)
 
 # Project Status
 
