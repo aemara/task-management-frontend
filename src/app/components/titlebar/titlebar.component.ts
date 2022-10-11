@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
@@ -18,11 +19,12 @@ export class TitlebarComponent implements OnInit {
   showOptions: boolean = false;
   isSidebarShown!: boolean;
   disableAddTask: boolean = false;
+  hideOptionsSub!: Subscription;
   constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
     this.isSidebarShown = this.uiService.isSidebarShown;
-    this.uiService.fetchingState$.subscribe((state) => {
+    this.uiService.fetchingState$.subscribe((state) => { 
       if (!state) {
         this.boardName = '';
         this.disableAddTask = true;
@@ -32,15 +34,19 @@ export class TitlebarComponent implements OnInit {
       }
     });
 
-    this.uiService.noColumnsState$.subscribe(state => {
-      if(state) {
+    this.uiService.noColumnsState$.subscribe((state) => {
+      if (state) {
         this.disableAddTask = true;
       } else {
         this.disableAddTask = false;
       }
-    })
+    });
     this.uiService.toggleEmitted$.subscribe((isShown) => {
       this.isSidebarShown = isShown;
+    });
+
+    this.hideOptionsSub = this.uiService.hideOptions$.subscribe(() => {
+      this.showOptions = false;
     });
   }
 
@@ -54,12 +60,14 @@ export class TitlebarComponent implements OnInit {
   }
 
   toggleOptions() {
+    console.log(`toggleOptions() and showOptions is ${this.showOptions}`);
     if (this.showOptions) {
       this.showOptions = false;
     } else {
       this.showOptions = true;
     }
   }
+
 
   onClickAddTask() {
     this.showAddEditTask.emit('add');

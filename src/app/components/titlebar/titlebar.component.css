@@ -187,6 +187,10 @@ header {
   align-self: flex-end;
 }
 
+.options-btn svg {
+  pointer-events: none;
+}
+
 @media (min-width: 768px) {
   .options-btn {
     align-self: normal;

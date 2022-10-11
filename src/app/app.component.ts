@@ -1,4 +1,4 @@
-import { Component, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { UiService } from './services/ui.service';
 
 @Component({
@@ -97,5 +97,11 @@ export class AppComponent {
 
   hideAddColumn() {
     this.showAddColumn = false;
+  }
+
+  hideOptions(eventData: any) {
+    if (eventData.target.className !== 'options-btn') {
+      this.uiService.hideOptions(null);
+    }
   }
 }

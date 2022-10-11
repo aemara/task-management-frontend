@@ -57,4 +57,10 @@ export class UiService {
   fetchBoards(change: any) {
     this.fetchBoardsSubject.next(change);
   }
+
+  private hideOptionsSubjects = new Subject<any>();
+  hideOptions$ = this.hideOptionsSubjects.asObservable();
+  hideOptions(change: any) {
+    this.hideOptionsSubjects.next(change);
+  }
 }
