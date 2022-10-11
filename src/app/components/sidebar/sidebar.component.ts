@@ -22,6 +22,7 @@ export class SidebarComponent implements OnInit {
   @ViewChildren('boardItem') boardsList!: QueryList<'boardItem'>;
   boards!: any[];
   numOfBoards!: any[];
+  isFetching!: boolean;
   constructor(
     private http: HttpService,
     private uiService: UiService,
@@ -29,15 +30,19 @@ export class SidebarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isFetching = true;
     this.http.getBoards().subscribe((data) => {
       this.boards = data.boards;
       this.numOfBoards = data.boards.length;
+      this.isFetching = false;
     });
 
     this.uiService.fetchBoards$.subscribe(() => {
+      this.isFetching = true;
       this.http.getBoards().subscribe((data) => {
         this.boards = data.boards;
         this.numOfBoards = data.boards.length;
+        this.isFetching = false;
       });
     });
   }

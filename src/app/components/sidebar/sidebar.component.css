@@ -148,6 +148,20 @@
   fill: white;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loading-indicator {
+  width: 40px;
+  height: 40px;
+  -webkit-animation: rotate-center 0.4s ease-in-out infinite forwards;
+  animation: rotate-center 0.4s ease-in-out infinite forwards;
+}
+
 @-webkit-keyframes slide-right {
   100% {
     -webkit-transform: translateX(0%);
