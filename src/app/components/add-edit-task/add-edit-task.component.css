@@ -19,6 +19,8 @@
   padding: 1em 1em 2em 1em;
   width: 90%;
   max-width: 480px;
+  max-height: 550px;
+  overflow-y: auto;
 }
 
 .title {
