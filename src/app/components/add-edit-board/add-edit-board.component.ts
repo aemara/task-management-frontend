@@ -137,6 +137,7 @@ export class AddEditBoardComponent implements OnInit {
       this.httpService.editBoard(this.boardId, data).subscribe(() => {
         this.isFetching = false;
         this.hideAddEditBoard.emit();
+        this.uiService.fetchBoards(null);
         this.router.routeReuseStrategy.shouldReuseRoute = () => false;
         this.router.onSameUrlNavigation = 'reload';
         this.router.navigate([this.router.url]);
