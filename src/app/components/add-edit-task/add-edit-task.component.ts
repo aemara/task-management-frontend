@@ -33,6 +33,15 @@ export class AddEditTaskComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.uiService.fetchingState$.subscribe((state) => {
+      if (state) {
+        this.boardId = state.boardId;
+        this.http.getColumns(this.boardId).subscribe((data) => {
+          this.listOfColumns = data.columns;
+        });
+      }
+    });
+
     if (this.addOrEditTask === 'add') {
       this.taskForm = new FormGroup({
         title: new FormControl(null, Validators.required),
@@ -50,14 +59,6 @@ export class AddEditTaskComponent implements OnInit {
         column: new FormControl(null, Validators.required),
       });
     } else {
-      this.uiService.fetchingState$.subscribe((state) => {
-        if (state) {
-          this.boardId = state.boardId;
-          this.http.getColumns(this.boardId).subscribe((data) => {
-            this.listOfColumns = data.columns;
-          });
-        }
-      });
       this.uiService.taskDisplay$.subscribe((taskData) => {
         this.taskId = taskData.task._id;
         this.currentTaskTitle = taskData.task.title;
