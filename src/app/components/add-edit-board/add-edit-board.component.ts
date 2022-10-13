@@ -120,6 +120,7 @@ export class AddEditBoardComponent implements OnInit {
       this.httpService.addBoard(board).subscribe((response) => {
         this.isFetching = false;
         this.hideAddEditBoard.emit();
+        this.uiService.fetchBoards(null);
         this.router.navigate(['/board', response.boardId]);
       });
     } else {
