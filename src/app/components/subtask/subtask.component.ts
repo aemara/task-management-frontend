@@ -24,13 +24,14 @@ export class SubtaskComponent implements OnInit {
   }
 
   onClick() {
-    this.http.toggleSubtaskStatus(this.subtaskId, this.taskId).subscribe();
-    if (this.isDone === false) {
-      this.isDone = true;
-      this.toggleDone.emit('true');
-    } else {
-      this.isDone = false;
-      this.toggleDone.emit('false');
-    }
+    this.http.toggleSubtaskStatus(this.subtaskId, this.taskId).subscribe(() => {
+      if (this.isDone === false) {
+        this.isDone = true;
+        this.toggleDone.emit('true');
+      } else {
+        this.isDone = false;
+        this.toggleDone.emit('false');
+      }
+    });
   }
 }
