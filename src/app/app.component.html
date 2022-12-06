@@ -1,5 +1,5 @@
 <div class="container" (click)="hideOptions($event)">
-  <aside *ngIf="showSidebar">
+  <aside *ngIf="showSidebar" [hidden]="true">
     <app-sidebar (showAddEditBoard)="displayAddEditBoard($event)"></app-sidebar>
   </aside>
   <app-titlebar
@@ -9,8 +9,14 @@
     (showAddEditBoard)="displayAddEditBoard($event)"
     [displayBoardsModal]="showBoardsModal"
     [ngClass]="{ 'enlarge-titlebar': !showSidebar }"
+    [hidden]="true"
   ></app-titlebar>
-  <div class="main" [ngClass]="{ 'enlarge-main': !showSidebar }">
+  <app-auth></app-auth>
+  <div
+    class="main"
+    [ngClass]="{ 'enlarge-main': !showSidebar }"
+    [hidden]="true"
+  >
     <router-outlet></router-outlet>
   </div>
   <app-add-edit-task
@@ -41,7 +47,7 @@
     *ngIf="showDeleteModal"
     (hideDeleteModal)="onToggleDeleteModal()"
   ></app-delete-modal>
-  <button
+  <!-- <button
     class="show-sidebar-btn"
     *ngIf="!showSidebar"
     (click)="displaySidebar()"
@@ -52,5 +58,5 @@
         fill="#FFF"
       />
     </svg>
-  </button>
+  </button> -->
 </div>

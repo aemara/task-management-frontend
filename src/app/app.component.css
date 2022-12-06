@@ -28,6 +28,12 @@ app-titlebar {
   grid-column: 1/-1;
 }
 
+app-auth {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
 @media (min-width: 768px) {
   app-titlebar {
     grid-column: 2/3;

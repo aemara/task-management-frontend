@@ -1,0 +1,13 @@
+<div class="form-container">
+  <form>
+    <label for="username">Username</label>
+    <input type="text" id="username" />
+    <label for="password">Password</label>
+    <input type="password" id="password" />
+
+    <button type="submit">{{ isLoginMode ? "Login" : "Sign Up" }}</button>
+    <button type="button" (click)="switchMode()">
+      Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
+    </button>
+  </form>
+</div>
