@@ -1,13 +1,26 @@
-<div class="form-container">
+<div class="auth-container">
   <form #authForm="ngForm" (ngSubmit)="onSubmit(authForm)">
     <label for="username">Username</label>
-    <input type="text" id="username" name="username" ngModel required/>
+    <input type="text" id="username" name="username" ngModel required />
     <label for="password">Password</label>
-    <input type="password" id="password" name="password" ngModel required minlength="6"/>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      ngModel
+      required
+      minlength="6"
+    />
 
-    <button type="submit" [disabled]="!authForm.valid">{{ isLoginMode ? "Login" : "Sign Up" }}</button>
+    <button type="submit" [disabled]="!authForm.valid">
+      {{ isLoginMode ? "Login" : "Sign Up" }}
+    </button>
     <button type="button" (click)="switchMode()">
       Switch to {{ isLoginMode ? "Sign Up" : "Login" }}
     </button>
   </form>
+
+  <div *ngIf="error" class="error">
+    {{ error }}
+  </div>
 </div>
