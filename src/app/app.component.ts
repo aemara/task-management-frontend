@@ -1,4 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { AuthService } from './services/auth.service';
 import { UiService } from './services/ui.service';
 
 @Component({
@@ -18,8 +20,9 @@ export class AppComponent {
   showAddEditTask = false;
   showAddEditBoard = false;
   showAddColumn = false;
-
-  constructor(private uiService: UiService) {}
+  isAuthenticated: boolean = false;
+  private userSub!: Subscription;
+  constructor(private uiService: UiService, private authService: AuthService) {}
 
   ngOnInit(): void {
     this.uiService.toggleEmitted$.subscribe((isShown) => {
@@ -41,6 +44,10 @@ export class AppComponent {
 
     this.uiService.deleteModalDisplay$.subscribe((data: any) => {
       this.onToggleDeleteModal(data.type);
+    });
+
+    this.userSub = this.authService.user.subscribe((user) => {
+      this.isAuthenticated = !!user;
     });
   }
 
@@ -103,5 +110,9 @@ export class AppComponent {
     if (eventData.target.className !== 'options-btn') {
       this.uiService.hideOptions(null);
     }
+  }
+
+  ngOnDestroy() {
+    this.userSub.unsubscribe();
   }
 }

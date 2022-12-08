@@ -1,5 +1,5 @@
 <div class="container" (click)="hideOptions($event)">
-  <aside *ngIf="showSidebar" [hidden]="true">
+  <aside *ngIf="showSidebar && isAuthenticated">
     <app-sidebar (showAddEditBoard)="displayAddEditBoard($event)"></app-sidebar>
   </aside>
   <app-titlebar
@@ -9,13 +9,13 @@
     (showAddEditBoard)="displayAddEditBoard($event)"
     [displayBoardsModal]="showBoardsModal"
     [ngClass]="{ 'enlarge-titlebar': !showSidebar }"
-    [hidden]="true"
+    *ngIf="isAuthenticated"
   ></app-titlebar>
-  <app-auth></app-auth>
+  <app-auth *ngIf="!isAuthenticated"></app-auth>
   <div
     class="main"
     [ngClass]="{ 'enlarge-main': !showSidebar }"
-    [hidden]="true"
+    *ngIf="isAuthenticated"
   >
     <router-outlet></router-outlet>
   </div>
@@ -47,9 +47,9 @@
     *ngIf="showDeleteModal"
     (hideDeleteModal)="onToggleDeleteModal()"
   ></app-delete-modal>
-  <!-- <button
+  <button
     class="show-sidebar-btn"
-    *ngIf="!showSidebar"
+    *ngIf="!showSidebar && isAuthenticated"
     (click)="displaySidebar()"
   >
     <svg width="16" height="11" xmlns="http://www.w3.org/2000/svg">
@@ -58,5 +58,5 @@
         fill="#FFF"
       />
     </svg>
-  </button> -->
+  </button>
 </div>

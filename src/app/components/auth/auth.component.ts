@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-auth',
@@ -9,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class AuthComponent implements OnInit {
   isLoginMode: boolean = true;
   error!: string;
+
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
