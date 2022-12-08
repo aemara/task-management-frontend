@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/services/auth.service';
 import { UiService } from 'src/app/services/ui.service';
 
 @Component({
@@ -20,11 +22,15 @@ export class TitlebarComponent implements OnInit {
   isSidebarShown!: boolean;
   disableAddTask: boolean = false;
   hideOptionsSub!: Subscription;
-  constructor(private uiService: UiService) {}
+  constructor(
+    private uiService: UiService,
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.isSidebarShown = this.uiService.isSidebarShown;
-    this.uiService.fetchingState$.subscribe((state) => { 
+    this.uiService.fetchingState$.subscribe((state) => {
       if (!state) {
         this.boardName = '';
         this.disableAddTask = true;
@@ -68,12 +74,16 @@ export class TitlebarComponent implements OnInit {
     }
   }
 
-
   onClickAddTask() {
     this.showAddEditTask.emit('add');
   }
 
   onClickEditBoard() {
     this.showAddEditBoard.emit('edit');
+  }
+
+  onLogout() {
+    this.authService.user.next(null);
+    this.router.navigate(['/']);
   }
 }

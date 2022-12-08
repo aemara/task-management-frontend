@@ -147,6 +147,22 @@ header {
   display: none;
 }
 
+.logout-btn {
+  border: none;
+  border-radius: 24px;
+  display: block;
+  padding: 0.8em 1.3em;
+  background: #635fc7;
+  transition: 0.2s;
+  color: white;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+
+.logout-btn:hover {
+  cursor: pointer;
+}
+
 @media (min-width: 768px) {
   .add-task-btn {
     display: none;
