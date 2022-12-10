@@ -23,8 +23,6 @@ export class AuthComponent implements OnInit {
     console.log(form.value);
 
     if (this.isLoginMode) {
-      //Send login request
-      console.log('sending login ');
       this.authService
         .signIn(form.value.username, form.value.password)
         .subscribe({
@@ -38,16 +36,13 @@ export class AuthComponent implements OnInit {
       this.authService
         .signUp(form.value.username, form.value.password)
         .subscribe({
-          next: () => {
-            console.log('successfull sign up!');
-          },
+          next: () => {},
           error: (err) => {
             this.error = err.error.message;
             console.log(err);
           },
           complete: () => {},
         });
-      // Here I need to sign in the user once the server responds with a successfull sign up.
     }
   }
 }

@@ -8,7 +8,7 @@ import { User } from '../models/user.model';
   providedIn: 'root',
 })
 export class AuthService {
-  user = new BehaviorSubject<any>(null);
+  userSubject = new BehaviorSubject<any>(null);
   constructor(private http: HttpClient) {}
 
   signUp(username: string, password: string) {
@@ -20,7 +20,8 @@ export class AuthService {
       .pipe(
         tap((data: any) => {
           const user = new User(data.username, data.id, data.accessToken);
-          this.user.next(user);
+          this.userSubject.next(user);
+          localStorage.setItem('userData', JSON.stringify(user));
         })
       );
   }
@@ -34,8 +35,21 @@ export class AuthService {
       .pipe(
         tap((data: any) => {
           const user = new User(data.username, data.id, data.accessToken);
-          this.user.next(user);
+          this.userSubject.next(user);
+          localStorage.setItem('userData', JSON.stringify(user));
         })
       );
+  }
+
+  autoLogin() {
+    const userData = JSON.parse(localStorage.getItem('userData')!);
+    if (userData) {
+      const user = new User(userData.username, userData.id, userData.token);
+      this.userSubject.next(user);
+    }
+  }
+
+  logOut() {
+    localStorage.removeItem('userData');
   }
 }

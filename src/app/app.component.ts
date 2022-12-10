@@ -46,9 +46,11 @@ export class AppComponent {
       this.onToggleDeleteModal(data.type);
     });
 
-    this.userSub = this.authService.user.subscribe((user) => {
+    this.userSub = this.authService.userSubject.subscribe((user) => {
       this.isAuthenticated = !!user;
     });
+
+    this.authService.autoLogin();
   }
 
   onToggleBoardsModal() {

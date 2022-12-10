@@ -17,5 +17,6 @@ export class User {
     if (!helper.isTokenExpired(this.token)) {
       return this.token;
     }
+    return null;
   }
 }

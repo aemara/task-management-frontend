@@ -83,7 +83,8 @@ export class TitlebarComponent implements OnInit {
   }
 
   onLogout() {
-    this.authService.user.next(null);
+    this.authService.userSubject.next(null);
+    this.authService.logOut();
     this.router.navigate(['/']);
   }
 }
