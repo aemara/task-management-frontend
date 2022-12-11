@@ -16,7 +16,7 @@ export class AuthService {
 
   signUp(username: string, password: string) {
     return this.http
-      .post('http://localhost:3001/auth/signup', {
+      .post('https://frello-server.onrender.com/auth/signup', {
         username: username,
         password: password,
       })
@@ -35,7 +35,7 @@ export class AuthService {
 
   signIn(username: string, password: string) {
     return this.http
-      .post('http://localhost:3001/auth/signin', {
+      .post('https://frello-server.onrender.com/auth/signin', {
         username: username,
         password: password,
       })
